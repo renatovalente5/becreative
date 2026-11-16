@@ -66,13 +66,19 @@ export function inicio(ctx) {
   const capa = h.capa;
   const fotosCapa = (Array.isArray(capa.fotos) ? capa.fotos : []).filter((f) => ctx.manifesto.fotos[f]).slice(0, 3);
   const ligacaoCapa = ctx.existe(capa.ligacao) ? capa.ligacao : '/criacoes/';
+  /* O vídeo da capa (opcional, de media/video/): toma o lugar da fotografia do meio (ou da única). Por baixo
+     dele — até começar a tocar, e sempre para quem pede menos movimento — fica a imagem de espera do vídeo
+     (media/video/<nome>.jpg, o primeiro fotograma) ou, se não houver, essa fotografia. */
+  const videoCapa = capa.video && ctx.ficheiros.videos[capa.video] ? capa.video : '';
+  const meio = fotosCapa.length === 1 ? 0 : 1;
+  const posterCapa = videoCapa && ctx.manifesto.posters[`video-${videoCapa}`] ? `video-${videoCapa}` : '';
   const destaque = ctx.produtos.find((p) => p.slug === h.destaque.peca);
   const celebracoes = ctx.celebracoes.filter((c) => c.destaque).slice(0, 3);
   /* Cada fotografia aparece UMA vez na página (a caixa «Salvador» era a capa do Batismo, a peça em destaque
      e a capa de uma celebração). Escolhe-se pela ordem da página, que é a do que a dona escolheu no
      painel: a capa, a montra (a fotografia de cada categoria; se já está na capa, a seguinte das peças
      dela), a peça em destaque e as celebrações. Se não houver outra, repete-se. */
-  const usadas = new Set(fotosCapa);
+  const usadas = new Set(fotosCapa.filter((f, i) => !(posterCapa && i === meio)));
   const escolher = (lista) => {
     const boas = lista.filter((f) => f && ctx.manifesto.fotos[f]);
     const f = boas.find((x) => !usadas.has(x)) || boas[0] || '';
@@ -114,7 +120,14 @@ export function inicio(ctx) {
       <a class="btn btn--linha" href="${ctx.url('/como-funciona/')}">Como funciona</a>
     </div>
     <div class="trio trio--${fotosCapa.length}">
-      ${fotosCapa.map((f, i) => `<div class="trio__foto">${imagem(ctx, f, { tamanhos: i === 1 || fotosCapa.length === 1 ? '(min-width: 860px) 470px, 52vw' : '(min-width: 860px) 380px, 26vw', prioridade: i === 1 || fotosCapa.length === 1, cedo: true, moldura: 4 / 5 })}</div>`).join('\n      ')}
+      ${fotosCapa.map((f, i) => {
+        const grande = i === meio;
+        const tamanhos = grande ? '(min-width: 860px) 470px, 52vw' : '(min-width: 860px) 380px, 26vw';
+        if (grande && videoCapa) {
+          return `<div class="trio__foto trio__foto--video">${imagem(ctx, posterCapa || f, { tamanhos, prioridade: true, cedo: true, moldura: 4 / 5, alt: ctx.fotos[f]?.alt || '' })}<video class="trio__video" src="${ctx.asset(ctx.ficheiros.videos[videoCapa])}" muted loop playsinline preload="none" aria-hidden="true" data-capa-video></video><button class="trio__pausa" type="button" aria-label="Pausar o vídeo" data-pausa hidden>${ico('pausa')}${ico('play')}</button></div>`;
+        }
+        return `<div class="trio__foto">${imagem(ctx, f, { tamanhos, prioridade: grande, cedo: true, moldura: 4 / 5 })}</div>`;
+      }).join('\n      ')}
     </div>
   </div>
 </section>

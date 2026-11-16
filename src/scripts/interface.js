@@ -106,6 +106,32 @@
     if (ul.scrollWidth > ul.clientWidth) ul.scrollLeft = Math.max(0, aberta.offsetLeft - 16);
   }
 
+  // ---------------------------------------------------------------- o vídeo da capa
+  /* Toca sozinho (sem som, em ciclo) só depois de a página carregar, para não atrasar o resto, e nunca com
+     «menos movimento» ou «poupar dados»: aí fica a imagem de espera por baixo. Pára quando sai do ecrã e
+     volta quando aparece; o botão pausa-o e retoma-o, e quem o pausou decide (não volta a tocar sozinho). */
+  document.querySelectorAll('[data-capa-video]').forEach(function (v) {
+    var caixa = v.parentElement;
+    var botao = caixa.querySelector('[data-pausa]');
+    var poupar = navigator.connection && navigator.connection.saveData;
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches || poupar) return;
+    var parado = false;
+    var visivel = true;
+    function tocar() { if (parado || !visivel) return; var p = v.play(); if (p && p.catch) p.catch(function () {}); }
+    function marcar() {
+      if (!botao) return;
+      botao.classList.toggle('em-pausa', v.paused);
+      botao.setAttribute('aria-label', v.paused ? 'Pôr o vídeo a tocar' : 'Pausar o vídeo');
+    }
+    v.addEventListener('playing', function () { caixa.classList.add('a-tocar'); if (botao) botao.hidden = false; marcar(); });
+    v.addEventListener('pause', marcar);
+    if (botao) botao.addEventListener('click', function () { if (v.paused) { parado = false; tocar(); } else { parado = true; v.pause(); } });
+    if ('IntersectionObserver' in window) {
+      new IntersectionObserver(function (ents) { ents.forEach(function (en) { visivel = en.isIntersecting; if (visivel) tocar(); else v.pause(); }); }).observe(caixa);
+    }
+    if (document.readyState === 'complete') tocar(); else window.addEventListener('load', tocar);
+  });
+
   // ---------------------------------------------------------------- entradas ao descer
   /* Como no apple.com: o que está ABAIXO do primeiro ecrã entra a subir ligeiramente, ao aparecer. O
      primeiro ecrã nunca pisca (o título é o maior elemento pintado), e sem JavaScript ou com «menos

@@ -84,6 +84,12 @@ t('a capa sem fotografias bloqueia', () => {
   const h = JSON.parse(base.inicio); h.capa.fotos = [];
   verdade(R.problemas({ ...base, inicio: JSON.stringify(h) }).some((p) => p.chave === 'inicio:capa.fotos:vazia' && p.classe === 'bloqueia'));
 });
+t('o vídeo da capa que não existe só lembra (vê-se a fotografia)', () => {
+  const h = JSON.parse(base.inicio); h.capa.video = 'nao-existe';
+  const ps = R.problemas({ ...base, inicio: JSON.stringify(h) }).filter((p) => p.chave === 'inicio:capa.video');
+  verdade(ps.length === 1 && ps[0].lembrete && ps[0].classe === 'avisa');
+  verdade(!R.problemas(base).some((p) => p.chave === 'inicio:capa.video'));
+});
 t('o slug de uma peça nova', () => igual(R.gerarSlug('Vela & Concha', ['vela-concha']), 'vela-concha-2'));
 t('o painel não muda a marca', () => igual(R.mudancasBloqueadas({ marca: 'BE!Creative' }, { marca: 'Outra' }, 'site').map((x) => x.caminho), ['marca']));
 
@@ -122,6 +128,18 @@ if (construiu) {
   t('um parágrafo que é só um marcador fica num <p> (e os de bloco não)', () => {
     verdade(ler('como-funciona/index.html').includes('<p>MB WAY ou transferência'));
     verdade(!/<p>\s*<(div|figure|ul)/.test(ler('politica-de-privacidade/index.html') + ler('garantia/index.html')));
+  });
+  t('o vídeo da capa: no meio, sem som, em ciclo, com a imagem de espera e o botão de pausa', () => {
+    const h = ler('index.html');
+    const caixa = (h.match(/<div class="trio__foto trio__foto--video">[\s\S]*?<\/button><\/div>/) || [''])[0];
+    verdade(caixa, 'não há o vídeo na capa');
+    verdade(/<video [^>]*\bmuted\b[^>]*\bloop\b[^>]*\bplaysinline\b[^>]*preload="none"/.test(caixa), 'o vídeo tem de ser mudo, em ciclo, inline e sem pré-carregar');
+    verdade(!/\bautoplay\b/.test(caixa), 'sem autoplay: é o JavaScript que o põe a tocar (respeita «menos movimento»)');
+    verdade(/<img [^>]*fetchpriority="high"/.test(caixa) && /alt="[^"]+"/.test(caixa), 'a imagem de espera vem primeiro e com texto alternativo');
+    verdade(/<button class="trio__pausa" type="button" aria-label="Pausar o vídeo" data-pausa hidden>/.test(caixa));
+    const trio = h.slice(h.indexOf('<div class="trio'), h.indexOf('</section>'));
+    igual((trio.match(/class="trio__foto/g) || []).length, 3);
+    verdade(trio.indexOf('trio__foto--video') > trio.indexOf('class="trio__foto"'), 'o vídeo fica no meio');
   });
   t('a página inicial não tem os passos nem o fecho (o Renato: nunca mais)', () => {
     const h = ler('index.html');

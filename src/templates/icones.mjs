@@ -25,6 +25,7 @@ const D = {
   cartao: '<rect x="3.5" y="6" width="17" height="12" rx="2.5"/><path d="M3.5 10h17M7 14.5h3"/>',
   caixa: '<path d="M4 8.5L12 4l8 4.5v7L12 20l-8-4.5z"/><path d="M4 8.5l8 4.5 8-4.5M12 13v7"/>',
   play: '<path d="M8 5.5v13l10.5-6.5z"/>',
+  pausa: '<path d="M9 6v12M15 6v12"/>',
   pausa: '<path d="M8 5v14M16 5v14"/>',
   copiar: '<rect x="8" y="8" width="11" height="12" rx="2"/><path d="M5 15V6a2 2 0 0 1 2-2h8"/>',
   calendario: '<rect x="4" y="5.5" width="16" height="14.5" rx="2.5"/><path d="M4 10h16M8.5 3.5v4M15.5 3.5v4"/>',
