@@ -1,12 +1,14 @@
-// A moldura de todas as páginas (a proposta A, «Pedra»): o cabeçalho na pedra do logótipo (o logótipo
-// à esquerda, as quatro páginas, a lupa e o pedido), o menu de ecrã inteiro do telemóvel, a procura,
-// o rodapé curto (o logótipo, a frase, as redes, a ajuda e a linha legal) e o aviso do topo.
+// A moldura de todas as páginas (a proposta C, «Papelaria», escolhida pelo Renato a 16 nov 2026): o
+// cabeçalho como o cartão de um convite (as páginas à esquerda, o logótipo ao centro, a lupa e o pedido
+// à direita), o menu de ecrã inteiro do telemóvel, a procura, o rodapé ao centro, compacto (o
+// logótipo, as ligações numa linha, as redes e a linha legal) e o aviso do topo.
 import { esc } from './util.mjs';
 import { sprite, ico } from './icones.mjs';
 import { logo, livroBotao, miniatura } from './componentes.mjs';
 
-/* As páginas do cabeçalho (o menu principal: as mesmas em todas as páginas, com a actual marcada). */
-const PRINCIPAIS = [['/criacoes/', 'Criações'], ['/celebracoes/', 'Celebrações'], ['/como-funciona/', 'Como funciona'], ['/contactos/', 'Contactos']];
+/* As páginas do cabeçalho (o menu principal: as mesmas em todas as páginas, com a actual marcada). Os
+   Contactos vivem no rodapé e no menu do telemóvel. */
+const PRINCIPAIS = [['/criacoes/', 'Criações'], ['/celebracoes/', 'Celebrações'], ['/como-funciona/', 'Como funciona']];
 const atual = (caminho, c) => (c === '/criacoes/' ? caminho.startsWith('/criacoes/') || caminho.startsWith('/pecas/') : c === '/celebracoes/' ? caminho.startsWith('/celebracoes/') : caminho === c);
 
 /* O aviso do topo (content/site.json, «aviso»): uma faixa fina por baixo do cabeçalho, só com uma
@@ -22,16 +24,16 @@ function aviso(ctx) {
 function cabecalho(ctx, caminho) {
   return `<header class="topo" id="topo">
   <div class="contentor topo__barra">
-    <a class="topo__logo" href="${ctx.url('/')}"${caminho === '/' ? ' aria-current="page"' : ''}>${logo(ctx, { alto: 64, classe: 'topo__logo-img', alt: `${ctx.site.marca} — página inicial`, prioridade: true })}</a>
     <nav class="topo__nav" aria-label="Principal">
       <ul role="list">
         ${PRINCIPAIS.map(([c, t]) => `<li><a href="${ctx.url(c)}"${atual(caminho, c) ? ' aria-current="page"' : ''}>${esc(t)}</a></li>`).join('\n        ')}
       </ul>
     </nav>
+    <button class="botao-icone so-telemovel topo__menu" type="button" id="abrir-menu" aria-label="Abrir o menu" aria-haspopup="dialog" aria-controls="menu" aria-expanded="false">${ico('menu')}</button>
+    <a class="topo__logo" href="${ctx.url('/')}"${caminho === '/' ? ' aria-current="page"' : ''}>${logo(ctx, { alto: 64, classe: 'topo__logo-img', alt: `${ctx.site.marca} — página inicial`, prioridade: true })}</a>
     <div class="topo__acoes">
       <button class="botao-icone" type="button" id="abrir-procura" aria-label="Procurar" aria-haspopup="dialog" aria-controls="procura" aria-expanded="false">${ico('lupa')}</button>
       <a class="botao-icone pedido-icone" href="${ctx.url('/pedido/')}" aria-label="O meu pedido"${caminho === '/pedido/' ? ' aria-current="page"' : ''}>${ico('saco')}<span class="pedido-icone__n" data-conta hidden></span></a>
-      <button class="botao-icone so-telemovel" type="button" id="abrir-menu" aria-label="Abrir o menu" aria-haspopup="dialog" aria-controls="menu" aria-expanded="false">${ico('menu')}</button>
     </div>
   </div>
 </header>`;
@@ -97,30 +99,25 @@ function procura(ctx) {
 </dialog>`;
 }
 
-/* O RODAPÉ curto (o Renato, 12 nov 2026: «está cheio de informação»): o logótipo, a frase e as redes;
-   a ajuda em quatro ligações; e a linha de baixo só com «© ano Marca», as páginas legais e o Livro de
-   Reclamações discreto (nunca o nome do dono, o NIF ou a morada: esses vivem nos Contactos e nos
-   termos). */
+/* O RODAPÉ ao centro, como na proposta C, mas compacto (o Renato não gosta de rodapés grandes): o
+   logótipo, as ligações numa linha, as redes, e a linha de baixo só com «© ano Marca», as
+   páginas legais e o Livro de Reclamações discreto (nunca o nome do dono, o NIF ou a morada: esses
+   vivem nos Contactos e nos termos). */
 function rodape(ctx) {
   const ligacao = (caminho, texto) => (ctx.existe(caminho) ? `<li><a href="${ctx.url(caminho)}">${esc(texto)}</a></li>` : '');
   return `<footer class="rodape">
   <div class="contentor">
-    <div class="rodape__grelha">
-      <div class="rodape__marca">
-        <a class="rodape__logo" href="${ctx.url('/')}">${logo(ctx, { alto: 84, alt: `${ctx.site.marca} — página inicial` })}</a>
-        <p class="rodape__frase">${esc(ctx.site.assinatura || '')}</p>
-        ${redes(ctx)}
-      </div>
-      <nav class="rodape__ajuda" aria-labelledby="r-ajuda">
-        <h2 class="rodape__titulo" id="r-ajuda">Ajuda</h2>
-        <ul role="list">
-          ${ligacao('/como-funciona/', 'Como funciona')}
-          ${ligacao('/sobre-nos/', 'Sobre nós')}
-          ${ligacao('/contactos/', 'Contactos')}
-          ${ligacao('/pedido/', 'O meu pedido')}
-        </ul>
-      </nav>
-    </div>
+    <a class="rodape__logo" href="${ctx.url('/')}">${logo(ctx, { alto: 72, alt: `${ctx.site.marca} — página inicial` })}</a>
+    <nav aria-label="Ajuda">
+      <ul class="rodape__ligacoes" role="list">
+        ${ligacao('/criacoes/', 'Criações')}
+        ${ligacao('/celebracoes/', 'Celebrações')}
+        ${ligacao('/como-funciona/', 'Como funciona')}
+        ${ligacao('/sobre-nos/', 'Sobre nós')}
+        ${ligacao('/contactos/', 'Contactos')}
+      </ul>
+    </nav>
+    ${redes(ctx)}
     <div class="rodape__legal">
       <p>© ${ctx.hoje.slice(0, 4)} ${esc(ctx.site.marca)}</p>
       <ul role="list">
@@ -162,12 +159,12 @@ ${robots ? `<meta name="robots" content="${robots}">\n` : ''}<meta property="og:
 <meta property="og:image:height" content="630">
 <meta property="og:image:alt" content="${esc(marca)}">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="theme-color" content="#EAE5DF">
+<meta name="theme-color" content="#F7F4EF">
 <link rel="icon" type="image/png" sizes="32x32" href="${ctx.asset(`img/${l.icones[32]}`)}">
 <link rel="icon" type="image/png" sizes="48x48" href="${ctx.asset(`img/${l.icones[48]}`)}">
 <link rel="apple-touch-icon" href="${ctx.asset(`img/${l.icones.apple}`)}">
-<link rel="preload" href="${ctx.asset('fontes/bellefair-latin.woff2')}" as="font" type="font/woff2" crossorigin>
-<link rel="preload" href="${ctx.asset('fontes/outfit-latin.woff2')}" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="${ctx.asset('fontes/gloock-latin.woff2')}" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="${ctx.asset('fontes/redhattext-latin.woff2')}" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="${ctx.asset(ctx.ficheiros.css)}">
 <script>document.documentElement.classList.add('js')</script>
 ${jsonld.map((j) => `<script type="application/ld+json">${JSON.stringify(j).replace(/</g, '\\u003c')}</script>`).join('\n')}

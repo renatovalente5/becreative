@@ -8,8 +8,9 @@ personalizado para batizados, casamentos e outras celebrações.
 nomes) e envia-se por email ou pelo Instagram, com a mensagem já escrita. A BE!Creative responde com o
 orçamento e o prazo; a encomenda fica feita quando o cliente o aceita.
 
-- **O desenho é próprio**: a proposta A, «Pedra» — o cinza-pedra do fundo do logótipo (#EAE5DF) em todas
-  as páginas e o bordô do desenho (#79232E) nos títulos e botões; Bellefair nos títulos, Outfit no texto.
+- **O desenho é próprio**: a proposta C, «Papelaria» (escolhida pelo Renato a 16 nov 2026) — papel claro
+  (#F7F4EF), o bordô do logótipo (#79232E) nos títulos e botões, cabeças ao centro com uma palavra
+  manuscrita por cima; Gloock nos títulos, Pinyon Script no manuscrito, Red Hat Text no texto.
   O gerador, as regras e a legal-comum são os dos outros sites do Renato.
 - **Celebrações**: o portefólio de eventos reais (batizados, casamentos, chás revelação), cada um com as
   fotografias e as peças que levou.

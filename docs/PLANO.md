@@ -20,8 +20,10 @@ e um backoffice simples, moderno e intuitivo.
 4. **Fotografias fora do site**: caras de crianças e de pessoas, personagens de terceiros (Disney, Panda),
    garrafas de marca, imagens do Freepik (lista em `_cliente/notas/resumo.md`). As dos fotógrafos levam
    o crédito.
-5. **O desenho**: a proposta A, «Pedra» (recomendada; enviada ao Renato com a B e a C a 16 nov às 10:05 —
-   **à espera da escolha**). Trocar de proposta é sobretudo o `site.css` e a capa.
+5. **O desenho**: a proposta C, «Papelaria» (o Renato escolheu-a a 16 nov 2026, entre a A «Pedra» e a B
+   «Bordô»): papel claro, bordô, cabeças ao centro com uma palavra manuscrita; a página inicial tem a capa
+   com três fotografias, o índice numerado das categorias, uma peça em destaque, as celebrações, os
+   passos e o fecho. Uma fotografia aparece uma só vez em cada página (escolha automática).
 6. **Domínio**: ainda nenhum. A pré-visualização é no GitHub Pages (`/becreative`), noindex; o domínio e
    a Cloudflare (Worker do `worker/www.js`) ficam para quando os donos aceitarem.
 

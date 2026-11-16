@@ -1,43 +1,59 @@
 {
   "seo": {
-    "titulo": "BE!Creative — Conjuntos de batismo, convites e lembranças personalizados, em Coimbra",
-    "descricao": "Atelier de design em Coimbra: conjuntos de batismo, convites, lembranças, papelaria de mesa e presentes para padrinhos, personalizados para batizados, casamentos e todas as celebrações."
+    "titulo": "BE!Creative — Convites, conjuntos de batismo e lembranças personalizados, em Coimbra",
+    "descricao": "Atelier de design em Coimbra: convites, conjuntos de batismo, lembranças, papelaria de mesa e presentes para padrinhos, personalizados para casamentos, batizados e todas as celebrações."
   },
   "capa": {
     "etiqueta": "Atelier de design · Coimbra",
-    "titulo": "Cada detalhe pensado para o teu dia",
-    "texto": "Batizados, casamentos e todas as celebrações, personalizados do primeiro ao último pormenor.",
+    "titulo": "Casamentos, batizados",
+    "tituloEscrito": "e personalizados",
+    "texto": "Convites, conjuntos de batismo, lembranças e papelaria de mesa, desenhados para cada celebração e feitos ao pormenor.",
     "botao": "Ver as criações",
     "ligacao": "/criacoes/",
-    "foto": "conjunto-de-batismo-2",
-    "fotoPequena": "moldura-livro-1"
+    "fotos": [
+      "convite-de-batizado-1",
+      "conjunto-de-batismo-2",
+      "moldura-livro-1"
+    ]
   },
   "criacoes": {
-    "etiqueta": "Criações",
-    "titulo": "O que criamos"
+    "etiqueta": "o que criamos",
+    "titulo": "Criações"
   },
-  "destaques": {
-    "etiqueta": "Destaques",
-    "titulo": "Feitos à medida de cada história"
+  "destaque": {
+    "etiqueta": "em destaque",
+    "peca": "conjunto-de-batismo",
+    "botao": "Ver o conjunto"
   },
   "celebracoes": {
-    "etiqueta": "Celebrações",
-    "titulo": "Tudo a combinar, do convite à mesa"
+    "etiqueta": "tudo a combinar",
+    "titulo": "Celebrações"
   },
   "passos": {
-    "etiqueta": "Como funciona",
-    "titulo": "Cada encomenda começa com uma conversa",
+    "etiqueta": "como funciona",
+    "titulo": "Do pedido à entrega",
     "lista": [
-      { "titulo": "Conversa", "texto": "Conta-nos o que procuras: aqui no site, no Instagram, no Facebook ou por email." },
-      { "titulo": "Escolhas", "texto": "Escolhemos contigo os materiais, as cores, os formatos e os nomes." },
-      { "titulo": "Pagamento", "texto": "A peça começa a ser feita depois do pagamento, por MB WAY ou transferência." },
-      { "titulo": "Entrega", "texto": "Levantas no atelier, em Coimbra, ou enviamos por transportadora." }
+      {
+        "titulo": "Conversa",
+        "texto": "Conta-nos o que procuras: no site, no Instagram, no Facebook ou por email."
+      },
+      {
+        "titulo": "Escolhas",
+        "texto": "Materiais, cores, formatos e nomes, escolhidos contigo."
+      },
+      {
+        "titulo": "Pagamento",
+        "texto": "Começamos depois do pagamento, por MB WAY ou transferência."
+      },
+      {
+        "titulo": "Entrega",
+        "texto": "No atelier, em Coimbra, ou por transportadora."
+      }
     ]
   },
   "chamada": {
-    "titulo": "Tens uma celebração a caminho?",
+    "titulo": "Cada escolha dá forma a uma peça única",
     "texto": "Junta ao pedido as peças de que gostas e conta-nos a tua ideia. Respondemos com o orçamento e o prazo.",
-    "botao": "Fazer o pedido",
-    "foto": "ementa-1"
+    "botao": "Fazer o pedido"
   }
 }

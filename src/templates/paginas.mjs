@@ -1,9 +1,10 @@
-// As páginas do site: a inicial, as criações (todas e por categoria), a ficha de cada peça, as
-// celebrações (a lista e cada uma), os contactos, o pedido, as páginas de texto e a 404.
-// Cada função devolve { caminho, titulo, descricao, conteudo, … } e o layout.mjs veste-a.
+// As páginas do site (a proposta C, «Papelaria»): a inicial, as criações (todas e por categoria), a
+// ficha de cada peça, as celebrações (a lista e cada uma), os contactos, o pedido, as páginas de texto e
+// a 404. Cada função devolve { caminho, titulo, descricao, conteudo, … } e o layout.mjs veste-a.
+// As cabeças vão ao centro, como num convite: uma palavra em letra manuscrita por cima do título.
 import { esc, markdown, resumir, moradaCompleta } from './util.mjs';
 import { ico } from './icones.mjs';
-import { imagem, miniatura, cartao, cartaoCategoria, cartaoCelebracao, pastilhas, preco, logo, TAMANHOS_CARTAO } from './componentes.mjs';
+import { imagem, miniatura, cartao, cartaoCelebracao, pastilhas, preco, setaCirculo } from './componentes.mjs';
 import { opcoesDe, personalizacaoDe, quantidadeMinimaDe, OCASIOES } from '../lib/regras.mjs';
 
 /* O que o Google lê de cada categoria (o <title> e a descrição), escrito à mão: o nome sozinho
@@ -18,6 +19,7 @@ const SEO_CATEGORIAS = {
   bebe: ['Recordações personalizadas para o bebé', 'Quadros e placas de nascimento, placas mensais, mealheiros, escovinhas com o nome e caixinhas de recordações.'],
   presentes: ['Presentes personalizados', 'Quadros ilustrados, caixas gravadas e chocolates com mensagem para o Dia da Mãe, o Dia do Pai, os Namorados e a Páscoa.'],
 };
+const POR_EXTENSO = ['um', 'dois', 'três', 'quatro', 'cinco', 'seis'];
 
 const trilho = (ctx, passos) => ({
   '@context': 'https://schema.org',
@@ -30,24 +32,46 @@ const fotoAbsoluta = (ctx, nome) => {
   return ctx.absoluto(`/assets/img/${nome}-${m.resumo}-${m.larguras[m.larguras.length - 1]}.webp`);
 };
 
-function cabecaSeccao(etiqueta, titulo, { mais = '', id = '' } = {}) {
-  return `<div class="cabeca">
-  <div>${etiqueta ? `<p class="etiqueta">${esc(etiqueta)}</p>` : ''}<h2${id ? ` id="${id}"` : ''}>${esc(titulo)}</h2></div>
-  ${mais}
-</div>`;
+/* A cabeça de uma secção: a palavra manuscrita (decorativa: o leitor de ecrã lê só o título) e o
+   título, ao centro. */
+function titulo(escrito, texto, { id = '', nivel = 'h2' } = {}) {
+  return `<div class="titulo">${escrito ? `<span class="esc" aria-hidden="true">${esc(escrito)}</span>` : ''}<${nivel}${id ? ` id="${id}"` : ''}>${esc(texto)}</${nivel}></div>`;
 }
-const ligacaoMais = (ctx, caminho, texto) => `<a class="mais" href="${ctx.url(caminho)}">${esc(texto)}${ico('seta')}</a>`;
+/* A cabeça de uma página: a palavra manuscrita, o h1 e uma frase, ao centro. */
+function cabecaPagina({ escrito = '', titulo: t, texto = '', extra = '' }) {
+  return `<header class="pagina__cabeca">
+  ${escrito ? `<span class="esc" aria-hidden="true">${esc(escrito)}</span>` : ''}
+  <h1>${esc(t)}</h1>
+  ${texto ? `<p class="pagina__texto">${esc(texto)}</p>` : ''}${extra}
+</header>`;
+}
+const classeGrelha = (n) => (n < 4 ? ` grelha--${n}` : '');
+const ligacaoMais = (ctx, caminho, texto) => `<p class="mais-centro"><a class="mais" href="${ctx.url(caminho)}">${esc(texto)}${ico('seta')}</a></p>`;
 
 // ---------------------------------------------------------------- página inicial
 export function inicio(ctx) {
   const h = ctx.inicio;
-  const destaques = ctx.produtos.filter((p) => p.destaque).slice(0, 8);
-  const celebracoes = ctx.celebracoes.filter((c) => c.destaque).slice(0, 3);
-  const capa = h.capa;
-  const fotoPeq = capa.fotoPequena && ctx.manifesto.fotos[capa.fotoPequena] ? capa.fotoPequena : '';
-  const ligacaoCapa = ctx.existe(capa.ligacao) ? capa.ligacao : '/criacoes/';
-  const passos = (h.passos.lista || []).slice(0, 4);
   const site = ctx.site;
+  const capa = h.capa;
+  const fotosCapa = (Array.isArray(capa.fotos) ? capa.fotos : []).filter((f) => ctx.manifesto.fotos[f]).slice(0, 3);
+  const ligacaoCapa = ctx.existe(capa.ligacao) ? capa.ligacao : '/criacoes/';
+  const destaque = ctx.produtos.find((p) => p.slug === h.destaque.peca);
+  const celebracoes = ctx.celebracoes.filter((c) => c.destaque).slice(0, 3);
+  const passos = (h.passos.lista || []).slice(0, 4);
+  /* Cada fotografia aparece UMA vez na página (a caixa «Salvador» era a capa do Batismo, a peça em destaque
+     e a capa de uma celebração). Escolhe-se pela ordem do que pesa mais: a capa, a peça em destaque, as
+     celebrações e, no fim, as miniaturas do índice (as mais pequenas, com mais fotografias por onde
+     escolher: a da categoria e depois as das peças dela). Se não houver outra, repete-se. */
+  const usadas = new Set(fotosCapa);
+  const escolher = (lista) => {
+    const boas = lista.filter((f) => f && ctx.manifesto.fotos[f]);
+    const f = boas.find((x) => !usadas.has(x)) || boas[0] || '';
+    if (f) usadas.add(f);
+    return f;
+  };
+  const fotoDestaque = destaque ? escolher(destaque.fotos) : '';
+  const fotosCelebracoes = celebracoes.map((c) => escolher(c.fotos));
+  const fotosIndice = ctx.categoriasComPecas.map((c) => escolher([c.foto, ...ctx.produtos.filter((p) => p.categoria === c.slug).flatMap((p) => p.fotos)]));
   const jsonld = [
     { '@context': 'https://schema.org', '@type': 'WebSite', name: site.marca, alternateName: ['BE Creative', 'BE!Creative ®'], url: ctx.absoluto('/') },
     {
@@ -58,71 +82,86 @@ export function inicio(ctx) {
       sameAs: [site.contactos.instagram && `https://www.instagram.com/${site.contactos.instagram}/`, site.contactos.facebook && `https://www.facebook.com/${site.contactos.facebook}`].filter(Boolean),
     },
   ];
+  // a peça em destaque: as escolhas dela em lista (ou o que inclui), como no cartão dos destaques
+  let linhasDestaque = '';
+  if (destaque) {
+    const ops = opcoesDe(destaque);
+    const linhas = ops.length
+      ? ops.map((g) => [g.nome, g.valores.map((v) => v.nome).join(', ').replace(/, ([^,]+)$/, ' ou $1')])
+      : (destaque.inclui || []).map((t, i) => [i ? '' : 'Inclui', t]);
+    linhasDestaque = linhas.length ? `<ul class="lista" role="list">${linhas.map(([k, v]) => `<li><b>${esc(k)}</b><span>${esc(v)}</span></li>`).join('')}</ul>` : '';
+  }
   const conteudo = `
 <section class="capa">
-  <div class="contentor capa__grelha">
-    <div class="capa__texto">
-      ${capa.etiqueta ? `<p class="etiqueta etiqueta--fio">${esc(capa.etiqueta)}</p>` : ''}
-      <h1>${esc(capa.titulo)}</h1>
-      ${capa.texto ? `<p class="capa__frase">${esc(capa.texto)}</p>` : ''}
-      <div class="botoes">
-        <a class="btn btn--cheio" href="${ctx.url(ligacaoCapa)}">${esc(capa.botao)}${ico('seta')}</a>
-        <a class="btn btn--linha" href="${ctx.url('/como-funciona/')}">Como funciona</a>
-      </div>
+  <div class="contentor">
+    <div class="fio-v" aria-hidden="true"></div>
+    ${capa.etiqueta ? `<p class="capa__etiqueta">${esc(capa.etiqueta)}</p>` : ''}
+    <h1>${esc(capa.titulo)}${capa.tituloEscrito ? ` <span class="esc">${esc(capa.tituloEscrito)}</span>` : ''}</h1>
+    ${capa.texto ? `<p class="capa__frase">${esc(capa.texto)}</p>` : ''}
+    <div class="botoes botoes--centro">
+      <a class="btn btn--cheio" href="${ctx.url(ligacaoCapa)}">${esc(capa.botao)}</a>
+      <a class="btn btn--linha" href="${ctx.url('/como-funciona/')}">Como funciona</a>
     </div>
-    <div class="capa__fotos">
-      <div class="capa__grande">${imagem(ctx, capa.foto, { tamanhos: '(min-width: 1240px) 600px, (min-width: 860px) 48vw, calc(100vw - 32px)', prioridade: true, moldura: 4 / 5 })}</div>
-      ${fotoPeq ? `<div class="capa__pequena">${imagem(ctx, fotoPeq, { tamanhos: '(min-width: 860px) 250px, 38vw', moldura: 4 / 5, cedo: true })}</div>` : ''}
+    <div class="trio trio--${fotosCapa.length}">
+      ${fotosCapa.map((f, i) => `<div class="trio__foto">${imagem(ctx, f, { tamanhos: i === 1 || fotosCapa.length === 1 ? '(min-width: 860px) 470px, 52vw' : '(min-width: 860px) 380px, 26vw', prioridade: i === 1 || fotosCapa.length === 1, cedo: true, moldura: 4 / 5 })}</div>`).join('\n      ')}
     </div>
   </div>
 </section>
 
 <section class="seccao" aria-labelledby="s-criacoes">
   <div class="contentor">
-    ${cabecaSeccao(h.criacoes.etiqueta, h.criacoes.titulo, { id: 's-criacoes', mais: ligacaoMais(ctx, '/criacoes/', 'Ver todas') })}
-    <ul class="cats" role="list">
-      ${ctx.categoriasComPecas.map((c) => cartaoCategoria(ctx, c)).join('\n      ')}
-    </ul>
+    ${titulo(h.criacoes.etiqueta, h.criacoes.titulo, { id: 's-criacoes' })}
+    <ol class="indice" role="list">
+      ${ctx.categoriasComPecas.map((c, i) => `<li><a href="${ctx.url(`/criacoes/${c.slug}/`)}">
+        <span class="indice__n" aria-hidden="true">${String(i + 1).padStart(2, '0')}</span>
+        <h3>${esc(c.nome)}</h3>
+        <p class="indice__d">${esc(c.resumo)}</p>
+        <span class="indice__f">${miniatura(ctx, fotosIndice[i], { lado: 120, classe: 'indice__img' })}</span>
+        ${setaCirculo()}
+      </a></li>`).join('\n      ')}
+    </ol>
   </div>
 </section>
 
-${destaques.length ? `<section class="seccao" aria-labelledby="s-destaques">
-  <div class="contentor">
-    ${cabecaSeccao(h.destaques.etiqueta, h.destaques.titulo, { id: 's-destaques' })}
-    <ul class="grelha" role="list">
-      ${destaques.map((p) => `<li>${cartao(ctx, p)}</li>`).join('\n      ')}
-    </ul>
+${destaque ? `<section class="seccao" aria-labelledby="s-destaque">
+  <div class="contentor duo">
+    <div class="duo__foto">${imagem(ctx, fotoDestaque, { tamanhos: '(min-width: 860px) 640px, 100vw', moldura: 4 / 5, alt: '' })}</div>
+    <div class="duo__texto">
+      ${h.destaque.etiqueta ? `<span class="esc" aria-hidden="true">${esc(h.destaque.etiqueta)}</span>` : ''}
+      <h2 id="s-destaque">${esc(destaque.nome)}</h2>
+      <p>${esc(destaque.resumo)}</p>
+      ${linhasDestaque}
+      <a class="btn btn--cheio" href="${ctx.url(`/pecas/${destaque.slug}/`)}">${esc(h.destaque.botao)}</a>
+    </div>
   </div>
 </section>` : ''}
 
 ${celebracoes.length ? `<section class="seccao" aria-labelledby="s-celebracoes">
   <div class="contentor">
-    ${cabecaSeccao(h.celebracoes.etiqueta, h.celebracoes.titulo, { id: 's-celebracoes', mais: ligacaoMais(ctx, '/celebracoes/', 'Ver celebrações') })}
+    ${titulo(h.celebracoes.etiqueta, h.celebracoes.titulo, { id: 's-celebracoes' })}
     <ul class="celebs" role="list">
-      ${celebracoes.map((c) => `<li>${cartaoCelebracao(ctx, c)}</li>`).join('\n      ')}
+      ${celebracoes.map((c, i) => `<li>${cartaoCelebracao(ctx, c, { foto: fotosCelebracoes[i] })}</li>`).join('\n      ')}
     </ul>
+    ${ligacaoMais(ctx, '/celebracoes/', 'Ver todas as celebrações')}
   </div>
 </section>` : ''}
 
 <section class="seccao" aria-labelledby="s-passos">
   <div class="contentor">
-    ${cabecaSeccao(h.passos.etiqueta, h.passos.titulo, { id: 's-passos', mais: ligacaoMais(ctx, '/como-funciona/', 'Saber mais') })}
+    ${titulo(h.passos.etiqueta, h.passos.titulo, { id: 's-passos' })}
     <ol class="passos" role="list">
-      ${passos.map((p, i) => `<li class="passo"><span class="passo__num" aria-hidden="true">${i + 1}</span><h3>${esc(p.titulo)}</h3><p>${esc(p.texto)}</p></li>`).join('\n      ')}
+      ${passos.map((p, i) => `<li class="passo"><span class="esc" aria-hidden="true">${POR_EXTENSO[i]}</span><h3>${esc(p.titulo)}</h3><p>${esc(p.texto)}</p></li>`).join('\n      ')}
     </ol>
+    ${ligacaoMais(ctx, '/como-funciona/', 'Saber mais')}
   </div>
 </section>
 
-<section class="seccao">
+<section class="fecho" aria-labelledby="s-fecho">
   <div class="contentor">
-    <div class="chamada">
-      <div class="chamada__texto">
-        <h2>${esc(h.chamada.titulo)}</h2>
-        ${h.chamada.texto ? `<p>${esc(h.chamada.texto)}</p>` : ''}
-        <a class="btn btn--claro" href="${ctx.url('/pedido/')}">${esc(h.chamada.botao)}${ico('seta')}</a>
-      </div>
-      <div class="chamada__foto">${imagem(ctx, h.chamada.foto, { tamanhos: '(min-width: 860px) 600px, 100vw', moldura: 4 / 3, alt: '' })}</div>
-    </div>
+    <div class="fio-v" aria-hidden="true"></div>
+    <h2 class="esc" id="s-fecho">${esc(h.chamada.titulo)}</h2>
+    ${h.chamada.texto ? `<p>${esc(h.chamada.texto)}</p>` : ''}
+    <a class="btn btn--cheio" href="${ctx.url('/pedido/')}">${ico('saco')}${esc(h.chamada.botao)}</a>
   </div>
 </section>`;
   return { caminho: '/', titulo: h.seo.titulo, descricao: h.seo.descricao, conteudo, jsonld, classe: 'pagina-inicio' };
@@ -134,21 +173,16 @@ export function criacoes(ctx, slug = '') {
   const lista = c ? ctx.produtos.filter((p) => p.categoria === slug) : ctx.produtos;
   const caminho = c ? `/criacoes/${slug}/` : '/criacoes/';
   const [seoTitulo, seoDescricao] = c ? (SEO_CATEGORIAS[slug] || [c.titulo, c.resumo]) : ['Criações personalizadas para batizados, casamentos e celebrações', 'Todas as criações da BE!Creative: conjuntos de batismo, convites, lembranças, peças para padrinhos, papelaria de mesa, recordações do bebé e presentes.'];
-  const titulo = c ? c.titulo : 'Criações';
-  const texto = c ? c.resumo : 'Tudo é feito de propósito para a tua celebração: escolhe as peças, junta-as ao pedido e recebe o orçamento.';
   const jsonld = [
     trilho(ctx, c ? [['Início', '/'], ['Criações', '/criacoes/'], [c.nome, caminho]] : [['Início', '/'], ['Criações', '/criacoes/']]),
-    { '@context': 'https://schema.org', '@type': 'ItemList', name: titulo, itemListElement: lista.map((p, i) => ({ '@type': 'ListItem', position: i + 1, url: ctx.absoluto(`/pecas/${p.slug}/`), name: p.nome })) },
+    { '@context': 'https://schema.org', '@type': 'ItemList', name: c ? c.titulo : 'Criações', itemListElement: lista.map((p, i) => ({ '@type': 'ListItem', position: i + 1, url: ctx.absoluto(`/pecas/${p.slug}/`), name: p.nome })) },
   ];
   const conteudo = `
 <div class="contentor pagina-lista">
+  ${cabecaPagina({ escrito: c ? 'criações' : 'o que criamos', titulo: c ? c.titulo : 'Criações', texto: c ? c.resumo : 'Tudo é feito de propósito para a tua celebração: escolhe as peças, junta-as ao pedido e recebe o orçamento.' })}
   ${pastilhas(ctx, slug)}
-  <div class="lista__cabeca" data-painel-criacoes>
-    <h1>${esc(titulo)}</h1>
-    <p class="lista__texto">${esc(texto)}</p>
-    <p class="lista__conta">${lista.length} ${lista.length === 1 ? 'peça' : 'peças'}</p>
-  </div>
-  <ul class="grelha" role="list">
+  <p class="lista__conta">${lista.length} ${lista.length === 1 ? 'peça' : 'peças'}</p>
+  <ul class="grelha${classeGrelha(lista.length)}" role="list">
     ${lista.map((p, i) => `<li>${cartao(ctx, p, { categoria: !c, cedo: i < 4 })}</li>`).join('\n    ')}
   </ul>
 </div>`;
@@ -161,7 +195,8 @@ function galeria(ctx, p) {
   const video = p.video && ctx.ficheiros.videos[p.video] ? p.video : '';
   const slides = fotos.map((f, i) => `<li class="galeria__slide" id="foto-${i + 1}">${imagem(ctx, f, { tamanhos: '(min-width: 1240px) 620px, (min-width: 860px) 52vw, 100vw', prioridade: i === 0, cedo: i === 0, moldura: 4 / 5 })}</li>`);
   if (video) {
-    const poster = urlPoster(ctx, fotos[0]);
+    const m = ctx.manifesto.fotos[fotos[0]];
+    const poster = ctx.asset(`img/${fotos[0]}-${m.resumo}-${m.larguras.find((w) => w >= 720) || m.larguras[m.larguras.length - 1]}.webp`);
     slides.splice(1, 0, `<li class="galeria__slide galeria__slide--video" id="video"><video src="${ctx.asset(ctx.ficheiros.videos[video])}" poster="${poster}" muted loop playsinline preload="none" aria-label="Vídeo: ${esc(p.nome)}" data-video></video></li>`);
   }
   const total = slides.length;
@@ -171,10 +206,6 @@ function galeria(ctx, p) {
   <p class="galeria__pontos" aria-hidden="true">${Array.from({ length: total }, (_, i) => `<span${i === 0 ? ' class="ativo"' : ''}></span>`).join('')}</p>` : ''}
 </div>`;
 }
-const urlPoster = (ctx, nome) => {
-  const m = ctx.manifesto.fotos[nome];
-  return ctx.asset(`img/${nome}-${m.resumo}-${m.larguras.find((w) => w >= 720) || m.larguras[m.larguras.length - 1]}.webp`);
-};
 
 export function peca(ctx, p) {
   const c = ctx.categorias.find((k) => k.slug === p.categoria);
@@ -213,7 +244,7 @@ export function peca(ctx, p) {
   <div class="ficha__grelha">
     ${galeria(ctx, p)}
     <div class="ficha__info">
-      ${c ? `<p class="etiqueta">${esc(c.nome)}</p>` : ''}
+      ${c ? `<span class="esc ficha__cat" aria-hidden="true">${esc(c.nome.toLowerCase())}</span>` : ''}
       <h1 class="ficha__nome">${esc(p.nome)}</h1>
       ${preco(p, { classe: 'ficha__preco' })}
       <p class="ficha__resumo">${esc(p.resumo)}</p>
@@ -239,22 +270,23 @@ export function peca(ctx, p) {
         <li>${ico('conversa')}<span>Recebes o orçamento e o prazo antes de decidir.</span></li>
         <li>${ico('caixa')}<span>Levantamento em ${esc(ctx.site.local.localidade)} ou envio por transportadora.</span></li>
       </ul>
-      ${detalhes.length ? `<dl class="detalhes">${detalhes.map(([k, v]) => `<div><dt>${esc(k)}</dt><dd>${esc(v)}</dd></div>`).join('')}</dl>` : ''}
-      ${avisos.length || perigos.length ? `<div class="ficha__avisos"><p class="etiqueta">Avisos</p><ul>${[...perigos, ...avisos].map((a) => `<li>${esc(a)}</li>`).join('')}</ul></div>` : ''}
+      ${detalhes.length ? `<ul class="lista lista--ficha" role="list">${detalhes.map(([k, v]) => `<li><b>${esc(k)}</b><span>${esc(v)}</span></li>`).join('')}</ul>` : ''}
+      ${avisos.length || perigos.length ? `<div class="ficha__avisos"><p class="rotulo">Avisos</p><ul>${[...perigos, ...avisos].map((a) => `<li>${esc(a)}</li>`).join('')}</ul></div>` : ''}
       ${fab ? `<p class="ficha__fabricante">Fabricante: ${esc(fab.nome)}, ${esc(fab.morada)}, ${esc(fab.email)}</p>` : ''}
     </div>
   </div>
 </div>
 ${emCelebracoes.length ? `<section class="seccao" aria-labelledby="s-nas-celebracoes">
   <div class="contentor">
-    ${cabecaSeccao('Celebrações', 'Vê esta peça numa celebração', { id: 's-nas-celebracoes' })}
-    <ul class="celebs" role="list">${emCelebracoes.map((k) => `<li>${cartaoCelebracao(ctx, k)}</li>`).join('')}</ul>
+    ${titulo('celebrações', 'Vê esta peça numa celebração', { id: 's-nas-celebracoes' })}
+    <ul class="celebs celebs--${emCelebracoes.length}" role="list">${emCelebracoes.map((k) => `<li>${cartaoCelebracao(ctx, k, { foto: k.fotos.find((f) => !p.fotos.includes(f) && ctx.manifesto.fotos[f]) || k.fotos[0] })}</li>`).join('')}</ul>
   </div>
 </section>` : ''}
 ${relacionadas.length ? `<section class="seccao" aria-labelledby="s-mais">
   <div class="contentor">
-    ${cabecaSeccao(c ? c.nome : 'Criações', 'Também podes gostar', { id: 's-mais', mais: c ? ligacaoMais(ctx, `/criacoes/${c.slug}/`, 'Ver todas') : '' })}
-    <ul class="grelha" role="list">${relacionadas.map((x) => `<li>${cartao(ctx, x, { categoria: false })}</li>`).join('')}</ul>
+    ${titulo(c ? c.nome.toLowerCase() : 'criações', 'Também podes gostar', { id: 's-mais' })}
+    <ul class="grelha${classeGrelha(relacionadas.length)}" role="list">${relacionadas.map((x) => `<li>${cartao(ctx, x, { categoria: false })}</li>`).join('')}</ul>
+    ${c ? ligacaoMais(ctx, `/criacoes/${c.slug}/`, `Ver todas: ${c.nome}`) : ''}
   </div>
 </section>` : ''}`;
   return { caminho, titulo: c ? `${p.nome} · ${c.nome}` : p.nome, descricao, conteudo, jsonld, partilha: ctx.manifesto.partilha[p.slug], tipo: 'product', classe: 'pagina-peca' };
@@ -265,15 +297,21 @@ export function celebracoes(ctx) {
   const lista = ctx.celebracoes;
   const conteudo = `
 <div class="contentor pagina-lista">
-  <div class="lista__cabeca">
-    <h1>Celebrações</h1>
-    <p class="lista__texto">Batizados, casamentos e outras festas em que fizemos tudo a combinar, do convite à mesa.</p>
-  </div>
+  ${cabecaPagina({ escrito: 'tudo a combinar', titulo: 'Celebrações', texto: 'Batizados, casamentos e outras festas em que fizemos tudo a combinar, do convite à mesa.' })}
   <ul class="celebs celebs--lista" role="list">
     ${lista.map((c) => `<li>${cartaoCelebracao(ctx, c, { titulo: 'h2' })}</li>`).join('\n    ')}
   </ul>
 </div>`;
   return { caminho: '/celebracoes/', titulo: 'Celebrações: batizados, casamentos e festas personalizados', descricao: 'Batizados, casamentos, chás revelação e outras festas com convites, lembranças e papelaria de mesa a combinar, feitos pela BE!Creative.', conteudo, jsonld: [trilho(ctx, [['Início', '/'], ['Celebrações', '/celebracoes/']])], classe: 'pagina-celebracoes' };
+}
+
+/* A forma de cada fotografia no mosaico do computador (grelha de 6): «largo» = duas por fila, '' = três
+   por fila. As filas de duas vão à frente: 1 (n = 3k+2) ou 2 (n = 3k+1), para todas as filas ficarem
+   cheias. Uma fotografia sozinha ocupa a largura toda. */
+export function formaNoMosaico(n, i) {
+  if (n === 1) return 'inteiro';
+  const largos = n % 3 === 2 ? 2 : n % 3 === 1 ? 4 : 0;
+  return i < largos ? 'largo' : '';
 }
 
 export function celebracao(ctx, c) {
@@ -282,21 +320,25 @@ export function celebracao(ctx, c) {
   const creditos = [...new Set([c.credito, ...c.fotos.map((f) => ctx.fotos[f]?.credito)].filter(Boolean))];
   const conteudo = `
 <article class="contentor celebracao">
-  <nav class="migalhas" aria-label="Estás aqui"><ol role="list"><li><a href="${ctx.url('/celebracoes/')}">Celebrações</a></li><li aria-current="page">${esc(c.titulo)}</li></ol></nav>
-  <header class="celebracao__cabeca">
-    <p class="etiqueta">${esc(c.ocasiao)}${c.quando ? ` · ${esc(c.quando)}` : ''}</p>
-    <h1>${esc(c.titulo)}</h1>
-    ${c.texto ? `<div class="celebracao__texto">${markdown(c.texto, ctx.url)}</div>` : `<p class="celebracao__texto">${esc(c.resumo)}</p>`}
-  </header>
-  <ul class="mosaico" role="list">
-    ${c.fotos.map((f, i) => `<li>${imagem(ctx, f, { tamanhos: '(min-width: 1240px) 400px, (min-width: 860px) 31vw, (min-width: 560px) 46vw, 100vw', prioridade: i === 0, cedo: i < 2 })}</li>`).join('\n    ')}
+  <nav class="migalhas migalhas--centro" aria-label="Estás aqui"><ol role="list"><li><a href="${ctx.url('/celebracoes/')}">Celebrações</a></li><li aria-current="page">${esc(c.titulo)}</li></ol></nav>
+  ${cabecaPagina({ escrito: c.ocasiao.toLowerCase(), titulo: c.titulo, extra: c.quando ? `<p class="pagina__quando">${esc(c.quando)}</p>` : '' })}
+  ${c.texto ? `<div class="celebracao__texto">${markdown(c.texto, ctx.url)}</div>` : `<p class="celebracao__texto">${esc(c.resumo)}</p>`}
+  <ul class="mosaico${c.fotos.length % 2 ? ' mosaico--impar' : ''}" role="list">
+    ${c.fotos.map((f, i) => {
+      const forma = formaNoMosaico(c.fotos.length, i);
+      const telemovel = c.fotos.length % 2 && i === 0 ? '100vw' : '50vw';
+      const tamanhos = forma === 'inteiro' ? '(min-width: 1240px) 1200px, 100vw'
+        : forma === 'largo' ? `(min-width: 1240px) 590px, (min-width: 861px) 48vw, ${telemovel}`
+        : `(min-width: 1240px) 390px, (min-width: 861px) 31vw, ${telemovel}`;
+      return `<li${forma ? ` class="${forma}"` : ''}>${imagem(ctx, f, { tamanhos, moldura: forma === 'largo' ? 1 : forma === 'inteiro' ? 3 / 2 : 4 / 5, prioridade: i === 0, cedo: i < 2 })}</li>`;
+    }).join('\n    ')}
   </ul>
   ${creditos.length ? `<p class="celebracao__credito">Fotografias: ${creditos.map(esc).join(' · ')}</p>` : ''}
 </article>
 ${pecas.length ? `<section class="seccao" aria-labelledby="s-pecas">
   <div class="contentor">
-    ${cabecaSeccao('Nesta celebração', 'As peças', { id: 's-pecas' })}
-    <ul class="grelha" role="list">${pecas.map((p) => `<li>${cartao(ctx, p)}</li>`).join('')}</ul>
+    ${titulo('nesta celebração', 'As peças', { id: 's-pecas' })}
+    <ul class="grelha${classeGrelha(pecas.length)}" role="list">${pecas.map((p) => `<li>${cartao(ctx, p)}</li>`).join('')}</ul>
   </div>
 </section>` : ''}`;
   return { caminho, titulo: `${c.titulo} · ${c.ocasiao}`, descricao: resumir(`${c.ocasiao}: ${c.resumo}`), conteudo, jsonld: [trilho(ctx, [['Início', '/'], ['Celebrações', '/celebracoes/'], [c.titulo, caminho]])], partilha: ctx.manifesto.partilha[`celebracao-${c.slug}`], classe: 'pagina-celebracao' };
@@ -314,11 +356,8 @@ export function contactos(ctx) {
   cartoes.push(['local', 'Atelier', `${esc(e.morada ? moradaCompleta(e) : ctx.site.local.localidade)}<span class="contacto__nota">Levantamentos e reuniões combinados previamente.</span>`]);
   const ident = [e.nome, e.tipo, e.nif && `NIF ${e.nif}`].filter(Boolean).map(esc).join(' · ');
   const conteudo = `
-<div class="contentor pagina-texto">
-  <div class="lista__cabeca">
-    <h1>Contactos</h1>
-    <p class="lista__texto">Cada encomenda começa com uma conversa. Escreve-nos por onde preferires.</p>
-  </div>
+<div class="contentor pagina-texto pagina-contactos">
+  ${cabecaPagina({ escrito: 'fala connosco', titulo: 'Contactos', texto: 'Cada encomenda começa com uma conversa. Escreve-nos por onde preferires.' })}
   <ul class="contactos" role="list">
     ${cartoes.map(([i, t, v]) => `<li class="contacto"><span class="contacto__icone">${ico(i)}</span><div><h2>${esc(t)}</h2><p>${v}</p></div></li>`).join('\n    ')}
   </ul>
@@ -333,12 +372,9 @@ export function pedido(ctx) {
   const c = ctx.site.contactos;
   const conteudo = `
 <div class="contentor pagina-pedido" data-pedido>
-  <div class="lista__cabeca">
-    <h1>O teu pedido</h1>
-    <p class="lista__texto">Junta as peças, conta-nos a ideia e envia: respondemos com o orçamento e o prazo.</p>
-  </div>
+  ${cabecaPagina({ escrito: 'orçamento', titulo: 'O teu pedido', texto: 'Junta as peças, conta-nos a ideia e envia: respondemos com o orçamento e o prazo.' })}
   <div class="pedido__vazio" data-vazio hidden>
-    <p>Ainda não juntaste nenhuma peça.</p>
+    <p class="pedido__vazio-titulo">Ainda não juntaste nenhuma peça.</p>
     <p><a class="btn btn--cheio" href="${ctx.url('/criacoes/')}">Ver as criações${ico('seta')}</a></p>
     <p class="pedido__ou">Também podes escrever-nos sem escolher nada: conta-nos a tua ideia no formulário abaixo.</p>
   </div>
@@ -380,16 +416,14 @@ export function pedido(ctx) {
 }
 
 // ---------------------------------------------------------------- páginas de texto
+const ESCRITO_DAS_PAGINAS = { 'como-funciona': 'do pedido à entrega', 'sobre-nos': 'o atelier' };
 export function texto(ctx, m) {
   const legal = Boolean(m.atualizado);
   const foto = m.foto && ctx.manifesto.fotos[m.foto] ? m.foto : '';
+  const slug = m.caminho.replace(/\//g, '');
   const conteudo = `
-<article class="contentor pagina-texto${m.modelo === 'passos' ? ' pagina-passos' : ''}${foto ? ' pagina-texto--foto' : ''}">
-  <header class="lista__cabeca">
-    <h1>${esc(m.titulo)}</h1>
-    ${m.subtitulo ? `<p class="lista__texto">${esc(m.subtitulo)}</p>` : ''}
-    ${legal ? `<p class="atualizado">Atualizado a ${esc(m.atualizado.split('-').reverse().join('/'))}</p>` : ''}
-  </header>
+<article class="contentor pagina-texto${m.modelo === 'passos' ? ' pagina-passos' : ''}${foto ? ' pagina-texto--foto' : ''}${legal ? ' pagina-texto--legal' : ''}">
+  ${cabecaPagina({ escrito: legal ? '' : ESCRITO_DAS_PAGINAS[slug] || '', titulo: m.titulo, texto: m.subtitulo || '', extra: legal ? `<p class="atualizado">Atualizado a ${esc(m.atualizado.split('-').reverse().join('/'))}</p>` : '' })}
   <div class="leitura__grelha">
     <div class="leitura">${m.html}</div>
     ${foto ? `<figure class="leitura__foto">${imagem(ctx, foto, { tamanhos: '(min-width: 860px) 420px, 100vw', moldura: 4 / 5 })}</figure>` : ''}
@@ -402,11 +436,8 @@ export function texto(ctx, m) {
 export function erro404(ctx) {
   const conteudo = `
 <div class="contentor pagina-texto erro404">
-  <div class="lista__cabeca">
-    <h1>Esta página não existe</h1>
-    <p class="lista__texto">Pode ter mudado de sítio. Procura nas criações, ou volta ao início.</p>
-  </div>
-  <div class="botoes"><a class="btn btn--cheio" href="${ctx.url('/criacoes/')}">Ver as criações${ico('seta')}</a><a class="btn btn--linha" href="${ctx.url('/')}">Página inicial</a></div>
+  ${cabecaPagina({ escrito: 'ups', titulo: 'Esta página não existe', texto: 'Pode ter mudado de sítio. Procura nas criações, ou volta ao início.' })}
+  <div class="botoes botoes--centro"><a class="btn btn--cheio" href="${ctx.url('/criacoes/')}">Ver as criações${ico('seta')}</a><a class="btn btn--linha" href="${ctx.url('/')}">Página inicial</a></div>
 </div>`;
   return { caminho: '/404.html', titulo: 'Página não encontrada', descricao: 'Esta página não existe.', conteudo, indexar: false, classe: 'pagina-404' };
 }

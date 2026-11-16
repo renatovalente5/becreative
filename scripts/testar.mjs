@@ -71,9 +71,17 @@ t('celebração com uma peça que não existe avisa', () => {
   const c = JSON.parse(base.celebracoes['lacos-em-aguarela']); c.produtos.push('nao-existe');
   verdade(R.problemas({ ...base, celebracoes: { ...base.celebracoes, 'lacos-em-aguarela': JSON.stringify(c) } }).some((p) => p.chave.startsWith('celebracao:lacos-em-aguarela:produtos.')));
 });
-t('as fotografias em uso incluem as das celebrações e da página inicial', () => {
+t('as fotografias em uso incluem as das celebrações e da capa', () => {
   const u = R.fotosEmUso(base);
-  verdade(u.has('lacos-em-aguarela-1') && u.has('ementa-1') && u.has('moldura-livro-1'));
+  verdade(u.has('lacos-em-aguarela-1') && u.has('convite-de-batizado-1') && u.has('moldura-livro-1'));
+});
+t('a peça em destaque que não existe lembra (e a secção sai)', () => {
+  const h = JSON.parse(base.inicio); h.destaque.peca = 'nao-existe';
+  verdade(R.problemas({ ...base, inicio: JSON.stringify(h) }).some((p) => p.chave === 'inicio:destaque.peca' && p.lembrete));
+});
+t('a capa sem fotografias bloqueia', () => {
+  const h = JSON.parse(base.inicio); h.capa.fotos = [];
+  verdade(R.problemas({ ...base, inicio: JSON.stringify(h) }).some((p) => p.chave === 'inicio:capa.fotos:vazia' && p.classe === 'bloqueia'));
 });
 t('o slug de uma peça nova', () => igual(R.gerarSlug('Vela & Concha', ['vela-concha']), 'vela-concha-2'));
 t('o painel não muda a marca', () => igual(R.mudancasBloqueadas({ marca: 'BE!Creative' }, { marca: 'Outra' }, 'site').map((x) => x.caminho), ['marca']));
@@ -109,6 +117,16 @@ if (construiu) {
   t('as categorias sem peças não têm página', () => {
     const cats = JSON.parse(base.categorias);
     for (const c of cats) verdade(fs.existsSync(path.join(previa, 'criacoes', c.slug, 'index.html')), c.slug);
+  });
+  t('um parágrafo que é só um marcador fica num <p> (e os de bloco não)', () => {
+    verdade(ler('como-funciona/index.html').includes('<p>MB WAY ou transferência'));
+    verdade(!/<p>\s*<(div|figure|ul)/.test(ler('politica-de-privacidade/index.html') + ler('garantia/index.html')));
+  });
+  t('a página inicial não repete fotografias', () => {
+    const h = ler('index.html');
+    const corpo = h.slice(h.indexOf('<main'), h.indexOf('</main>'));
+    const nomes = [...corpo.matchAll(/src="[^"]*\/img\/([a-z0-9-]+?)-[0-9a-f]{10}-\d+\.\w+"/g)].map((m) => m[1]);
+    igual(nomes.filter((n, i) => nomes.indexOf(n) !== i), []);
   });
   t('nada de restos de outros sites', () => verdade(!/dream ?art|mimices|rio tinto|gondomar/i.test(ler('index.html') + ler('termos-e-condicoes/index.html'))));
 }

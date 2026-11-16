@@ -41,7 +41,9 @@ Se nos disser a data da celebração, só confirmamos a encomenda se a conseguir
 
 Sem data combinada, entregamos no prazo máximo de 30 dias a contar da confirmação da encomenda. Se não o conseguirmos cumprir, avisamos e pode resolver o contrato, recebendo de volta tudo o que pagou.
 
-Levantamento: {{levantamento}} Envio: {{envio}}
+**Levantamento:** {{levantamento}}
+
+**Envio:** {{envio}}
 
 O risco de perda ou dano das peças passa para si quando as recebe.
 

@@ -80,7 +80,7 @@ export const CAMPOS_ARTIGO = Object.freeze([
   'preco', 'desde',
   'inclui', 'medidas', 'composicao', 'opcoes', 'personalizacao', 'quantidadeMinima', 'video',
   'referencia', 'fabricante', 'avisos', 'perigos', 'idade', 'naoBrinquedo',
-  'categoria', 'destaque', 'novidade', 'publicado', 'ordem',
+  'categoria', 'novidade', 'publicado', 'ordem',
 ]);
 /* A informação legal de cada peça, toda opcional e só mostrada na ficha quando está preenchida: a
    referência e o fabricante (Regulamento (UE) 2023/988, art. 19.º: nome, morada e email — vazio, a
@@ -90,8 +90,8 @@ export const CAMPOS_ARTIGO = Object.freeze([
 export const CAMPOS_FABRICANTE = Object.freeze(['nome', 'morada', 'email']);
 /* Sempre escritos pelo painel, com o valor explícito. Ausentes valem o valor por omissão (é o que o
    gerador faz). */
-export const BOOLEANOS_ARTIGO = Object.freeze(['desde', 'destaque', 'novidade', 'publicado']);
-export const POR_OMISSAO = Object.freeze({ publicado: true, destaque: false, novidade: false, desde: false, quantidadeMinima: 1, ordem: 500 });
+export const BOOLEANOS_ARTIGO = Object.freeze(['desde', 'novidade', 'publicado']);
+export const POR_OMISSAO = Object.freeze({ publicado: true, novidade: false, desde: false, quantidadeMinima: 1, ordem: 500 });
 
 export const NOMES_CAMPOS = Object.freeze({
   nome: 'Nome da peça', nomeCurto: 'Nome curto', fotos: 'Fotografias', resumo: 'Frase curta', descricao: 'Descrição',
@@ -99,7 +99,7 @@ export const NOMES_CAMPOS = Object.freeze({
   referencia: 'Referência', fabricante: 'Fabricante', avisos: 'Avisos de segurança', perigos: 'Perigos (misturas)', idade: 'Idade recomendada', naoBrinquedo: 'Não é um brinquedo',
   inclui: 'O que inclui', medidas: 'Medidas', composicao: 'Composição dos tecidos', opcoes: 'Escolhas', personalizacao: 'Personalização',
   quantidadeMinima: 'Quantidade mínima', video: 'Vídeo',
-  categoria: 'Categoria', destaque: 'Em destaque', novidade: 'Novidade', publicado: 'Publicada no site', ordem: 'Posição na lista',
+  categoria: 'Categoria', novidade: 'Novidade', publicado: 'Publicada no site', ordem: 'Posição na lista',
 });
 
 /* Os três campos da personalização, que cada peça liga ou desliga. No pedido, o nome e a data,
@@ -721,23 +721,23 @@ export function problemasDasCategorias(valor, { fotos = null } = {}) {
 /* content/inicio.json                                                 */
 /* ------------------------------------------------------------------ */
 
-/* As secções da página inicial, pela ordem da página: a CAPA (etiqueta, título — o h1 —, frase,
-   botão, a fotografia grande e a pequena por cima), «O que criamos» (os cartões vêm de
-   content/categorias.json, os que têm peças), os destaques (as peças com destaque), as
-   celebrações (as que têm destaque), «Como funciona» (quatro passos) e a chamada do fim. */
-export const SECCOES_INICIO = Object.freeze(['seo', 'capa', 'criacoes', 'destaques', 'celebracoes', 'passos', 'chamada']);
-export const LIMITES_INICIO = Object.freeze({ passos: [2, 4] });
+/* As secções da página inicial, pela ordem da página (a proposta C, «Papelaria», escolhida pelo Renato
+   a 16 nov 2026): a CAPA ao centro (a etiqueta, o título — o h1 —, a parte do título em letra
+   manuscrita, a frase, o botão e três fotografias por baixo), as criações (o índice numerado das
+   categorias, de content/categorias.json, as que têm peças), a PEÇA EM DESTAQUE (uma só, escolhida
+   aqui, com as escolhas dela em lista), as celebrações (as que têm destaque, até três), «Como
+   funciona» (dois a quatro passos) e a chamada do fim. */
+export const SECCOES_INICIO = Object.freeze(['seo', 'capa', 'criacoes', 'destaque', 'celebracoes', 'passos', 'chamada']);
+export const LIMITES_INICIO = Object.freeze({ passos: [2, 4], fotosCapa: [1, 3] });
 
-/* As fotografias que a página inicial usa (para saber se uma se pode apagar). */
+/* As fotografias que a página inicial usa (para saber se uma se pode apagar): as da capa. */
 export function fotosDoInicio(h) {
-  if (!eObjecto(h)) return [];
-  const out = [];
-  if (eObjecto(h.capa)) out.push(h.capa.foto, h.capa.fotoPequena);
-  if (eObjecto(h.chamada)) out.push(h.chamada.foto);
-  return out.filter((x) => typeof x === 'string' && x);
+  if (!eObjecto(h) || !eObjecto(h.capa) || !Array.isArray(h.capa.fotos)) return [];
+  return h.capa.fotos.filter((x) => typeof x === 'string' && x);
 }
 
-export function problemasDoInicio(valor, { fotos = null } = {}) {
+/* ctx = { fotos?: Set | null, artigos?: [slug] | null (as peças publicadas) } */
+export function problemasDoInicio(valor, { fotos = null, artigos = null } = {}) {
   const ficheiro = FICHEIROS.inicio;
   const out = [];
   const ecra = 'Página inicial';
@@ -760,30 +760,30 @@ export function problemasDoInicio(valor, { fotos = null } = {}) {
     const m = v.match(RE_ALEGACOES);
     if (m) bloqueia(`${caminho}:alegacao`, caminho, `«${m[0]}» é uma palavra que a lei só deixa usar com prova (ou uma certificação que não temos). Tire-a.`);
   };
-  const umaLigacao = (caminho) => {
-    const v = valorEm(caminho);
-    if (!vazio(v) && (typeof v !== 'string' || !/^\/[a-z0-9/-]*$/.test(v))) avisa(`${caminho}`, caminho, 'A ligação do botão tem de ser uma página do site (ex.: /criacoes/batismo/).');
-  };
-  const umaFoto = (caminho, obrigatoria = true) => {
-    const f = valorEm(caminho);
-    if (vazio(f) && !obrigatoria) return;
-    if (!nomeDeFotoValido(f) || (fotos && !fotos.has(f))) bloqueia(`${caminho}:foto`, caminho, 'Esta fotografia já não está na biblioteca: escolha outra.');
-  };
   const textos = [
     ['seo.titulo', TAMANHOS.inicioTitulo, true], ['seo.descricao', TAMANHOS.inicioTexto, true],
-    ['capa.etiqueta', TAMANHOS.inicioCurto, false], ['capa.titulo', TAMANHOS.inicioTitulo, true], ['capa.texto', TAMANHOS.inicioTexto, false], ['capa.botao', TAMANHOS.inicioCurto, true],
+    ['capa.etiqueta', TAMANHOS.inicioCurto, false], ['capa.titulo', TAMANHOS.inicioTitulo, true], ['capa.tituloEscrito', TAMANHOS.inicioCurto, false], ['capa.texto', TAMANHOS.inicioTexto, false], ['capa.botao', TAMANHOS.inicioCurto, true],
     ['criacoes.etiqueta', TAMANHOS.inicioCurto, false], ['criacoes.titulo', TAMANHOS.inicioTitulo, true],
-    ['destaques.etiqueta', TAMANHOS.inicioCurto, false], ['destaques.titulo', TAMANHOS.inicioTitulo, true],
+    ['destaque.etiqueta', TAMANHOS.inicioCurto, false], ['destaque.botao', TAMANHOS.inicioCurto, true],
     ['celebracoes.etiqueta', TAMANHOS.inicioCurto, false], ['celebracoes.titulo', TAMANHOS.inicioTitulo, true],
     ['passos.etiqueta', TAMANHOS.inicioCurto, false], ['passos.titulo', TAMANHOS.inicioTitulo, true],
     ['chamada.titulo', TAMANHOS.inicioTitulo, true], ['chamada.texto', TAMANHOS.inicioTexto, false], ['chamada.botao', TAMANHOS.inicioCurto, true],
   ];
   for (const [c, max, ob] of textos) umTexto(c, max, ob);
-  if (vazio(h.capa.ligacao)) bloqueia('capa.ligacao:vazio', 'capa.ligacao', 'Falta a página para onde o botão da capa leva.');
-  else umaLigacao('capa.ligacao');
-  umaFoto('capa.foto');
-  umaFoto('capa.fotoPequena', false);
-  umaFoto('chamada.foto');
+  const lig = h.capa.ligacao;
+  if (vazio(lig)) bloqueia('capa.ligacao:vazio', 'capa.ligacao', 'Falta a página para onde o botão da capa leva.');
+  else if (typeof lig !== 'string' || !/^\/[a-z0-9/-]*$/.test(lig)) avisa('capa.ligacao', 'capa.ligacao', 'A ligação do botão tem de ser uma página do site (ex.: /criacoes/batismo/).');
+  /* As fotografias da capa: de uma a três (as três ficam lado a lado; com menos, a do meio sozinha). */
+  const fs = h.capa.fotos;
+  const [minF, maxF] = LIMITES_INICIO.fotosCapa;
+  if (!Array.isArray(fs) || fs.length < minF) bloqueia('capa.fotos:vazia', 'capa.fotos', 'A capa precisa de pelo menos uma fotografia.');
+  else {
+    if (fs.length > maxF) avisa('capa.fotos:muitas', 'capa.fotos', `A capa tem ${fs.length} fotografias; o máximo é ${maxF} (as outras não aparecem).`);
+    fs.forEach((f, i) => { if (!nomeDeFotoValido(f) || (fotos && !fotos.has(f))) bloqueia(`capa.fotos.${i}:foto`, `capa.fotos.${i}`, 'Uma fotografia da capa já não está na biblioteca: escolha outra.'); });
+  }
+  /* A peça em destaque: uma das peças publicadas. Escondida ou apagada, a secção sai da página. */
+  const pc = h.destaque.peca;
+  if (vazio(pc) || (Array.isArray(artigos) && !artigos.includes(pc))) avisa('destaque.peca', 'destaque.peca', 'A peça em destaque não existe ou está escondida do site: a secção não aparece na página inicial. Escolha outra.', { lembrete: true });
   const lista = h.passos.lista;
   if (!Array.isArray(lista)) bloqueia('passos.lista:forma', 'passos.lista', 'Os passos de «Como funciona» não estão gravados como uma lista. Só o Renato os pode repor.');
   else {
@@ -861,7 +861,9 @@ export function problemas(dados = {}, opcoes = {}) {
   umFicheiro('site', 'Dados da marca', (o) => problemasDoSite(o, { producao: Boolean(opcoes.producao) }));
   umFicheiro('fotos', 'Fotografias', (o) => problemasDasFotos(o, Array.isArray(d.ficheirosFotos) ? d.ficheirosFotos : null));
   umFicheiro('categorias', 'Categorias', (o) => problemasDasCategorias(o, { fotos }));
-  umFicheiro('inicio', 'Página inicial', (o) => problemasDoInicio(o, { fotos }));
+  /* As peças publicadas (para a peça em destaque da página inicial). */
+  const publicadas = eObjecto(d.artigos) ? Object.keys(d.artigos).filter((n) => { const a = lerJson(d.artigos[n]).obj; return eObjecto(a) && a.publicado !== false; }).map(slugDoFicheiro) : null;
+  umFicheiro('inicio', 'Página inicial', (o) => problemasDoInicio(o, { fotos, artigos: publicadas }));
 
   const umaPasta = (mapa, ficheiroDe, ecraDe, prefixo, fn, tecto) => {
     if (!eObjecto(mapa)) return;

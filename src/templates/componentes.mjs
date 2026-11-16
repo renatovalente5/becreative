@@ -113,21 +113,12 @@ export function cartao(ctx, p, { titulo = 'h3', tamanhos = TAMANHOS_CARTAO, prio
 </article>`;
 }
 
-/* O cartão de uma categoria (página inicial): a fotografia 3:4 e o nome. */
-export function cartaoCategoria(ctx, c, { tamanhos = '(min-width: 1240px) 160px, (min-width: 1100px) 13vw, (min-width: 640px) 24vw, 40vw', cedo = false } = {}) {
-  return `<li class="cat">
-  <a href="${ctx.url(`/criacoes/${c.slug}/`)}">
-    <span class="cat__foto">${imagem(ctx, c.foto, { tamanhos, moldura: 3 / 4, alt: '', cedo })}</span>
-    <span class="cat__nome">${esc(c.nome)}</span>
-  </a>
-</li>`;
-}
-
-/* O cartão de uma celebração: a fotografia (4:5), o título, a ocasião e a frase curta. */
-export function cartaoCelebracao(ctx, c, { tamanhos = '(min-width: 1240px) 400px, (min-width: 860px) 31vw, 100vw', titulo = 'h3' } = {}) {
+/* O cartão de uma celebração (como na proposta C): a fotografia (3:4), a ocasião em letra manuscrita,
+   o título e a frase curta. O cartão inteiro leva à celebração. */
+export function cartaoCelebracao(ctx, c, { tamanhos = '(min-width: 1240px) 380px, (min-width: 860px) 31vw, 82vw', titulo = 'h3', foto = c.fotos[0] } = {}) {
   return `<article class="celeb">
-  <div class="celeb__foto">${imagem(ctx, c.fotos[0], { tamanhos, moldura: 4 / 5, alt: '' })}</div>
-  <p class="celeb__ocasiao">${esc(c.ocasiao)}${c.quando ? ` · ${esc(c.quando)}` : ''}</p>
+  <div class="celeb__foto">${imagem(ctx, foto, { tamanhos, moldura: 3 / 4, alt: '' })}</div>
+  <span class="esc celeb__ocasiao" aria-hidden="true">${esc(c.ocasiao.toLowerCase())}</span>
   <${titulo} class="celeb__titulo"><a href="${ctx.url(`/celebracoes/${c.slug}/`)}">${esc(c.titulo)}</a></${titulo}>
   <p class="celeb__resumo">${esc(c.resumo)}</p>
 </article>`;

@@ -1,6 +1,7 @@
 #!/usr/bin/env node
 // Gera o site da BE!Creative em _site/, a partir de content/ e media/. Node 22, sem dependências.
-// O aspeto é o da proposta A, «Pedra» (o fundo e o bordô do logótipo); por baixo, a infraestrutura
+// O aspeto é o da proposta C, «Papelaria» (escolhida pelo Renato a 16 nov 2026: o papel claro e o bordô
+// do logótipo, as cabeças ao centro); por baixo, a infraestrutura
 // dos outros sites do Renato: as regras dos dados (src/lib/regras.mjs, as mesmas do painel), as
 // imagens do scripts/imagens.py, a biblioteca legal-comum e as guardas do fim.
 //
@@ -149,10 +150,11 @@ const CSS_FONTE = fs.readFileSync(path.join(RAIZ, 'src/estilos/site.css'), 'utf8
   const raiz = CSS_FONTE.slice(CSS_FONTE.indexOf(':root {'), CSS_FONTE.indexOf('}', CSS_FONTE.indexOf(':root {')));
   const cor = Object.fromEntries([...raiz.matchAll(/--([\w-]+):\s*(#[0-9A-Fa-f]{6})\b/g)].map((m) => [m[1], m[2]]));
   const PARES = [
-    ['tinta', 'pedra', 4.5], ['tinta', 'branco', 4.5], ['tinta-2', 'pedra', 4.5], ['tinta-2', 'branco', 4.5], ['tinta-2', 'pedra-2', 4.5],
-    ['bordo', 'pedra', 4.5], ['bordo', 'branco', 4.5], ['bordo', 'pedra-2', 4.5],
-    ['pedra', 'bordo', 4.5], ['pedra', 'bordo-2', 4.5],
-    ['erro', 'branco', 4.5], ['erro', 'pedra', 4.5], ['linha-campo', 'branco', 3],
+    ['tinta', 'papel', 4.5], ['tinta', 'branco', 4.5], ['tinta', 'pedra', 4.5],
+    ['tinta-2', 'papel', 4.5], ['tinta-2', 'pedra', 4.5], ['tinta-2', 'branco', 4.5],
+    ['bordo', 'papel', 4.5], ['bordo', 'pedra', 4.5], ['bordo', 'pedra-2', 4.5], ['bordo', 'branco', 4.5],
+    ['papel', 'bordo', 4.5], ['papel', 'bordo-2', 4.5],
+    ['erro', 'branco', 4.5], ['erro', 'papel', 4.5], ['linha-campo', 'branco', 3],
   ];
   const falham = [];
   for (const [a, b, min] of PARES) {
@@ -303,8 +305,11 @@ function destinatariosComExtras() {
 function resolverMarcadores(fonte, onde) {
   const c = site.contactos;
   const p = site.pedido || {};
+  /* Cada marcador vira um «token» (o HTML só entra depois do markdown, para não ser mexido). Os de BLOCO (o
+     quadro, a lista, os parágrafos e a figura) saem do <p> em que o markdown os pôs; os de texto ficam
+     dentro dele (um parágrafo que era só «{{pagamento}}» saía sem <p> e colava-se ao seguinte). */
   const tokens = [];
-  const guardar = (html) => { tokens.push(html); return `\u0000${tokens.length - 1}\u0000`; };
+  const guardar = (html, bloco = false) => { tokens.push({ html, bloco }); return `\u0000${tokens.length - 1}\u0000`; };
   const valores = {
     marca: () => guardar(esc(site.marca)),
     localidade: () => guardar(esc(site.local.localidade)),
@@ -323,15 +328,15 @@ function resolverMarcadores(fonte, onde) {
     levantamento: () => guardar(p.levantamento ? esc(p.levantamento) : porConfirmar('se fazem levantamento e como se combina', '')),
     envio: () => guardar(p.envio ? esc(p.envio) : porConfirmar('como se faz o envio', '')),
     portes: () => guardar(p.portes ? esc(p.portes) : porConfirmar('os portes (ou como se calculam)', 'Os portes, quando há envio, vão no orçamento.')),
-    'privacidade.destinatarios': () => guardar(pecaLegal('privacidade-destinatarios', `<div class="quadro" tabindex="0" role="region" aria-label="Quem recebe os dados">${destinatariosComExtras()}</div>`)),
+    'privacidade.destinatarios': () => guardar(pecaLegal('privacidade-destinatarios', `<div class="quadro" tabindex="0" role="region" aria-label="Quem recebe os dados">${destinatariosComExtras()}</div>`), true),
     'privacidade.prazos': () => guardar(pecaLegal('privacidade-prazos', `<ul>${[
       'Pedidos de orçamento que não chegam a encomenda: 12 meses depois da última mensagem.',
       'Conversas e dados de uma encomenda: enquanto forem precisos para ela e para a garantia, até 3 anos depois da entrega.',
       'Faturas e dados de faturação: 10 anos, por obrigação fiscal (artigo 52.º do Código do IVA).',
       PRAZOS_LEGAIS.registosTecnicos.texto,
-    ].map((t) => `<li>${esc(t)}</li>`).join('')}</ul>`)),
-    'privacidade.frases': () => guardar(pecaLegal('privacidade-frases', frasesPrivacidade(CONFIG_PRIVACIDADE).map((t) => `<p>${esc(t)}</p>`).join(''))),
-    avisoGarantia: () => guardar(`<figure class="aviso-garantia"><img src="${ctx.asset('legal/aviso-garantia-legal-pt.svg')}" width="600" height="848" alt="${esc(AVISO_ALT)}" loading="lazy" decoding="async"><figcaption><a href="${ctx.asset('legal/aviso-garantia-legal-pt.pdf')}">Descarregar o aviso oficial (PDF)</a> · <a href="https://europa.eu/youreurope/garantias" target="_blank" rel="noopener">europa.eu/youreurope/garantias</a></figcaption></figure>`),
+    ].map((t) => `<li>${esc(t)}</li>`).join('')}</ul>`), true),
+    'privacidade.frases': () => guardar(pecaLegal('privacidade-frases', frasesPrivacidade(CONFIG_PRIVACIDADE).map((t) => `<p>${esc(t)}</p>`).join('')), true),
+    avisoGarantia: () => guardar(`<figure class="aviso-garantia"><img src="${ctx.asset('legal/aviso-garantia-legal-pt.svg')}" width="600" height="848" alt="${esc(AVISO_ALT)}" loading="lazy" decoding="async"><figcaption><a href="${ctx.asset('legal/aviso-garantia-legal-pt.pdf')}">Descarregar o aviso oficial (PDF)</a> · <a href="https://europa.eu/youreurope/garantias" target="_blank" rel="noopener">europa.eu/youreurope/garantias</a></figcaption></figure>`, true),
   };
   const texto = fonte.replace(/\{\{([\w.]+)\}\}/g, (todo, chave) => {
     if (!valores[chave]) { erros.push(`${onde}: o marcador «${todo}» não existe (existem: ${Object.keys(valores).join(', ')})`); return todo; }
@@ -345,8 +350,8 @@ function paginaMarkdown(ficheiro) {
   const [cabeca, ...corpo] = fonte.split(/\n---\n/);
   const meta = Object.fromEntries(cabeca.split('\n').filter(Boolean).map((l) => { const i = l.indexOf(':'); return [l.slice(0, i).trim(), l.slice(i + 1).trim()]; }));
   const { texto, tokens } = resolverMarcadores(corpo.join('\n---\n'), `Páginas › ${ficheiro}`);
-  let html = markdown(texto, ctx.url).replace(/<p>\u0000(\d+)\u0000<\/p>/g, (_, i) => tokens[Number(i)]);
-  html = html.replace(/\u0000(\d+)\u0000/g, (_, i) => tokens[Number(i)]);
+  let html = markdown(texto, ctx.url).replace(/<p>\u0000(\d+)\u0000<\/p>/g, (todo, i) => (tokens[Number(i)].bloco ? tokens[Number(i)].html : todo));
+  html = html.replace(/\u0000(\d+)\u0000/g, (_, i) => tokens[Number(i)].html);
   const slug = ficheiro.replace(/\.md$/, '');
   const fotoExiste = (f) => fotos[f] && dadosRegras.ficheirosFotos.includes(f);
   if (meta.foto && !fotoExiste(meta.foto)) erros.push(`Páginas › ${ficheiro}: a fotografia «${meta.foto}» não existe`);
