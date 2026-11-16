@@ -8,6 +8,7 @@ import path from 'node:path';
 import { execFileSync } from 'node:child_process';
 import { fileURLToPath } from 'node:url';
 import * as R from '../src/lib/regras.mjs';
+import * as P from '../src/templates/paginas.mjs';
 
 const RAIZ = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 let ok = 0;
@@ -121,6 +122,23 @@ if (construiu) {
   t('um parágrafo que é só um marcador fica num <p> (e os de bloco não)', () => {
     verdade(ler('como-funciona/index.html').includes('<p>MB WAY ou transferência'));
     verdade(!/<p>\s*<(div|figure|ul)/.test(ler('politica-de-privacidade/index.html') + ler('garantia/index.html')));
+  });
+  t('a página inicial não tem os passos nem o fecho (o Renato: nunca mais)', () => {
+    const h = ler('index.html');
+    verdade(!/class="(passos|passo|fecho)"/.test(h));
+    verdade(!/Do pedido à entrega|Cada escolha dá forma/.test(h));
+    verdade(!R.SECCOES_INICIO.includes('passos') && !R.SECCOES_INICIO.includes('chamada'));
+  });
+  t('a montra: uma fotografia por categoria, com as filas cheias', () => {
+    const h = ler('index.html');
+    igual((h.match(/class="montra__item /g) || []).length, JSON.parse(base.categorias).length);
+    for (let n = 1; n <= 13; n++) {
+      const formas = Array.from({ length: n }, (_, i) => P.formaNaMontra(n, i));
+      const colunas = formas.map((f) => ({ inteira: 12, meia: 6, terco: 4, quarto: 3 })[f]);
+      let fila = 0;
+      for (const c of colunas) { fila += c; if (fila > 12) throw new Error(`n=${n}: fila partida (${formas})`); if (fila === 12) fila = 0; }
+      igual(fila, 0, `n=${n}: a última fila não fica cheia (${formas})`);
+    }
   });
   t('a página inicial não repete fotografias', () => {
     const h = ler('index.html');

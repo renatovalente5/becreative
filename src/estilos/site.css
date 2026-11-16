@@ -44,7 +44,7 @@
 *, *::before, *::after { box-sizing: border-box; }
 html { -webkit-text-size-adjust: 100%; text-size-adjust: 100%; scroll-behavior: smooth; }
 html:not(:has(.topo:focus-within)) { scroll-padding-top: calc(var(--topo) + 16px); }
-@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } .montra__foto img, .celeb__foto img { transition: none; } }
 html:has(dialog[open]) { overflow: hidden; }
 body { margin: 0; background: var(--papel); color: var(--tinta); font: 400 17px/1.65 var(--f-txt); -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
 @media (max-width: 860px) { body { font-size: 16px; } }
@@ -162,24 +162,34 @@ mark.por-confirmar { background: #F3D9A8; color: #352B2D; padding: 0 .3em; borde
   .trio__foto:nth-child(3) { margin-bottom: 52px; }
 }
 
-/* ---------------------------------------------------------------- o índice das criações */
-.indice { list-style: none; margin: 0; padding: 0; border-top: 1px solid var(--fio); }
-.indice li { border-bottom: 1px solid var(--fio); }
-.indice a { display: grid; grid-template-columns: 70px minmax(0, 1fr) minmax(0, 1.25fr) 120px 44px; align-items: center; gap: 24px; padding: 18px 0; }
-.indice__n { font: 400 22px/1 var(--f-tit); color: var(--tinta-2); }
-.indice h3 { font-size: clamp(28px, 3vw, 40px); line-height: 1; }
-.indice__d { margin: 0; color: var(--tinta-2); font-size: 15.5px; }
-.indice__f { display: block; }
-.indice__img { width: 120px; height: auto; aspect-ratio: 4 / 3; object-fit: cover; border-radius: 14px; background: var(--pedra); }
-.indice .seta-circulo { justify-self: end; }
-.indice a:hover .seta-circulo { background: var(--bordo); color: var(--papel); border-color: var(--bordo); }
-.indice a:hover h3 { text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 6px; }
+/* ---------------------------------------------------------------- a montra das criações */
+/* O destaque é das FOTOGRAFIAS (o Renato, 16 nov 2026): uma fotografia grande por categoria e só o nome
+   por baixo. No computador, uma grelha de 12 com as filas sempre cheias (o paginas.mjs dá a cada uma a
+   forma: três por fila, ou quatro na última, ou duas na primeira); no telemóvel, duas por fila e, com
+   um número ímpar, a primeira a toda a largura. */
+.montra { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); gap: 44px 22px; list-style: none; margin: 0; padding: 0; }
+.montra__item { grid-column: span 4; }
+.montra__item--quarto { grid-column: span 3; }
+.montra__item--meia { grid-column: span 6; }
+.montra__item--inteira { grid-column: 1 / -1; }
+.montra a { display: block; color: inherit; border-radius: var(--raio); }
+.montra__foto { display: block; aspect-ratio: 4 / 5; border-radius: var(--raio); overflow: hidden; background: var(--pedra); }
+.montra__item--meia .montra__foto { aspect-ratio: 4 / 3; }
+.montra__item--inteira .montra__foto { aspect-ratio: 16 / 9; }
+.montra__foto > picture { display: block; width: 100%; height: 100%; }
+.montra__foto img { transition: scale .7s cubic-bezier(.2, .7, .2, 1); }
+.montra a:hover .montra__foto img { scale: 1.035; }
+.montra__nome { margin: 16px 0 0; font-size: clamp(26px, 2.4vw, 32px); line-height: 1.1; text-align: center; }
+.montra__item--quarto .montra__nome { font-size: clamp(24px, 2vw, 28px); }
+.montra a:hover .montra__nome { text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 6px; }
 @media (max-width: 860px) {
-  .indice a { grid-template-columns: 92px minmax(0, 1fr) 36px; gap: 16px; padding: 14px 0; }
-  .indice__n, .indice__d { display: none; }
-  .indice__f { grid-column: 1; grid-row: 1; }
-  .indice__img { width: 92px; }
-  .indice h3 { font-size: 28px; }
+  .montra { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 26px 12px; }
+  .montra__item, .montra__item--quarto, .montra__item--meia, .montra__item--inteira { grid-column: auto; }
+  .montra__item .montra__foto { aspect-ratio: 4 / 5; border-radius: var(--raio-m); }
+  .montra--impar .montra__item:first-child { grid-column: 1 / -1; }
+  .montra--impar .montra__item:first-child .montra__foto { aspect-ratio: 1 / 1; }
+  .montra__nome, .montra__item--quarto .montra__nome { font-size: 22px; margin-top: 10px; }
+  .montra--impar .montra__item:first-child .montra__nome { font-size: 26px; }
 }
 
 /* ---------------------------------------------------------------- a peça em destaque */
@@ -215,25 +225,6 @@ mark.por-confirmar { background: #F3D9A8; color: #352B2D; padding: 0 .3em; borde
   .celeb__titulo { font-size: 27px; }
 }
 @media (min-width: 561px) and (max-width: 860px) { .celebs--lista { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
-
-/* ---------------------------------------------------------------- como funciona */
-.passos { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 24px; list-style: none; margin: 0; padding: 0; }
-.passo { text-align: center; padding: 30px 22px; border: 1px solid var(--fio); border-radius: var(--raio); }
-.passo .esc { display: block; font-size: 46px; line-height: 1; }
-.passo h3 { font-size: 26px; margin: 10px 0 8px; }
-.passo p { margin: 0; font-size: 15px; color: var(--tinta-2); }
-@media (max-width: 860px) {
-  .passos { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
-  .passo { padding: 22px 12px; border-radius: var(--raio-m); }
-  .passo .esc { font-size: 40px; }
-  .passo h3 { font-size: 22px; }
-  .passo p { font-size: 14px; }
-}
-
-/* ---------------------------------------------------------------- o fecho */
-.fecho { text-align: center; padding: 10px 0 var(--seccao); }
-.fecho h2.esc { font-family: var(--f-esc); font-size: clamp(40px, 5vw, 64px); line-height: 1.1; max-width: 20ch; margin: 0 auto; }
-.fecho p { color: var(--tinta-2); max-width: 42ch; margin: 18px auto 30px; }
 
 /* ---------------------------------------------------------------- rodapé (ao centro, compacto) */
 .rodape { border-top: 1px solid var(--fio); padding: 50px 0 28px; text-align: center; }

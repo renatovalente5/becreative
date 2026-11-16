@@ -11,9 +11,9 @@
     "botao": "Ver as criações",
     "ligacao": "/criacoes/",
     "fotos": [
-      "convite-de-batizado-1",
+      "convite-de-casamento-1",
       "conjunto-de-batismo-2",
-      "moldura-livro-1"
+      "caixinha-para-padrinhos-1"
     ]
   },
   "criacoes": {
@@ -28,32 +28,5 @@
   "celebracoes": {
     "etiqueta": "tudo a combinar",
     "titulo": "Celebrações"
-  },
-  "passos": {
-    "etiqueta": "como funciona",
-    "titulo": "Do pedido à entrega",
-    "lista": [
-      {
-        "titulo": "Conversa",
-        "texto": "Conta-nos o que procuras: no site, no Instagram, no Facebook ou por email."
-      },
-      {
-        "titulo": "Escolhas",
-        "texto": "Materiais, cores, formatos e nomes, escolhidos contigo."
-      },
-      {
-        "titulo": "Pagamento",
-        "texto": "Começamos depois do pagamento, por MB WAY ou transferência."
-      },
-      {
-        "titulo": "Entrega",
-        "texto": "No atelier, em Coimbra, ou por transportadora."
-      }
-    ]
-  },
-  "chamada": {
-    "titulo": "Cada escolha dá forma a uma peça única",
-    "texto": "Junta ao pedido as peças de que gostas e conta-nos a tua ideia. Respondemos com o orçamento e o prazo.",
-    "botao": "Fazer o pedido"
   }
 }

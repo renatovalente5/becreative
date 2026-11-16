@@ -22,8 +22,11 @@ e um backoffice simples, moderno e intuitivo.
    o crédito.
 5. **O desenho**: a proposta C, «Papelaria» (o Renato escolheu-a a 16 nov 2026, entre a A «Pedra» e a B
    «Bordô»): papel claro, bordô, cabeças ao centro com uma palavra manuscrita; a página inicial tem a capa
-   com três fotografias, o índice numerado das categorias, uma peça em destaque, as celebrações, os
-   passos e o fecho. Uma fotografia aparece uma só vez em cada página (escolha automática).
+   com três fotografias, a montra das criações (uma fotografia grande por categoria, só o nome por baixo:
+   «o destaque tem de ser das imagens»), uma peça em destaque e as celebrações. **Sem** os passos («como
+   funciona», «Do pedido à entrega») **nem** o fecho com frase feita («Cada escolha dá forma a uma peça
+   única»): o Renato mandou tirá-los a 16 nov e não os quer em site nenhum (há um teste que o garante).
+   Uma fotografia aparece uma só vez em cada página (escolha automática).
 6. **Domínio**: ainda nenhum. A pré-visualização é no GitHub Pages (`/becreative`), noindex; o domínio e
    a Cloudflare (Worker do `worker/www.js`) ficam para quando os donos aceitarem.
 

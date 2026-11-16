@@ -723,12 +723,14 @@ export function problemasDasCategorias(valor, { fotos = null } = {}) {
 
 /* As secções da página inicial, pela ordem da página (a proposta C, «Papelaria», escolhida pelo Renato
    a 16 nov 2026): a CAPA ao centro (a etiqueta, o título — o h1 —, a parte do título em letra
-   manuscrita, a frase, o botão e três fotografias por baixo), as criações (o índice numerado das
-   categorias, de content/categorias.json, as que têm peças), a PEÇA EM DESTAQUE (uma só, escolhida
-   aqui, com as escolhas dela em lista), as celebrações (as que têm destaque, até três), «Como
-   funciona» (dois a quatro passos) e a chamada do fim. */
-export const SECCOES_INICIO = Object.freeze(['seo', 'capa', 'criacoes', 'destaque', 'celebracoes', 'passos', 'chamada']);
-export const LIMITES_INICIO = Object.freeze({ passos: [2, 4], fotosCapa: [1, 3] });
+   manuscrita, a frase, o botão e três fotografias por baixo), as criações (a MONTRA: uma fotografia
+   grande por categoria, de content/categorias.json, as que têm peças), a PEÇA EM DESTAQUE (uma só,
+   escolhida aqui, com as escolhas dela em lista) e as celebrações (as que têm destaque, até três).
+   NUNCA os passos («como funciona», «Do pedido à entrega») nem uma chamada de fecho com frase feita
+   («Cada escolha dá forma a uma peça única»): o Renato mandou tirá-las a 16 nov 2026 e não as quer
+   em site nenhum. */
+export const SECCOES_INICIO = Object.freeze(['seo', 'capa', 'criacoes', 'destaque', 'celebracoes']);
+export const LIMITES_INICIO = Object.freeze({ fotosCapa: [1, 3] });
 
 /* As fotografias que a página inicial usa (para saber se uma se pode apagar): as da capa. */
 export function fotosDoInicio(h) {
@@ -766,8 +768,6 @@ export function problemasDoInicio(valor, { fotos = null, artigos = null } = {}) 
     ['criacoes.etiqueta', TAMANHOS.inicioCurto, false], ['criacoes.titulo', TAMANHOS.inicioTitulo, true],
     ['destaque.etiqueta', TAMANHOS.inicioCurto, false], ['destaque.botao', TAMANHOS.inicioCurto, true],
     ['celebracoes.etiqueta', TAMANHOS.inicioCurto, false], ['celebracoes.titulo', TAMANHOS.inicioTitulo, true],
-    ['passos.etiqueta', TAMANHOS.inicioCurto, false], ['passos.titulo', TAMANHOS.inicioTitulo, true],
-    ['chamada.titulo', TAMANHOS.inicioTitulo, true], ['chamada.texto', TAMANHOS.inicioTexto, false], ['chamada.botao', TAMANHOS.inicioCurto, true],
   ];
   for (const [c, max, ob] of textos) umTexto(c, max, ob);
   const lig = h.capa.ligacao;
@@ -784,18 +784,6 @@ export function problemasDoInicio(valor, { fotos = null, artigos = null } = {}) 
   /* A peça em destaque: uma das peças publicadas. Escondida ou apagada, a secção sai da página. */
   const pc = h.destaque.peca;
   if (vazio(pc) || (Array.isArray(artigos) && !artigos.includes(pc))) avisa('destaque.peca', 'destaque.peca', 'A peça em destaque não existe ou está escondida do site: a secção não aparece na página inicial. Escolha outra.', { lembrete: true });
-  const lista = h.passos.lista;
-  if (!Array.isArray(lista)) bloqueia('passos.lista:forma', 'passos.lista', 'Os passos de «Como funciona» não estão gravados como uma lista. Só o Renato os pode repor.');
-  else {
-    const [minP, maxP] = LIMITES_INICIO.passos;
-    if (lista.length < minP) bloqueia('passos.lista:poucos', 'passos.lista', `«Como funciona» precisa de pelo menos ${minP} passos.`);
-    if (lista.length > maxP) avisa('passos.lista:muitos', 'passos.lista', `«Como funciona» tem ${lista.length} passos; o máximo é ${maxP} (os outros não aparecem).`);
-    lista.forEach((p, i) => {
-      if (!eObjecto(p)) { bloqueia(`passos.lista.${i}:forma`, `passos.lista.${i}`, `O passo ${i + 1} não está gravado como deve ser.`); return; }
-      umTexto(`passos.lista.${i}.titulo`, TAMANHOS.inicioCurto, true);
-      umTexto(`passos.lista.${i}.texto`, TAMANHOS.inicioTexto, true);
-    });
-  }
   return out;
 }
 

@@ -111,7 +111,7 @@
      primeiro ecrã nunca pisca (o título é o maior elemento pintado), e sem JavaScript ou com «menos
      movimento» está tudo à vista. Uma fila que desliza de lado entra inteira. */
   if ('IntersectionObserver' in window && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-    var ALVOS = '.titulo, .indice li, .duo__foto, .duo__texto, .grelha > li, .celebs > li, .passo, .fecho .contentor, .mosaico li, .contacto, .leitura__foto, .trio__foto';
+    var ALVOS = '.titulo, .montra__item, .duo__foto, .duo__texto, .grelha > li, .celebs > li, .mosaico li, .contacto, .leitura__foto, .trio__foto';
     var obs = new IntersectionObserver(function (ents) {
       var k = 0;
       ents.forEach(function (en) {

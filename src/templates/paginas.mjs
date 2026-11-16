@@ -19,7 +19,6 @@ const SEO_CATEGORIAS = {
   bebe: ['Recordações personalizadas para o bebé', 'Quadros e placas de nascimento, placas mensais, mealheiros, escovinhas com o nome e caixinhas de recordações.'],
   presentes: ['Presentes personalizados', 'Quadros ilustrados, caixas gravadas e chocolates com mensagem para o Dia da Mãe, o Dia do Pai, os Namorados e a Páscoa.'],
 };
-const POR_EXTENSO = ['um', 'dois', 'três', 'quatro', 'cinco', 'seis'];
 
 const trilho = (ctx, passos) => ({
   '@context': 'https://schema.org',
@@ -49,6 +48,18 @@ const classeGrelha = (n) => (n < 4 ? ` grelha--${n}` : '');
 const ligacaoMais = (ctx, caminho, texto) => `<p class="mais-centro"><a class="mais" href="${ctx.url(caminho)}">${esc(texto)}${ico('seta')}</a></p>`;
 
 // ---------------------------------------------------------------- página inicial
+/* A forma de cada categoria na MONTRA do computador (grelha de 12): três por fila («terco») e, quando
+   as contas não dão certo, uma fila de quatro no fim («quarto», n = 3k+1) ou uma de duas no início
+   («meia», n = 3k+2), para todas as filas ficarem cheias (7 categorias: 3 + 4). Uma sozinha ocupa a
+   largura toda. No telemóvel, duas por fila e, com um número ímpar, a primeira a toda a largura. */
+export function formaNaMontra(n, i) {
+  if (n === 1) return 'inteira';
+  if (n === 2) return 'meia';
+  if (n % 3 === 0) return 'terco';
+  if (n % 3 === 1) return i >= n - 4 ? 'quarto' : 'terco';
+  return i < 2 ? 'meia' : 'terco';
+}
+
 export function inicio(ctx) {
   const h = ctx.inicio;
   const site = ctx.site;
@@ -57,11 +68,10 @@ export function inicio(ctx) {
   const ligacaoCapa = ctx.existe(capa.ligacao) ? capa.ligacao : '/criacoes/';
   const destaque = ctx.produtos.find((p) => p.slug === h.destaque.peca);
   const celebracoes = ctx.celebracoes.filter((c) => c.destaque).slice(0, 3);
-  const passos = (h.passos.lista || []).slice(0, 4);
   /* Cada fotografia aparece UMA vez na página (a caixa «Salvador» era a capa do Batismo, a peça em destaque
-     e a capa de uma celebração). Escolhe-se pela ordem do que pesa mais: a capa, a peça em destaque, as
-     celebrações e, no fim, as miniaturas do índice (as mais pequenas, com mais fotografias por onde
-     escolher: a da categoria e depois as das peças dela). Se não houver outra, repete-se. */
+     e a capa de uma celebração). Escolhe-se pela ordem da página, que é a do que a dona escolheu no
+     painel: a capa, a montra (a fotografia de cada categoria; se já está na capa, a seguinte das peças
+     dela), a peça em destaque e as celebrações. Se não houver outra, repete-se. */
   const usadas = new Set(fotosCapa);
   const escolher = (lista) => {
     const boas = lista.filter((f) => f && ctx.manifesto.fotos[f]);
@@ -69,9 +79,10 @@ export function inicio(ctx) {
     if (f) usadas.add(f);
     return f;
   };
+  const cats = ctx.categoriasComPecas;
+  const fotosMontra = cats.map((c) => escolher([c.foto, ...ctx.produtos.filter((p) => p.categoria === c.slug).flatMap((p) => p.fotos)]));
   const fotoDestaque = destaque ? escolher(destaque.fotos) : '';
   const fotosCelebracoes = celebracoes.map((c) => escolher(c.fotos));
-  const fotosIndice = ctx.categoriasComPecas.map((c) => escolher([c.foto, ...ctx.produtos.filter((p) => p.categoria === c.slug).flatMap((p) => p.fotos)]));
   const jsonld = [
     { '@context': 'https://schema.org', '@type': 'WebSite', name: site.marca, alternateName: ['BE Creative', 'BE!Creative ®'], url: ctx.absoluto('/') },
     {
@@ -111,15 +122,18 @@ export function inicio(ctx) {
 <section class="seccao" aria-labelledby="s-criacoes">
   <div class="contentor">
     ${titulo(h.criacoes.etiqueta, h.criacoes.titulo, { id: 's-criacoes' })}
-    <ol class="indice" role="list">
-      ${ctx.categoriasComPecas.map((c, i) => `<li><a href="${ctx.url(`/criacoes/${c.slug}/`)}">
-        <span class="indice__n" aria-hidden="true">${String(i + 1).padStart(2, '0')}</span>
-        <h3>${esc(c.nome)}</h3>
-        <p class="indice__d">${esc(c.resumo)}</p>
-        <span class="indice__f">${miniatura(ctx, fotosIndice[i], { lado: 120, classe: 'indice__img' })}</span>
-        ${setaCirculo()}
-      </a></li>`).join('\n      ')}
-    </ol>
+    <ul class="montra${cats.length % 2 ? ' montra--impar' : ''}" role="list">
+      ${cats.map((c, i) => {
+        const forma = formaNaMontra(cats.length, i);
+        const telemovel = cats.length % 2 && i === 0 ? '100vw' : '50vw';
+        const tamanhos = { inteira: '(min-width: 1240px) 1200px, 100vw', meia: `(min-width: 1240px) 590px, (min-width: 861px) 48vw, ${telemovel}`, terco: `(min-width: 1240px) 385px, (min-width: 861px) 31vw, ${telemovel}`, quarto: `(min-width: 1240px) 285px, (min-width: 861px) 23vw, ${telemovel}` }[forma];
+        const moldura = { inteira: 16 / 9, meia: 4 / 3, terco: 4 / 5, quarto: 4 / 5 }[forma];
+        return `<li class="montra__item montra__item--${forma}"><a href="${ctx.url(`/criacoes/${c.slug}/`)}">
+        <span class="montra__foto">${imagem(ctx, fotosMontra[i], { tamanhos, moldura, alt: '' })}</span>
+        <h3 class="montra__nome">${esc(c.nome)}</h3>
+      </a></li>`;
+      }).join('\n      ')}
+    </ul>
   </div>
 </section>
 
@@ -144,26 +158,7 @@ ${celebracoes.length ? `<section class="seccao" aria-labelledby="s-celebracoes">
     </ul>
     ${ligacaoMais(ctx, '/celebracoes/', 'Ver todas as celebrações')}
   </div>
-</section>` : ''}
-
-<section class="seccao" aria-labelledby="s-passos">
-  <div class="contentor">
-    ${titulo(h.passos.etiqueta, h.passos.titulo, { id: 's-passos' })}
-    <ol class="passos" role="list">
-      ${passos.map((p, i) => `<li class="passo"><span class="esc" aria-hidden="true">${POR_EXTENSO[i]}</span><h3>${esc(p.titulo)}</h3><p>${esc(p.texto)}</p></li>`).join('\n      ')}
-    </ol>
-    ${ligacaoMais(ctx, '/como-funciona/', 'Saber mais')}
-  </div>
-</section>
-
-<section class="fecho" aria-labelledby="s-fecho">
-  <div class="contentor">
-    <div class="fio-v" aria-hidden="true"></div>
-    <h2 class="esc" id="s-fecho">${esc(h.chamada.titulo)}</h2>
-    ${h.chamada.texto ? `<p>${esc(h.chamada.texto)}</p>` : ''}
-    <a class="btn btn--cheio" href="${ctx.url('/pedido/')}">${ico('saco')}${esc(h.chamada.botao)}</a>
-  </div>
-</section>`;
+</section>` : ''}`;
   return { caminho: '/', titulo: h.seo.titulo, descricao: h.seo.descricao, conteudo, jsonld, classe: 'pagina-inicio' };
 }
 
