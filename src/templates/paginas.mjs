@@ -4,7 +4,7 @@
 // As cabeças vão ao centro, como num convite: uma palavra em letra manuscrita por cima do título.
 import { esc, markdown, resumir, moradaCompleta } from './util.mjs';
 import { ico } from './icones.mjs';
-import { imagem, miniatura, cartao, cartaoCelebracao, pastilhas, preco, setaCirculo } from './componentes.mjs';
+import { imagem, miniatura, cartao, cartaoCelebracao, pastilhas, preco, setaCirculo, videoAuto } from './componentes.mjs';
 import { opcoesDe, personalizacaoDe, quantidadeMinimaDe, OCASIOES } from '../lib/regras.mjs';
 
 /* O que o Google lê de cada categoria (o <title> e a descrição), escrito à mão: o nome sozinho
@@ -66,19 +66,13 @@ export function inicio(ctx) {
   const capa = h.capa;
   const fotosCapa = (Array.isArray(capa.fotos) ? capa.fotos : []).filter((f) => ctx.manifesto.fotos[f]).slice(0, 3);
   const ligacaoCapa = ctx.existe(capa.ligacao) ? capa.ligacao : '/criacoes/';
-  /* O vídeo da capa (opcional, de media/video/): toma o lugar da fotografia do meio (ou da única). Por baixo
-     dele — até começar a tocar, e sempre para quem pede menos movimento — fica a imagem de espera do vídeo
-     (media/video/<nome>.jpg, o primeiro fotograma) ou, se não houver, essa fotografia. */
-  const videoCapa = capa.video && ctx.ficheiros.videos[capa.video] ? capa.video : '';
-  const meio = fotosCapa.length === 1 ? 0 : 1;
-  const posterCapa = videoCapa && ctx.manifesto.posters[`video-${videoCapa}`] ? `video-${videoCapa}` : '';
   const destaque = ctx.produtos.find((p) => p.slug === h.destaque.peca);
   const celebracoes = ctx.celebracoes.filter((c) => c.destaque).slice(0, 3);
   /* Cada fotografia aparece UMA vez na página (a caixa «Salvador» era a capa do Batismo, a peça em destaque
      e a capa de uma celebração). Escolhe-se pela ordem da página, que é a do que a dona escolheu no
      painel: a capa, a montra (a fotografia de cada categoria; se já está na capa, a seguinte das peças
      dela), a peça em destaque e as celebrações. Se não houver outra, repete-se. */
-  const usadas = new Set(fotosCapa.filter((f, i) => !(posterCapa && i === meio)));
+  const usadas = new Set(fotosCapa);
   const escolher = (lista) => {
     const boas = lista.filter((f) => f && ctx.manifesto.fotos[f]);
     const f = boas.find((x) => !usadas.has(x)) || boas[0] || '';
@@ -87,7 +81,12 @@ export function inicio(ctx) {
   };
   const cats = ctx.categoriasComPecas;
   const fotosMontra = cats.map((c) => escolher([c.foto, ...ctx.produtos.filter((p) => p.categoria === c.slug).flatMap((p) => p.fotos)]));
-  const fotoDestaque = destaque ? escolher(destaque.fotos) : '';
+  /* A peça em destaque mostra o VÍDEO dela, se tiver (o Renato preferiu-o aqui e não na capa): toca sozinho,
+     sem som e em ciclo, por cima da imagem de espera do vídeo (media/video/<nome>.jpg, o primeiro
+     fotograma) ou, se não houver, da fotografia da peça. */
+  const videoDestaque = destaque && destaque.video && ctx.ficheiros.videos[destaque.video] ? destaque.video : '';
+  const posterDestaque = videoDestaque && ctx.manifesto.posters[`video-${videoDestaque}`] ? `video-${videoDestaque}` : '';
+  const fotoDestaque = destaque ? posterDestaque || escolher(destaque.fotos) : '';
   const fotosCelebracoes = celebracoes.map((c) => escolher(c.fotos));
   const jsonld = [
     { '@context': 'https://schema.org', '@type': 'WebSite', name: site.marca, alternateName: ['BE Creative', 'BE!Creative ®'], url: ctx.absoluto('/') },
@@ -120,14 +119,7 @@ export function inicio(ctx) {
       <a class="btn btn--linha" href="${ctx.url('/como-funciona/')}">Como funciona</a>
     </div>
     <div class="trio trio--${fotosCapa.length}">
-      ${fotosCapa.map((f, i) => {
-        const grande = i === meio;
-        const tamanhos = grande ? '(min-width: 860px) 470px, 52vw' : '(min-width: 860px) 380px, 26vw';
-        if (grande && videoCapa) {
-          return `<div class="trio__foto trio__foto--video">${imagem(ctx, posterCapa || f, { tamanhos, prioridade: true, cedo: true, moldura: 4 / 5, alt: ctx.fotos[f]?.alt || '' })}<video class="trio__video" src="${ctx.asset(ctx.ficheiros.videos[videoCapa])}" muted loop playsinline preload="none" aria-hidden="true" data-capa-video></video><button class="trio__pausa" type="button" aria-label="Pausar o vídeo" data-pausa hidden>${ico('pausa')}${ico('play')}</button></div>`;
-        }
-        return `<div class="trio__foto">${imagem(ctx, f, { tamanhos, prioridade: grande, cedo: true, moldura: 4 / 5 })}</div>`;
-      }).join('\n      ')}
+      ${fotosCapa.map((f, i) => `<div class="trio__foto">${imagem(ctx, f, { tamanhos: i === 1 || fotosCapa.length === 1 ? '(min-width: 860px) 470px, 52vw' : '(min-width: 860px) 380px, 26vw', prioridade: i === 1 || fotosCapa.length === 1, cedo: true, moldura: 4 / 5 })}</div>`).join('\n      ')}
     </div>
   </div>
 </section>
@@ -152,7 +144,7 @@ export function inicio(ctx) {
 
 ${destaque ? `<section class="seccao" aria-labelledby="s-destaque">
   <div class="contentor duo">
-    <div class="duo__foto">${imagem(ctx, fotoDestaque, { tamanhos: '(min-width: 860px) 640px, 100vw', moldura: 4 / 5, alt: '' })}</div>
+    <div class="duo__foto${videoDestaque ? ' tem-video' : ''}">${imagem(ctx, fotoDestaque, { tamanhos: '(min-width: 860px) 640px, 100vw', moldura: 4 / 5, alt: '' })}${videoDestaque ? videoAuto(ctx, videoDestaque) : ''}</div>
     <div class="duo__texto">
       ${h.destaque.etiqueta ? `<span class="esc" aria-hidden="true">${esc(h.destaque.etiqueta)}</span>` : ''}
       <h2 id="s-destaque">${esc(destaque.nome)}</h2>
@@ -203,8 +195,9 @@ function galeria(ctx, p) {
   const video = p.video && ctx.ficheiros.videos[p.video] ? p.video : '';
   const slides = fotos.map((f, i) => `<li class="galeria__slide" id="foto-${i + 1}">${imagem(ctx, f, { tamanhos: '(min-width: 1240px) 620px, (min-width: 860px) 52vw, 100vw', prioridade: i === 0, cedo: i === 0, moldura: 4 / 5 })}</li>`);
   if (video) {
-    const m = ctx.manifesto.fotos[fotos[0]];
-    const poster = ctx.asset(`img/${fotos[0]}-${m.resumo}-${m.larguras.find((w) => w >= 720) || m.larguras[m.larguras.length - 1]}.webp`);
+    const nomePoster = ctx.manifesto.posters[`video-${video}`] ? `video-${video}` : fotos[0];
+    const m = ctx.manifesto.fotos[nomePoster] || ctx.manifesto.posters[nomePoster];
+    const poster = ctx.asset(`img/${nomePoster}-${m.resumo}-${m.larguras.find((w) => w >= 720) || m.larguras[m.larguras.length - 1]}.webp`);
     slides.splice(1, 0, `<li class="galeria__slide galeria__slide--video" id="video"><video src="${ctx.asset(ctx.ficheiros.videos[video])}" poster="${poster}" muted loop playsinline preload="none" aria-label="Vídeo: ${esc(p.nome)}" data-video></video></li>`);
   }
   const total = slides.length;

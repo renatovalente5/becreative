@@ -124,6 +124,13 @@ export function cartaoCelebracao(ctx, c, { tamanhos = '(min-width: 1240px) 380px
 </article>`;
 }
 
+/* Um vídeo que toca sozinho por cima de uma imagem (a peça em destaque): sem som, em ciclo, só depois de a
+   página carregar e quando se vê, nunca com «menos movimento» nem a poupar dados (o interface.js); o botão
+   no canto pausa-o e retoma-o (WCAG 2.2.2). A imagem por baixo é a que fica para quem não o vê. */
+export function videoAuto(ctx, nome) {
+  return `<video class="video-auto" src="${ctx.asset(ctx.ficheiros.videos[nome])}" muted loop playsinline preload="none" aria-hidden="true" data-video-auto></video><button class="video-pausa" type="button" aria-label="Pausar o vídeo" data-pausa hidden>${ico('pausa')}${ico('play')}</button>`;
+}
+
 /* As pastilhas das categorias, por cima da grelha das criações: são PÁGINAS (/criacoes/<slug>/), e a
    página não volta ao topo quando se muda (o interface.js guarda onde estava a fila). */
 export function pastilhas(ctx, atual) {

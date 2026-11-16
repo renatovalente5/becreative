@@ -723,10 +723,10 @@ export function problemasDasCategorias(valor, { fotos = null } = {}) {
 
 /* As secções da página inicial, pela ordem da página (a proposta C, «Papelaria», escolhida pelo Renato
    a 16 nov 2026): a CAPA ao centro (a etiqueta, o título — o h1 —, a parte do título em letra
-   manuscrita, a frase, o botão e três fotografias por baixo, a do meio trocada por um vídeo, se houver),
-   as criações (a MONTRA: uma fotografia
+   manuscrita, a frase, o botão e três fotografias por baixo), as criações (a MONTRA: uma fotografia
    grande por categoria, de content/categorias.json, as que têm peças), a PEÇA EM DESTAQUE (uma só,
-   escolhida aqui, com as escolhas dela em lista) e as celebrações (as que têm destaque, até três).
+   escolhida aqui, com as escolhas dela em lista e, se a peça tiver vídeo, o vídeo a tocar no lugar da
+   fotografia) e as celebrações (as que têm destaque, até três).
    NUNCA os passos («como funciona», «Do pedido à entrega») nem uma chamada de fecho com frase feita
    («Cada escolha dá forma a uma peça única»): o Renato mandou tirá-las a 16 nov 2026 e não as quer
    em site nenhum. */
@@ -739,8 +739,8 @@ export function fotosDoInicio(h) {
   return h.capa.fotos.filter((x) => typeof x === 'string' && x);
 }
 
-/* ctx = { fotos?: Set | null, artigos?: [slug] | null (as peças publicadas), videos?: [nome] | null } */
-export function problemasDoInicio(valor, { fotos = null, artigos = null, videos = null } = {}) {
+/* ctx = { fotos?: Set | null, artigos?: [slug] | null (as peças publicadas) } */
+export function problemasDoInicio(valor, { fotos = null, artigos = null } = {}) {
   const ficheiro = FICHEIROS.inicio;
   const out = [];
   const ecra = 'Página inicial';
@@ -782,10 +782,6 @@ export function problemasDoInicio(valor, { fotos = null, artigos = null, videos 
     if (fs.length > maxF) avisa('capa.fotos:muitas', 'capa.fotos', `A capa tem ${fs.length} fotografias; o máximo é ${maxF} (as outras não aparecem).`);
     fs.forEach((f, i) => { if (!nomeDeFotoValido(f) || (fotos && !fotos.has(f))) bloqueia(`capa.fotos.${i}:foto`, `capa.fotos.${i}`, 'Uma fotografia da capa já não está na biblioteca: escolha outra.'); });
   }
-  /* O vídeo da capa (opcional): um dos vídeos de media/video/. Fica no lugar da fotografia do meio; se
-     deixar de existir, volta a ver-se a fotografia (por isso só lembra). */
-  const vc = h.capa.video;
-  if (!ausente(vc) && vc !== '' && (typeof vc !== 'string' || (Array.isArray(videos) && !videos.includes(vc)))) avisa('capa.video', 'capa.video', 'O vídeo da capa já não existe: escolha outro, ou nenhum (até lá vê-se a fotografia do meio).', { lembrete: true });
   /* A peça em destaque: uma das peças publicadas. Escondida ou apagada, a secção sai da página. */
   const pc = h.destaque.peca;
   if (vazio(pc) || (Array.isArray(artigos) && !artigos.includes(pc))) avisa('destaque.peca', 'destaque.peca', 'A peça em destaque não existe ou está escondida do site: a secção não aparece na página inicial. Escolha outra.', { lembrete: true });
@@ -856,7 +852,7 @@ export function problemas(dados = {}, opcoes = {}) {
   umFicheiro('categorias', 'Categorias', (o) => problemasDasCategorias(o, { fotos }));
   /* As peças publicadas (para a peça em destaque da página inicial). */
   const publicadas = eObjecto(d.artigos) ? Object.keys(d.artigos).filter((n) => { const a = lerJson(d.artigos[n]).obj; return eObjecto(a) && a.publicado !== false; }).map(slugDoFicheiro) : null;
-  umFicheiro('inicio', 'Página inicial', (o) => problemasDoInicio(o, { fotos, artigos: publicadas, videos }));
+  umFicheiro('inicio', 'Página inicial', (o) => problemasDoInicio(o, { fotos, artigos: publicadas }));
 
   const umaPasta = (mapa, ficheiroDe, ecraDe, prefixo, fn, tecto) => {
     if (!eObjecto(mapa)) return;

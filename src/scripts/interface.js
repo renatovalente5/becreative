@@ -106,18 +106,19 @@
     if (ul.scrollWidth > ul.clientWidth) ul.scrollLeft = Math.max(0, aberta.offsetLeft - 16);
   }
 
-  // ---------------------------------------------------------------- o vídeo da capa
-  /* Toca sozinho (sem som, em ciclo) só depois de a página carregar, para não atrasar o resto, e nunca com
-     «menos movimento» ou «poupar dados»: aí fica a imagem de espera por baixo. Pára quando sai do ecrã e
-     volta quando aparece; o botão pausa-o e retoma-o, e quem o pausou decide (não volta a tocar sozinho). */
-  document.querySelectorAll('[data-capa-video]').forEach(function (v) {
+  // ---------------------------------------------------------------- vídeos que tocam sozinhos (a peça em destaque)
+  /* Tocam (sem som, em ciclo) só depois de a página carregar e quando se veem, para não atrasar nada, e
+     nunca com «menos movimento» ou «poupar dados»: aí fica a imagem por baixo. Param quando saem do ecrã;
+     o botão pausa e retoma, e quem pausou decide (não volta a tocar sozinho). */
+  document.querySelectorAll('[data-video-auto]').forEach(function (v) {
     var caixa = v.parentElement;
     var botao = caixa.querySelector('[data-pausa]');
     var poupar = navigator.connection && navigator.connection.saveData;
     if (window.matchMedia('(prefers-reduced-motion: reduce)').matches || poupar) return;
     var parado = false;
-    var visivel = true;
-    function tocar() { if (parado || !visivel) return; var p = v.play(); if (p && p.catch) p.catch(function () {}); }
+    var visivel = !('IntersectionObserver' in window);
+    var carregada = document.readyState === 'complete';
+    function tocar() { if (parado || !visivel || !carregada) return; var p = v.play(); if (p && p.catch) p.catch(function () {}); }
     function marcar() {
       if (!botao) return;
       botao.classList.toggle('em-pausa', v.paused);
@@ -127,9 +128,15 @@
     v.addEventListener('pause', marcar);
     if (botao) botao.addEventListener('click', function () { if (v.paused) { parado = false; tocar(); } else { parado = true; v.pause(); } });
     if ('IntersectionObserver' in window) {
-      new IntersectionObserver(function (ents) { ents.forEach(function (en) { visivel = en.isIntersecting; if (visivel) tocar(); else v.pause(); }); }).observe(caixa);
+      // arranca com mais de 35 % à vista e só pára quando sai de todo (o Chromium dá isIntersecting = false
+      // abaixo do limiar, e o vídeo parava logo depois de alguém carregar em «tocar» com a fotografia a meio)
+      new IntersectionObserver(function (ents) {
+        ents.forEach(function (en) {
+          if (en.intersectionRatio >= 0.35) { visivel = true; tocar(); } else if (en.intersectionRatio === 0) { visivel = false; v.pause(); }
+        });
+      }, { threshold: [0, 0.35] }).observe(caixa);
     }
-    if (document.readyState === 'complete') tocar(); else window.addEventListener('load', tocar);
+    if (!carregada) window.addEventListener('load', function () { carregada = true; tocar(); });
   });
 
   // ---------------------------------------------------------------- entradas ao descer

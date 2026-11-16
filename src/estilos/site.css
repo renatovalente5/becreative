@@ -151,17 +151,6 @@ mark.por-confirmar { background: #F3D9A8; color: #352B2D; padding: 0 .3em; borde
 .trio--1 { grid-template-columns: minmax(0, 520px); justify-content: center; }
 .trio--2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 .trio--2 .trio__foto, .trio--1 .trio__foto { margin-bottom: 0; }
-/* O vídeo da capa: por cima da imagem de espera, aparece (a esbater) quando começa a tocar; o botão no
-   canto pausa-o e volta a pô-lo a tocar (WCAG 2.2.2: o que mexe sozinho mais de 5 s tem de se poder parar). */
-.trio__foto--video { position: relative; }
-.trio__video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0; transition: opacity .6s ease; pointer-events: none; }
-.trio__foto--video.a-tocar .trio__video { opacity: 1; }
-.trio__pausa { position: absolute; right: 12px; bottom: 12px; width: 36px; height: 36px; padding: 0; border: 0; border-radius: 50%; display: grid; place-items: center; background: rgba(247, 244, 239, .86); color: var(--bordo); cursor: pointer; -webkit-backdrop-filter: blur(6px); backdrop-filter: blur(6px); }
-.trio__pausa[hidden] { display: none; }
-.trio__pausa .i { width: 16px; height: 16px; }
-.trio__pausa .i + .i, .trio__pausa.em-pausa .i:first-child { display: none; }
-.trio__pausa.em-pausa .i + .i { display: block; }
-.trio__pausa:focus-visible { outline: 2px solid var(--bordo); outline-offset: 2px; }
 @media (max-width: 860px) {
   .capa { padding-top: 40px; }
   .capa__etiqueta { font-size: 12px; letter-spacing: .18em; }
@@ -169,8 +158,6 @@ mark.por-confirmar { background: #F3D9A8; color: #352B2D; padding: 0 .3em; borde
   .capa__frase { font-size: 16.5px; margin: 20px auto 26px; }
   .trio { grid-template-columns: .75fr 1.5fr .75fr; gap: 10px; margin: 44px calc(-1 * var(--margem)) 0; }
   .trio__foto { border-radius: var(--raio-m); }
-  .trio__pausa { width: 30px; height: 30px; right: 8px; bottom: 8px; }
-  .trio__pausa .i { width: 14px; height: 14px; }
   .trio__foto:nth-child(1) { margin-bottom: 26px; }
   .trio__foto:nth-child(3) { margin-bottom: 52px; }
 }
@@ -215,7 +202,18 @@ mark.por-confirmar { background: #F3D9A8; color: #352B2D; padding: 0 .3em; borde
 .lista li { display: flex; justify-content: space-between; gap: 16px; padding: 12px 0; border-bottom: 1px solid var(--fio); font-size: 15.5px; }
 .lista b { font-weight: 600; color: var(--bordo); letter-spacing: .08em; text-transform: uppercase; font-size: 12.5px; padding-top: 3px; flex: none; }
 .lista span { text-align: right; }
-@media (max-width: 860px) { .duo { grid-template-columns: minmax(0, 1fr); gap: 28px; } }
+/* O vídeo da peça em destaque: por cima da imagem, aparece (a esbater) quando começa a tocar; o botão no
+   canto pausa-o e volta a pô-lo a tocar (WCAG 2.2.2: o que mexe sozinho mais de 5 s tem de se poder parar). */
+.tem-video { position: relative; }
+.video-auto { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0; transition: opacity .6s ease; pointer-events: none; }
+.tem-video.a-tocar .video-auto { opacity: 1; }
+.video-pausa { position: absolute; right: 14px; bottom: 14px; width: 38px; height: 38px; padding: 0; border: 0; border-radius: 50%; display: grid; place-items: center; background: rgba(247, 244, 239, .86); color: var(--bordo); cursor: pointer; -webkit-backdrop-filter: blur(6px); backdrop-filter: blur(6px); }
+.video-pausa[hidden] { display: none; }
+.video-pausa .i { width: 16px; height: 16px; }
+.video-pausa .i + .i, .video-pausa.em-pausa .i:first-child { display: none; }
+.video-pausa.em-pausa .i + .i { display: block; }
+.video-pausa:focus-visible { outline: 2px solid var(--bordo); outline-offset: 2px; }
+@media (max-width: 860px) { .duo { grid-template-columns: minmax(0, 1fr); gap: 28px; } .video-pausa { width: 34px; height: 34px; right: 10px; bottom: 10px; } }
 
 /* ---------------------------------------------------------------- celebrações */
 .celebs { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 26px; list-style: none; margin: 0; padding: 0; }
