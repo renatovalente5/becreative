@@ -99,7 +99,7 @@ export const NOMES_CAMPOS = Object.freeze({
   referencia: 'Referência', fabricante: 'Fabricante', avisos: 'Avisos de segurança', perigos: 'Perigos (misturas)', idade: 'Idade recomendada', naoBrinquedo: 'Não é um brinquedo',
   inclui: 'O que inclui', medidas: 'Medidas', composicao: 'Composição dos tecidos', opcoes: 'Escolhas', personalizacao: 'Personalização',
   quantidadeMinima: 'Quantidade mínima', video: 'Vídeo',
-  categoria: 'Categoria', destaque: 'Nos mais pedidos', novidade: 'Novidade', publicado: 'Publicada no site', ordem: 'Posição na lista',
+  categoria: 'Categoria', destaque: 'Em destaque', novidade: 'Novidade', publicado: 'Publicada no site', ordem: 'Posição na lista',
 });
 
 /* Os três campos da personalização, que cada peça liga ou desliga. No pedido, o nome e a data,
@@ -723,7 +723,7 @@ export function problemasDasCategorias(valor, { fotos = null } = {}) {
 
 /* As secções da página inicial, pela ordem da página: a CAPA (etiqueta, título — o h1 —, frase,
    botão, a fotografia grande e a pequena por cima), «O que criamos» (os cartões vêm de
-   content/categorias.json, os que têm peças), os mais pedidos (as peças com destaque), as
+   content/categorias.json, os que têm peças), os destaques (as peças com destaque), as
    celebrações (as que têm destaque), «Como funciona» (quatro passos) e a chamada do fim. */
 export const SECCOES_INICIO = Object.freeze(['seo', 'capa', 'criacoes', 'destaques', 'celebracoes', 'passos', 'chamada']);
 export const LIMITES_INICIO = Object.freeze({ passos: [2, 4] });

@@ -306,13 +306,12 @@ ${pecas.length ? `<section class="seccao" aria-labelledby="s-pecas">
 export function contactos(ctx) {
   const c = ctx.site.contactos;
   const e = ctx.site.empresa || {};
-  const p = ctx.site.pedido || {};
   const cartoes = [];
   if (c.email) cartoes.push(['carta', 'Email', `<a href="mailto:${esc(c.email)}">${esc(c.email)}</a>`]);
   if (c.instagram) cartoes.push(['instagram', 'Instagram', `<a href="https://www.instagram.com/${esc(c.instagram)}/" target="_blank" rel="noopener">@${esc(c.instagram)}</a>`]);
   if (c.facebook) cartoes.push(['facebook', 'Facebook', `<a href="https://www.facebook.com/${esc(c.facebook)}" target="_blank" rel="noopener">${esc(ctx.site.marca)}</a>`]);
   if (c.whatsapp) cartoes.push(['whatsapp', 'WhatsApp', `<a href="https://wa.me/351${esc(String(c.whatsapp).replace(/\D/g, '').slice(-9))}" target="_blank" rel="noopener">Enviar mensagem</a>`]);
-  cartoes.push(['local', 'Atelier', `${esc(e.morada ? moradaCompleta(e) : ctx.site.local.localidade)}${p.levantamento ? `<span class="contacto__nota">${esc(p.levantamento)}</span>` : ''}`]);
+  cartoes.push(['local', 'Atelier', `${esc(e.morada ? moradaCompleta(e) : ctx.site.local.localidade)}<span class="contacto__nota">Levantamentos e reuniões combinados previamente.</span>`]);
   const ident = [e.nome, e.tipo, e.nif && `NIF ${e.nif}`].filter(Boolean).map(esc).join(' · ');
   const conteudo = `
 <div class="contentor pagina-texto">
