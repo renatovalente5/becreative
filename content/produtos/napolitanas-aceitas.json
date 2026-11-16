@@ -1,0 +1,29 @@
+{
+  "nome": "Caixa de napolitanas «Aceitas?»",
+  "fotos": [
+    "napolitanas-aceitas-1",
+    "napolitanas-aceitas-2",
+    "napolitanas-aceitas-3"
+  ],
+  "resumo": "Uma caixa de napolitanas em que cada chocolate leva uma parte do pedido.",
+  "descricao": "Uma forma doce de convidar os padrinhos, com 12 napolitanas e a mensagem que quiserem.",
+  "preco": null,
+  "inclui": [],
+  "medidas": [],
+  "composicao": "",
+  "opcoes": [],
+  "personalizacao": {
+    "nome": true,
+    "data": false,
+    "frase": true,
+    "rotuloNome": "Para quem é (ex.: tia Sara)",
+    "rotuloFrase": "O pedido ou a mensagem"
+  },
+  "quantidadeMinima": 1,
+  "video": "",
+  "categoria": "padrinhos",
+  "destaque": false,
+  "novidade": false,
+  "publicado": true,
+  "ordem": 5
+}

@@ -1,0 +1,31 @@
+{
+  "nome": "Ambientadores para casa e carro",
+  "fotos": [
+    "ambientadores-1",
+    "ambientadores-2",
+    "ambientadores-3",
+    "ambientadores-4"
+  ],
+  "resumo": "Ambientadores personalizados com a ilustração e a mensagem da festa.",
+  "descricao": "Dois miminhos para os convidados: um ambientador para casa e outro para o carro, com o mesmo desenho do convite.",
+  "preco": null,
+  "inclui": [],
+  "medidas": [],
+  "composicao": "",
+  "opcoes": [],
+  "personalizacao": {
+    "nome": true,
+    "data": true,
+    "frase": true,
+    "rotuloNome": "Nome(s)",
+    "rotuloData": "Data da celebração",
+    "rotuloFrase": "Tema, cores ou frase"
+  },
+  "quantidadeMinima": 1,
+  "video": "",
+  "categoria": "lembrancas",
+  "destaque": false,
+  "novidade": false,
+  "publicado": true,
+  "ordem": 14
+}

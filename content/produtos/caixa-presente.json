@@ -1,0 +1,28 @@
+{
+  "nome": "Caixa-presente personalizada",
+  "fotos": [
+    "caixa-presente-1",
+    "caixa-presente-2"
+  ],
+  "resumo": "Uma caixa com cartão escrito por vocês, pronta a receber um presente.",
+  "descricao": "Para surpreender os padrinhos, guardar uma mensagem ou criar um presente diferente: damos forma à vossa ideia.",
+  "preco": null,
+  "inclui": [],
+  "medidas": [],
+  "composicao": "",
+  "opcoes": [],
+  "personalizacao": {
+    "nome": true,
+    "data": false,
+    "frase": true,
+    "rotuloNome": "Para quem é",
+    "rotuloFrase": "A mensagem"
+  },
+  "quantidadeMinima": 1,
+  "video": "",
+  "categoria": "presentes",
+  "destaque": false,
+  "novidade": false,
+  "publicado": true,
+  "ordem": 3
+}

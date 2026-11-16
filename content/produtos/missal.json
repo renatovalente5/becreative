@@ -1,0 +1,30 @@
+{
+  "nome": "Missal",
+  "fotos": [
+    "missal-1",
+    "missal-2",
+    "missal-3"
+  ],
+  "resumo": "Um missal simples, para os convidados acompanharem a cerimónia e as leituras.",
+  "descricao": "Não precisa de ter a missa toda: serve de orientação, sobretudo a quem lê as leituras, com o desenho da restante papelaria.",
+  "preco": null,
+  "inclui": [],
+  "medidas": [],
+  "composicao": "",
+  "opcoes": [],
+  "personalizacao": {
+    "nome": true,
+    "data": true,
+    "frase": true,
+    "rotuloNome": "Nome(s)",
+    "rotuloData": "Data da celebração",
+    "rotuloFrase": "Tema, cores ou frase"
+  },
+  "quantidadeMinima": 1,
+  "video": "",
+  "categoria": "mesa",
+  "destaque": false,
+  "novidade": false,
+  "publicado": true,
+  "ordem": 6
+}

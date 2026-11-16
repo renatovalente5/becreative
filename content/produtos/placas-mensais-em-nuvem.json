@@ -1,0 +1,30 @@
+{
+  "nome": "Placas mensais em nuvem",
+  "fotos": [
+    "placas-mensais-em-nuvem-1",
+    "placas-mensais-em-nuvem-2",
+    "placas-mensais-em-nuvem-3"
+  ],
+  "resumo": "Placas de madeira em forma de nuvem, do «Olá mundo» aos 12 meses, para fotografar cada mês.",
+  "descricao": "Celebrem, registem e partilhem cada mês do bebé. Vêm num saquinho de linho, com uma nuvem com o nome.",
+  "preco": null,
+  "inclui": [],
+  "medidas": [],
+  "composicao": "",
+  "opcoes": [],
+  "personalizacao": {
+    "nome": true,
+    "data": true,
+    "frase": true,
+    "rotuloNome": "Nome do bebé",
+    "rotuloData": "Data de nascimento",
+    "rotuloFrase": "Hora, peso, tamanho e outros dados"
+  },
+  "quantidadeMinima": 1,
+  "video": "",
+  "categoria": "bebe",
+  "destaque": true,
+  "novidade": false,
+  "publicado": true,
+  "ordem": 3
+}

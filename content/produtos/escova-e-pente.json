@@ -1,0 +1,30 @@
+{
+  "nome": "Escova e pente com o nome",
+  "fotos": [
+    "escova-e-pente-1",
+    "escova-e-pente-2",
+    "escova-e-pente-3",
+    "escova-e-pente-4"
+  ],
+  "resumo": "Escova e pente em madeira com o nome gravado, com laço e saquinho de linho.",
+  "descricao": "Um conjuntinho para oferecer no nascimento ou no batizado.",
+  "preco": null,
+  "inclui": [],
+  "medidas": [],
+  "composicao": "",
+  "opcoes": [],
+  "personalizacao": {
+    "nome": true,
+    "data": false,
+    "frase": true,
+    "rotuloNome": "Nome do bebé",
+    "rotuloFrase": "Cor do laço ou outros pormenores"
+  },
+  "quantidadeMinima": 1,
+  "video": "",
+  "categoria": "bebe",
+  "destaque": false,
+  "novidade": false,
+  "publicado": true,
+  "ordem": 6
+}

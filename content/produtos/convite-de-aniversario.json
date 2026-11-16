@@ -1,0 +1,30 @@
+{
+  "nome": "Convite de aniversário",
+  "fotos": [
+    "convite-de-aniversario-1",
+    "convite-de-aniversario-2",
+    "convite-de-aniversario-3"
+  ],
+  "resumo": "Convites de aniversário com o tema da festa, do primeiro aninho em diante.",
+  "descricao": "Borboletas com pergaminho, ursinhos ou qualquer outro tema: desenhamos o convite e as outras peças da festa a combinar.",
+  "preco": null,
+  "inclui": [],
+  "medidas": [],
+  "composicao": "",
+  "opcoes": [],
+  "personalizacao": {
+    "nome": true,
+    "data": true,
+    "frase": true,
+    "rotuloNome": "Nome(s)",
+    "rotuloData": "Data da celebração",
+    "rotuloFrase": "Tema, cores ou frase"
+  },
+  "quantidadeMinima": 1,
+  "video": "",
+  "categoria": "convites",
+  "destaque": false,
+  "novidade": false,
+  "publicado": true,
+  "ordem": 4
+}

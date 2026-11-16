@@ -1,0 +1,34 @@
+{
+  "nome": "Convite de batizado",
+  "fotos": [
+    "convite-de-batizado-1",
+    "convite-de-batizado-2",
+    "convite-de-batizado-3",
+    "convite-de-batizado-4",
+    "convite-de-batizado-5",
+    "convite-de-batizado-6",
+    "convite-de-batizado-7"
+  ],
+  "resumo": "Desenhado de raiz para cada batizado, com o nome, a data, a igreja e a festa.",
+  "descricao": "Do tema às cores, das ilustrações ao papel, cada convite nasce para o bebé que o vai levar. Pode ter envelope, fita, lacre ou um formato especial, como um bilhete de embarque ou um portão recortado.",
+  "preco": null,
+  "inclui": [],
+  "medidas": [],
+  "composicao": "",
+  "opcoes": [],
+  "personalizacao": {
+    "nome": true,
+    "data": true,
+    "frase": true,
+    "rotuloNome": "Nome do bebé",
+    "rotuloData": "Data do batizado",
+    "rotuloFrase": "Igreja, festa, tema e cores"
+  },
+  "quantidadeMinima": 1,
+  "video": "",
+  "categoria": "convites",
+  "destaque": true,
+  "novidade": false,
+  "publicado": true,
+  "ordem": 1
+}

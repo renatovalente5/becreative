@@ -1,0 +1,28 @@
+{
+  "nome": "Carrossel em gesso perfumado",
+  "fotos": [
+    "lembranca-carrossel-em-gesso-1"
+  ],
+  "resumo": "Inspirada nos momentos mágicos: beleza, pormenor e um aroma especial.",
+  "descricao": "Um pequeno carrossel em gesso perfumado, com laço de cetim, pronto a oferecer aos convidados.",
+  "preco": null,
+  "inclui": [],
+  "medidas": [],
+  "composicao": "",
+  "opcoes": [],
+  "personalizacao": {
+    "nome": true,
+    "data": true,
+    "frase": true,
+    "rotuloNome": "Nome(s)",
+    "rotuloData": "Data da celebração",
+    "rotuloFrase": "Tema, cores ou frase"
+  },
+  "quantidadeMinima": 1,
+  "video": "",
+  "categoria": "lembrancas",
+  "destaque": true,
+  "novidade": false,
+  "publicado": true,
+  "ordem": 2
+}

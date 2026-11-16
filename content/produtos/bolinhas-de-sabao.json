@@ -1,0 +1,31 @@
+{
+  "nome": "Bolinhas de sabão",
+  "fotos": [
+    "bolinhas-de-sabao-1",
+    "bolinhas-de-sabao-2",
+    "bolinhas-de-sabao-3",
+    "bolinhas-de-sabao-4"
+  ],
+  "resumo": "Tubos de bolinhas de sabão com rótulo personalizado: das preferidas dos mais pequenos.",
+  "descricao": "O rótulo e a tampa levam o nome, a data e o tema da festa.",
+  "preco": null,
+  "inclui": [],
+  "medidas": [],
+  "composicao": "",
+  "opcoes": [],
+  "personalizacao": {
+    "nome": true,
+    "data": true,
+    "frase": true,
+    "rotuloNome": "Nome(s)",
+    "rotuloData": "Data da celebração",
+    "rotuloFrase": "Tema, cores ou frase"
+  },
+  "quantidadeMinima": 1,
+  "video": "",
+  "categoria": "lembrancas",
+  "destaque": false,
+  "novidade": false,
+  "publicado": true,
+  "ordem": 9
+}

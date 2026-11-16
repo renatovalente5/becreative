@@ -1,0 +1,29 @@
+{
+  "nome": "Quadro «A nossa história de amor»",
+  "fotos": [
+    "quadro-a-nossa-historia-1",
+    "quadro-a-nossa-historia-2"
+  ],
+  "resumo": "As vossas datas especiais, ilustradas num quadro para a parede.",
+  "descricao": "Cada amor tem a sua história: o primeiro encontro, o pedido, o casamento, os filhos. Ilustramos os momentos e as datas que escolherem.",
+  "preco": null,
+  "inclui": [],
+  "medidas": [],
+  "composicao": "",
+  "opcoes": [],
+  "personalizacao": {
+    "nome": true,
+    "data": true,
+    "frase": true,
+    "rotuloNome": "Nomes",
+    "rotuloData": "Data mais importante",
+    "rotuloFrase": "Os momentos e as datas"
+  },
+  "quantidadeMinima": 1,
+  "video": "",
+  "categoria": "presentes",
+  "destaque": true,
+  "novidade": false,
+  "publicado": true,
+  "ordem": 1
+}

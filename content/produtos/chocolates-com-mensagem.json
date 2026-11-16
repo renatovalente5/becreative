@@ -1,0 +1,31 @@
+{
+  "nome": "Chocolates com mensagem",
+  "fotos": [
+    "chocolates-com-mensagem-1",
+    "chocolates-com-mensagem-2",
+    "chocolates-com-mensagem-3",
+    "chocolates-com-mensagem-4",
+    "chocolates-com-mensagem-5"
+  ],
+  "resumo": "Caixas, latas e frascos de chocolates com mensagens escritas por vocês.",
+  "descricao": "As «12 razões pelas quais gosto de ti», a lata de sardinhas doce para o pai, o frasco das razões: cada chocolate leva uma mensagem.",
+  "preco": null,
+  "inclui": [],
+  "medidas": [],
+  "composicao": "",
+  "opcoes": [],
+  "personalizacao": {
+    "nome": true,
+    "data": false,
+    "frase": true,
+    "rotuloNome": "Para quem é",
+    "rotuloFrase": "A mensagem"
+  },
+  "quantidadeMinima": 1,
+  "video": "",
+  "categoria": "presentes",
+  "destaque": false,
+  "novidade": false,
+  "publicado": true,
+  "ordem": 4
+}

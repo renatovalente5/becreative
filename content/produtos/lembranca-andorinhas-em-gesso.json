@@ -1,0 +1,29 @@
+{
+  "nome": "Andorinhas em gesso perfumado",
+  "fotos": [
+    "lembranca-andorinhas-em-gesso-1",
+    "lembranca-andorinhas-em-gesso-2",
+    "lembranca-andorinhas-em-gesso-3"
+  ],
+  "resumo": "Em saquinho de linho com o nome: para agradecer a quem cuida, ensina e acompanha.",
+  "descricao": "Uma lembrança para o fim do ano letivo, para educadoras e auxiliares, ou para qualquer festa.",
+  "preco": null,
+  "inclui": [],
+  "medidas": [],
+  "composicao": "",
+  "opcoes": [],
+  "personalizacao": {
+    "nome": true,
+    "data": false,
+    "frase": true,
+    "rotuloNome": "Para quem é",
+    "rotuloFrase": "A mensagem"
+  },
+  "quantidadeMinima": 1,
+  "video": "",
+  "categoria": "lembrancas",
+  "destaque": false,
+  "novidade": false,
+  "publicado": true,
+  "ordem": 3
+}

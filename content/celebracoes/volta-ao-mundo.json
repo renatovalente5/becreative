@@ -1,0 +1,27 @@
+{
+  "titulo": "Volta ao mundo",
+  "ocasiao": "Casamento",
+  "quando": "julho de 2023",
+  "resumo": "Para os amantes de viagens: bilhete de avião, mapas e um porta-alianças com o mundo.",
+  "texto": "Um casamento com o tema das viagens. O convite foi um bilhete de avião; a seguir vieram o porta-alianças e o topo de bolo com o mapa-mundo, os cartões das mesas com os países, a placa para a entrada da noiva e as ementas.",
+  "fotos": [
+    "porta-aliancas-3",
+    "convite-de-casamento-5",
+    "topo-de-bolo-1",
+    "marcadores-de-mesa-5",
+    "placa-entrada-da-noiva-1",
+    "ementa-4"
+  ],
+  "produtos": [
+    "convite-de-casamento",
+    "porta-aliancas",
+    "topo-de-bolo",
+    "marcadores-de-mesa",
+    "placa-entrada-da-noiva",
+    "ementa"
+  ],
+  "credito": "",
+  "destaque": false,
+  "publicado": true,
+  "ordem": 7
+}

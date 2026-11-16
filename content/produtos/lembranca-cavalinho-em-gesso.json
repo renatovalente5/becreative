@@ -1,0 +1,28 @@
+{
+  "nome": "Cavalinho em gesso perfumado",
+  "fotos": [
+    "lembranca-cavalinho-em-gesso-1"
+  ],
+  "resumo": "Um cavalinho de baloiço em gesso perfumado, com laço e etiqueta gravada.",
+  "descricao": "Para batizados e primeiros aniversários, com o nome e a data numa pequena etiqueta de madeira.",
+  "preco": null,
+  "inclui": [],
+  "medidas": [],
+  "composicao": "",
+  "opcoes": [],
+  "personalizacao": {
+    "nome": true,
+    "data": true,
+    "frase": true,
+    "rotuloNome": "Nome(s)",
+    "rotuloData": "Data da celebração",
+    "rotuloFrase": "Tema, cores ou frase"
+  },
+  "quantidadeMinima": 1,
+  "video": "",
+  "categoria": "lembrancas",
+  "destaque": false,
+  "novidade": false,
+  "publicado": true,
+  "ordem": 4
+}

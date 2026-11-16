@@ -1,0 +1,30 @@
+{
+  "nome": "Placas mensais em balão",
+  "fotos": [
+    "placas-mensais-em-balao-1",
+    "placas-mensais-em-balao-2",
+    "placas-mensais-em-balao-3"
+  ],
+  "resumo": "Placas de madeira em forma de balão, da primeira semana aos 12 meses.",
+  "descricao": "Para as fotografias de cada mês, com um balão «Olá mundo, cheguei» com o nome, num saquinho de linho.",
+  "preco": null,
+  "inclui": [],
+  "medidas": [],
+  "composicao": "",
+  "opcoes": [],
+  "personalizacao": {
+    "nome": true,
+    "data": true,
+    "frase": true,
+    "rotuloNome": "Nome do bebé",
+    "rotuloData": "Data de nascimento",
+    "rotuloFrase": "Hora, peso, tamanho e outros dados"
+  },
+  "quantidadeMinima": 1,
+  "video": "",
+  "categoria": "bebe",
+  "destaque": false,
+  "novidade": false,
+  "publicado": true,
+  "ordem": 4
+}

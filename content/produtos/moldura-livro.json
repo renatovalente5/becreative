@@ -1,0 +1,32 @@
+{
+  "nome": "Moldura livro",
+  "fotos": [
+    "moldura-livro-1",
+    "moldura-livro-2",
+    "moldura-livro-3",
+    "moldura-livro-4",
+    "moldura-livro-5",
+    "moldura-livro-6"
+  ],
+  "resumo": "Uma moldura em madeira que abre como um livro: o pedido de um lado e a fotografia do outro.",
+  "descricao": "Para pedir a alguém que seja padrinho, madrinha ou menina das alianças, ou para agradecer. O texto, o nome na capa e a fotografia são vossos.",
+  "preco": null,
+  "inclui": [],
+  "medidas": [],
+  "composicao": "",
+  "opcoes": [],
+  "personalizacao": {
+    "nome": true,
+    "data": false,
+    "frase": true,
+    "rotuloNome": "Para quem é (ex.: tia Sara)",
+    "rotuloFrase": "O pedido ou a mensagem"
+  },
+  "quantidadeMinima": 1,
+  "video": "",
+  "categoria": "padrinhos",
+  "destaque": true,
+  "novidade": false,
+  "publicado": true,
+  "ordem": 1
+}

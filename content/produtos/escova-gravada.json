@@ -1,0 +1,28 @@
+{
+  "nome": "Escova de cabelo gravada",
+  "fotos": [
+    "escova-gravada-1",
+    "escova-gravada-2"
+  ],
+  "resumo": "Escova de cabelo em madeira, com a mensagem gravada no cabo.",
+  "descricao": "Para a mãe, a avó ou a madrinha, com o cartão a combinar.",
+  "preco": null,
+  "inclui": [],
+  "medidas": [],
+  "composicao": "",
+  "opcoes": [],
+  "personalizacao": {
+    "nome": true,
+    "data": false,
+    "frase": true,
+    "rotuloNome": "Para quem é",
+    "rotuloFrase": "A mensagem"
+  },
+  "quantidadeMinima": 1,
+  "video": "",
+  "categoria": "presentes",
+  "destaque": false,
+  "novidade": false,
+  "publicado": true,
+  "ordem": 6
+}

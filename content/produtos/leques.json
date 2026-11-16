@@ -1,0 +1,28 @@
+{
+  "nome": "Leques",
+  "fotos": [
+    "leques-1"
+  ],
+  "resumo": "Leques em papel de aguarela, com recorte delicado e os tons da restante papelaria.",
+  "descricao": "Para os convidados nos dias de calor, com o nome e a data.",
+  "preco": null,
+  "inclui": [],
+  "medidas": [],
+  "composicao": "",
+  "opcoes": [],
+  "personalizacao": {
+    "nome": true,
+    "data": true,
+    "frase": true,
+    "rotuloNome": "Nome(s)",
+    "rotuloData": "Data da celebração",
+    "rotuloFrase": "Tema, cores ou frase"
+  },
+  "quantidadeMinima": 1,
+  "video": "",
+  "categoria": "mesa",
+  "destaque": false,
+  "novidade": false,
+  "publicado": true,
+  "ordem": 7
+}

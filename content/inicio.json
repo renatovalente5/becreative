@@ -1,0 +1,43 @@
+{
+  "seo": {
+    "titulo": "BE!Creative — Conjuntos de batismo, convites e lembranças personalizados, em Coimbra",
+    "descricao": "Atelier de design em Coimbra: conjuntos de batismo, convites, lembranças, papelaria de mesa e presentes para padrinhos, personalizados para batizados, casamentos e todas as celebrações."
+  },
+  "capa": {
+    "etiqueta": "Atelier de design · Coimbra",
+    "titulo": "Cada detalhe pensado para o teu dia",
+    "texto": "Batizados, casamentos e todas as celebrações, personalizados do primeiro ao último pormenor.",
+    "botao": "Ver as criações",
+    "ligacao": "/criacoes/",
+    "foto": "conjunto-de-batismo-2",
+    "fotoPequena": "moldura-livro-1"
+  },
+  "criacoes": {
+    "etiqueta": "Criações",
+    "titulo": "O que criamos"
+  },
+  "destaques": {
+    "etiqueta": "Os mais pedidos",
+    "titulo": "Feitos à medida de cada história"
+  },
+  "celebracoes": {
+    "etiqueta": "Celebrações",
+    "titulo": "Tudo a combinar, do convite à mesa"
+  },
+  "passos": {
+    "etiqueta": "Como funciona",
+    "titulo": "Cada encomenda começa com uma conversa",
+    "lista": [
+      { "titulo": "Conversa", "texto": "Conta-nos o que procuras: aqui no site, no Instagram, no Facebook ou por email." },
+      { "titulo": "Escolhas", "texto": "Escolhemos contigo os materiais, as cores, os formatos e os nomes." },
+      { "titulo": "Pagamento", "texto": "A peça começa a ser feita depois do pagamento, por MB WAY ou transferência." },
+      { "titulo": "Entrega", "texto": "Levantas no atelier, em Coimbra, ou enviamos por transportadora." }
+    ]
+  },
+  "chamada": {
+    "titulo": "Tens uma celebração a caminho?",
+    "texto": "Junta ao pedido as peças de que gostas e conta-nos a tua ideia. Respondemos com o orçamento e o prazo.",
+    "botao": "Fazer o pedido",
+    "foto": "ementa-1"
+  }
+}

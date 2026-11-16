@@ -1,0 +1,29 @@
+{
+  "nome": "Livrinho de pintar",
+  "fotos": [
+    "livrinho-de-pintar-1",
+    "livrinho-de-pintar-2"
+  ],
+  "resumo": "Um livrinho para colorir, com lápis de cera, personalizado com o tema da festa.",
+  "descricao": "A lembrança que os mais pequenos adoram, totalmente personalizável ao vosso gosto.",
+  "preco": null,
+  "inclui": [],
+  "medidas": [],
+  "composicao": "",
+  "opcoes": [],
+  "personalizacao": {
+    "nome": true,
+    "data": true,
+    "frase": true,
+    "rotuloNome": "Nome(s)",
+    "rotuloData": "Data da celebração",
+    "rotuloFrase": "Tema, cores ou frase"
+  },
+  "quantidadeMinima": 1,
+  "video": "",
+  "categoria": "lembrancas",
+  "destaque": false,
+  "novidade": false,
+  "publicado": true,
+  "ordem": 10
+}

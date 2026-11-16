@@ -1,0 +1,28 @@
+{
+  "nome": "Cabide de batizado",
+  "fotos": [
+    "cabide-de-batizado-1"
+  ],
+  "resumo": "Um cabide branco com o nome e a data, para a roupa do grande dia.",
+  "descricao": "Pensado para guardar e mostrar a roupa do bebé no dia do batizado, com um laço nos tons da festa.",
+  "preco": null,
+  "inclui": [],
+  "medidas": [],
+  "composicao": "",
+  "opcoes": [],
+  "personalizacao": {
+    "nome": true,
+    "data": true,
+    "frase": true,
+    "rotuloNome": "Nome do bebé",
+    "rotuloData": "Data do batizado",
+    "rotuloFrase": "Cores, tema ou outros pormenores"
+  },
+  "quantidadeMinima": 1,
+  "video": "",
+  "categoria": "batismo",
+  "destaque": false,
+  "novidade": false,
+  "publicado": true,
+  "ordem": 4
+}

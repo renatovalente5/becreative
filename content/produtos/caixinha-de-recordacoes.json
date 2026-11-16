@@ -1,0 +1,30 @@
+{
+  "nome": "Caixinha de recordações",
+  "fotos": [
+    "caixinha-de-recordacoes-1",
+    "caixinha-de-recordacoes-2",
+    "caixinha-de-recordacoes-3",
+    "caixinha-de-recordacoes-4"
+  ],
+  "resumo": "Uma caixa com compartimentos para o primeiro cabelo, o cordão umbilical, a pulseira, os dentes e a chupeta.",
+  "descricao": "Cada compartimento tem o seu desenho e a tampa leva o nome do bebé.",
+  "preco": null,
+  "inclui": [],
+  "medidas": [],
+  "composicao": "",
+  "opcoes": [],
+  "personalizacao": {
+    "nome": true,
+    "data": false,
+    "frase": true,
+    "rotuloNome": "Nome do bebé",
+    "rotuloFrase": "Tema ou cores"
+  },
+  "quantidadeMinima": 1,
+  "video": "",
+  "categoria": "bebe",
+  "destaque": false,
+  "novidade": false,
+  "publicado": true,
+  "ordem": 7
+}

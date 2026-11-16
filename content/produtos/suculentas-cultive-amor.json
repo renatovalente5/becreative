@@ -1,0 +1,30 @@
+{
+  "nome": "Suculentas «Cultive amor»",
+  "fotos": [
+    "suculentas-cultive-amor-1",
+    "suculentas-cultive-amor-2",
+    "suculentas-cultive-amor-3"
+  ],
+  "resumo": "Uma suculenta num cone de papel personalizado: tal como o amor, basta cuidar para durar.",
+  "descricao": "Uma lembrança que nunca desilude, para casamentos e batizados, com os nomes e a data no cone.",
+  "preco": null,
+  "inclui": [],
+  "medidas": [],
+  "composicao": "",
+  "opcoes": [],
+  "personalizacao": {
+    "nome": true,
+    "data": true,
+    "frase": true,
+    "rotuloNome": "Nomes dos noivos",
+    "rotuloData": "Data do casamento",
+    "rotuloFrase": "Tema, cores ou frase"
+  },
+  "quantidadeMinima": 1,
+  "video": "",
+  "categoria": "lembrancas",
+  "destaque": false,
+  "novidade": false,
+  "publicado": true,
+  "ordem": 15
+}

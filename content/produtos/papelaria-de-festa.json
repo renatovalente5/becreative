@@ -1,0 +1,31 @@
+{
+  "nome": "Papelaria de festa",
+  "fotos": [
+    "papelaria-de-festa-1",
+    "papelaria-de-festa-2",
+    "papelaria-de-festa-3",
+    "papelaria-de-festa-4"
+  ],
+  "resumo": "Autocolantes, pratos, copos, palitos e caixas de pipocas com o tema e o nome.",
+  "descricao": "Tudo para a mesa de uma festa de aniversário ou de batizado, desenhado de raiz para o tema que escolherem.",
+  "preco": null,
+  "inclui": [],
+  "medidas": [],
+  "composicao": "",
+  "opcoes": [],
+  "personalizacao": {
+    "nome": true,
+    "data": true,
+    "frase": true,
+    "rotuloNome": "Nome(s)",
+    "rotuloData": "Data da celebração",
+    "rotuloFrase": "Tema, cores ou frase"
+  },
+  "quantidadeMinima": 1,
+  "video": "",
+  "categoria": "mesa",
+  "destaque": false,
+  "novidade": false,
+  "publicado": true,
+  "ordem": 11
+}

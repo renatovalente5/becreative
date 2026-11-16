@@ -1,0 +1,27 @@
+{
+  "nome": "Placa para a entrada da noiva",
+  "fotos": [
+    "placa-entrada-da-noiva-1"
+  ],
+  "resumo": "Uma placa de madeira com a mensagem que quiserem, para a entrada da noiva ou das alianças.",
+  "descricao": "Personalizada a 100 %, para levar ao altar a mensagem mais esperada.",
+  "preco": null,
+  "inclui": [],
+  "medidas": [],
+  "composicao": "",
+  "opcoes": [],
+  "personalizacao": {
+    "nome": true,
+    "data": false,
+    "frase": true,
+    "rotuloNome": "Para quem é",
+    "rotuloFrase": "A mensagem"
+  },
+  "quantidadeMinima": 1,
+  "video": "",
+  "categoria": "mesa",
+  "destaque": false,
+  "novidade": false,
+  "publicado": true,
+  "ordem": 10
+}

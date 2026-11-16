@@ -1,0 +1,28 @@
+{
+  "nome": "Convite de chá revelação",
+  "fotos": [
+    "convite-de-cha-revelacao-1"
+  ],
+  "resumo": "Para o chá revelação ou o baby shower, com o tema da festa.",
+  "descricao": "Rosa e azul, bolas e laços, ou o tema que escolherem: o convite e o placar de boas-vindas podem sair a combinar.",
+  "preco": null,
+  "inclui": [],
+  "medidas": [],
+  "composicao": "",
+  "opcoes": [],
+  "personalizacao": {
+    "nome": true,
+    "data": true,
+    "frase": true,
+    "rotuloNome": "Nome(s)",
+    "rotuloData": "Data da celebração",
+    "rotuloFrase": "Tema, cores ou frase"
+  },
+  "quantidadeMinima": 1,
+  "video": "",
+  "categoria": "convites",
+  "destaque": false,
+  "novidade": false,
+  "publicado": true,
+  "ordem": 5
+}

@@ -1,0 +1,29 @@
+{
+  "nome": "Amêndoas da Páscoa",
+  "fotos": [
+    "amendoas-da-pascoa-1",
+    "amendoas-da-pascoa-2",
+    "amendoas-da-pascoa-3"
+  ],
+  "resumo": "Amêndoas em saquinho, com etiqueta personalizada.",
+  "descricao": "Para os afilhados, as professoras e a família, com o nome e a mensagem de cada um.",
+  "preco": null,
+  "inclui": [],
+  "medidas": [],
+  "composicao": "",
+  "opcoes": [],
+  "personalizacao": {
+    "nome": true,
+    "data": false,
+    "frase": true,
+    "rotuloNome": "Para quem é",
+    "rotuloFrase": "A mensagem"
+  },
+  "quantidadeMinima": 1,
+  "video": "",
+  "categoria": "presentes",
+  "destaque": false,
+  "novidade": false,
+  "publicado": true,
+  "ordem": 7
+}

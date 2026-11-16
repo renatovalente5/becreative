@@ -1,0 +1,30 @@
+{
+  "nome": "Saquinhos de pano",
+  "fotos": [
+    "saquinhos-de-pano-1",
+    "saquinhos-de-pano-2",
+    "saquinhos-de-pano-3"
+  ],
+  "resumo": "Sacos de pano estampados com o nome de cada criança e o tema da festa.",
+  "descricao": "Cada criança leva o seu, com o nome e um desenho criado para combinar com a festa.",
+  "preco": null,
+  "inclui": [],
+  "medidas": [],
+  "composicao": "",
+  "opcoes": [],
+  "personalizacao": {
+    "nome": true,
+    "data": true,
+    "frase": true,
+    "rotuloNome": "Nome(s)",
+    "rotuloData": "Data da celebração",
+    "rotuloFrase": "Tema, cores ou frase"
+  },
+  "quantidadeMinima": 1,
+  "video": "",
+  "categoria": "lembrancas",
+  "destaque": false,
+  "novidade": false,
+  "publicado": true,
+  "ordem": 11
+}

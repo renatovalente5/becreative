@@ -1,0 +1,28 @@
+{
+  "nome": "Coração em gesso perfumado",
+  "fotos": [
+    "coracao-em-gesso-1",
+    "coracao-em-gesso-2"
+  ],
+  "resumo": "Um coração de rosas em gesso perfumado, num saquinho de organza com cartão.",
+  "descricao": "Uma lembrança para o Dia da Mãe ou para qualquer data especial, com a mensagem que quiserem.",
+  "preco": null,
+  "inclui": [],
+  "medidas": [],
+  "composicao": "",
+  "opcoes": [],
+  "personalizacao": {
+    "nome": true,
+    "data": false,
+    "frase": true,
+    "rotuloNome": "Para quem é",
+    "rotuloFrase": "A mensagem"
+  },
+  "quantidadeMinima": 1,
+  "video": "",
+  "categoria": "lembrancas",
+  "destaque": false,
+  "novidade": false,
+  "publicado": true,
+  "ordem": 5
+}

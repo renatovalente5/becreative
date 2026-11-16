@@ -1,0 +1,30 @@
+{
+  "nome": "Topo de bolo",
+  "fotos": [
+    "topo-de-bolo-1",
+    "topo-de-bolo-2",
+    "topo-de-bolo-3"
+  ],
+  "resumo": "Toppers para o bolo e para os cupcakes, em madeira ou papel, com o tema da festa.",
+  "descricao": "Com as iniciais, o nome ou uma frase, recortados à medida.",
+  "preco": null,
+  "inclui": [],
+  "medidas": [],
+  "composicao": "",
+  "opcoes": [],
+  "personalizacao": {
+    "nome": true,
+    "data": true,
+    "frase": true,
+    "rotuloNome": "Nome(s)",
+    "rotuloData": "Data da celebração",
+    "rotuloFrase": "Tema, cores ou frase"
+  },
+  "quantidadeMinima": 1,
+  "video": "",
+  "categoria": "mesa",
+  "destaque": false,
+  "novidade": false,
+  "publicado": true,
+  "ordem": 9
+}

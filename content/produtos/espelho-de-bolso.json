@@ -1,0 +1,28 @@
+{
+  "nome": "Espelho de bolso gravado",
+  "fotos": [
+    "espelho-de-bolso-1",
+    "espelho-de-bolso-2"
+  ],
+  "resumo": "Espelho de bolso em madeira, com a mensagem gravada na tampa.",
+  "descricao": "Um miminho para o Dia da Mãe ou para qualquer data, com saquinho e cartão.",
+  "preco": null,
+  "inclui": [],
+  "medidas": [],
+  "composicao": "",
+  "opcoes": [],
+  "personalizacao": {
+    "nome": true,
+    "data": false,
+    "frase": true,
+    "rotuloNome": "Para quem é",
+    "rotuloFrase": "A mensagem"
+  },
+  "quantidadeMinima": 1,
+  "video": "",
+  "categoria": "presentes",
+  "destaque": false,
+  "novidade": false,
+  "publicado": true,
+  "ordem": 5
+}

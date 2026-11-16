@@ -1,0 +1,29 @@
+{
+  "nome": "Ímans personalizados",
+  "fotos": [
+    "imans-personalizados-1",
+    "imans-personalizados-2"
+  ],
+  "resumo": "Ímans com o nome e a data num cartão de agradecimento: a lembrança que fica no frigorífico.",
+  "descricao": "Uma forma original de agradecer a presença dos convidados e manter viva a recordação do dia, com o desenho que escolherem.",
+  "preco": null,
+  "inclui": [],
+  "medidas": [],
+  "composicao": "",
+  "opcoes": [],
+  "personalizacao": {
+    "nome": true,
+    "data": true,
+    "frase": true,
+    "rotuloNome": "Nome(s)",
+    "rotuloData": "Data da celebração",
+    "rotuloFrase": "Tema, cores ou frase"
+  },
+  "quantidadeMinima": 1,
+  "video": "",
+  "categoria": "lembrancas",
+  "destaque": false,
+  "novidade": false,
+  "publicado": true,
+  "ordem": 6
+}

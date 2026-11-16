@@ -1,0 +1,28 @@
+{
+  "nome": "Placa de nascimento em madeira",
+  "fotos": [
+    "placa-de-nascimento-1"
+  ],
+  "resumo": "Em madeira gravada, com o nome, a data, a hora, o peso, o tamanho e a maternidade.",
+  "descricao": "Uma recordação para pendurar no quarto, com um cordão.",
+  "preco": null,
+  "inclui": [],
+  "medidas": [],
+  "composicao": "",
+  "opcoes": [],
+  "personalizacao": {
+    "nome": true,
+    "data": true,
+    "frase": true,
+    "rotuloNome": "Nome do bebé",
+    "rotuloData": "Data de nascimento",
+    "rotuloFrase": "Hora, peso, tamanho e outros dados"
+  },
+  "quantidadeMinima": 1,
+  "video": "",
+  "categoria": "bebe",
+  "destaque": false,
+  "novidade": false,
+  "publicado": true,
+  "ordem": 2
+}

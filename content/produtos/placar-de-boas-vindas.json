@@ -1,0 +1,30 @@
+{
+  "nome": "Placar de boas-vindas",
+  "fotos": [
+    "placar-de-boas-vindas-1",
+    "placar-de-boas-vindas-2",
+    "placar-de-boas-vindas-3"
+  ],
+  "resumo": "Para receber quem chega e dar o tom à festa.",
+  "descricao": "Em cavalete, à entrada, com o nome, a data e o desenho do convite.",
+  "preco": null,
+  "inclui": [],
+  "medidas": [],
+  "composicao": "",
+  "opcoes": [],
+  "personalizacao": {
+    "nome": true,
+    "data": true,
+    "frase": true,
+    "rotuloNome": "Nome(s)",
+    "rotuloData": "Data da celebração",
+    "rotuloFrase": "Tema, cores ou frase"
+  },
+  "quantidadeMinima": 1,
+  "video": "",
+  "categoria": "mesa",
+  "destaque": true,
+  "novidade": false,
+  "publicado": true,
+  "ordem": 4
+}

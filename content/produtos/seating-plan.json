@@ -1,0 +1,31 @@
+{
+  "nome": "Seating plan",
+  "fotos": [
+    "seating-plan-1",
+    "seating-plan-2",
+    "seating-plan-3",
+    "seating-plan-4"
+  ],
+  "resumo": "Para cada convidado encontrar o seu lugar, desenhado à medida do evento e do tema.",
+  "descricao": "Em quadro, em cavalete ou em cartões presos a fitas, sempre a combinar com o convite e os marcadores de mesa.",
+  "preco": null,
+  "inclui": [],
+  "medidas": [],
+  "composicao": "",
+  "opcoes": [],
+  "personalizacao": {
+    "nome": true,
+    "data": true,
+    "frase": true,
+    "rotuloNome": "Nome(s)",
+    "rotuloData": "Data da celebração",
+    "rotuloFrase": "Tema, cores ou frase"
+  },
+  "quantidadeMinima": 1,
+  "video": "",
+  "categoria": "mesa",
+  "destaque": false,
+  "novidade": false,
+  "publicado": true,
+  "ordem": 1
+}

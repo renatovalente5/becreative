@@ -1,0 +1,29 @@
+{
+  "nome": "Convite balão",
+  "fotos": [
+    "convite-balao-1",
+    "convite-balao-2",
+    "convite-balao-3"
+  ],
+  "resumo": "Enche o balão, fura com o alfinete e lê a fitinha que cai lá de dentro.",
+  "descricao": "Um pedido com surpresa, para padrinhos, madrinhas ou para anunciar uma novidade.",
+  "preco": null,
+  "inclui": [],
+  "medidas": [],
+  "composicao": "",
+  "opcoes": [],
+  "personalizacao": {
+    "nome": true,
+    "data": false,
+    "frase": true,
+    "rotuloNome": "Para quem é (ex.: tia Sara)",
+    "rotuloFrase": "O pedido ou a mensagem"
+  },
+  "quantidadeMinima": 1,
+  "video": "",
+  "categoria": "padrinhos",
+  "destaque": false,
+  "novidade": false,
+  "publicado": true,
+  "ordem": 4
+}

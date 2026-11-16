@@ -1,0 +1,30 @@
+{
+  "nome": "Porta-alianças",
+  "fotos": [
+    "porta-aliancas-1",
+    "porta-aliancas-2",
+    "porta-aliancas-3"
+  ],
+  "resumo": "Em caixa de vidro com flores secas ou em madeira gravada, com os nomes e a data.",
+  "descricao": "Corações de madeira com os nomes, ou um mapa-mundo para os amantes de viagens: o porta-alianças leva o vosso tema.",
+  "preco": null,
+  "inclui": [],
+  "medidas": [],
+  "composicao": "",
+  "opcoes": [],
+  "personalizacao": {
+    "nome": true,
+    "data": true,
+    "frase": true,
+    "rotuloNome": "Nomes dos noivos",
+    "rotuloData": "Data do casamento",
+    "rotuloFrase": "Tema, cores ou frase"
+  },
+  "quantidadeMinima": 1,
+  "video": "",
+  "categoria": "mesa",
+  "destaque": false,
+  "novidade": false,
+  "publicado": true,
+  "ordem": 8
+}

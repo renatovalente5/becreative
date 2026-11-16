@@ -1,0 +1,27 @@
+{
+  "nome": "Impressão de convite digital",
+  "fotos": [
+    "convite-de-batizado-7"
+  ],
+  "resumo": "Já têm o convite em formato digital? Imprimimos e damos-lhe o acabamento.",
+  "descricao": "Recebemos o ficheiro do vosso convite, imprimimos em bom papel e, se quiserem, desenhamos as outras peças a combinar, como as lembranças ou os marcadores de mesa.",
+  "preco": null,
+  "inclui": [],
+  "medidas": [],
+  "composicao": "",
+  "opcoes": [],
+  "personalizacao": {
+    "nome": false,
+    "data": true,
+    "frase": true,
+    "rotuloData": "Data da celebração",
+    "rotuloFrase": "Quantidade e papel"
+  },
+  "quantidadeMinima": 1,
+  "video": "",
+  "categoria": "convites",
+  "destaque": false,
+  "novidade": false,
+  "publicado": true,
+  "ordem": 6
+}

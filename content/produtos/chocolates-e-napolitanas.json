@@ -1,0 +1,31 @@
+{
+  "nome": "Chocolates e napolitanas",
+  "fotos": [
+    "chocolates-e-napolitanas-1",
+    "chocolates-e-napolitanas-2",
+    "chocolates-e-napolitanas-3",
+    "chocolates-e-napolitanas-4"
+  ],
+  "resumo": "Chocolates e napolitanas com embalagem personalizada, com o nome e a data.",
+  "descricao": "Para oferecer aos convidados, em cada mesa ou num cesto à saída.",
+  "preco": null,
+  "inclui": [],
+  "medidas": [],
+  "composicao": "",
+  "opcoes": [],
+  "personalizacao": {
+    "nome": true,
+    "data": true,
+    "frase": true,
+    "rotuloNome": "Nome(s)",
+    "rotuloData": "Data da celebração",
+    "rotuloFrase": "Tema, cores ou frase"
+  },
+  "quantidadeMinima": 1,
+  "video": "",
+  "categoria": "lembrancas",
+  "destaque": false,
+  "novidade": false,
+  "publicado": true,
+  "ordem": 16
+}

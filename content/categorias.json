@@ -1,0 +1,51 @@
+[
+  {
+    "slug": "batismo",
+    "nome": "Batismo",
+    "titulo": "Conjuntos de batismo",
+    "resumo": "A caixa, a concha, a vela e a toalha bordada, com o nome e a data do batizado, tudo nos mesmos tons.",
+    "foto": "conjunto-de-batismo-1"
+  },
+  {
+    "slug": "convites",
+    "nome": "Convites",
+    "titulo": "Convites",
+    "resumo": "Convites de batizado, casamento, comunhão e aniversário, desenhados de raiz para cada celebração.",
+    "foto": "convite-de-batizado-1"
+  },
+  {
+    "slug": "lembrancas",
+    "nome": "Lembranças",
+    "titulo": "Lembranças para os convidados",
+    "resumo": "Gesso perfumado, velas, ímans, dezenas, bolinhas de sabão e outras lembranças, com o nome e a data.",
+    "foto": "lembranca-carrossel-em-gesso-1"
+  },
+  {
+    "slug": "padrinhos",
+    "nome": "Padrinhos",
+    "titulo": "Pedidos e presentes para padrinhos",
+    "resumo": "Molduras livro, caixinhas e convites com surpresa, para fazer o grande pedido ou agradecer a quem aceitou.",
+    "foto": "moldura-livro-1"
+  },
+  {
+    "slug": "mesa",
+    "nome": "Mesa",
+    "titulo": "Mesa e decoração",
+    "resumo": "Seating plans, marcadores, ementas, missais, livros de honra e placares, a combinar com o convite.",
+    "foto": "placar-de-boas-vindas-1"
+  },
+  {
+    "slug": "bebe",
+    "nome": "Bebé",
+    "titulo": "Para o bebé",
+    "resumo": "Quadros e placas de nascimento, placas mensais, mealheiros, escovinhas e caixinhas de recordações.",
+    "foto": "placas-mensais-em-nuvem-1"
+  },
+  {
+    "slug": "presentes",
+    "nome": "Presentes",
+    "titulo": "Presentes personalizados",
+    "resumo": "Quadros ilustrados, caixas gravadas e chocolates com mensagem, para as datas especiais.",
+    "foto": "quadro-a-nossa-historia-1"
+  }
+]

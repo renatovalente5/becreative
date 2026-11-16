@@ -1,0 +1,31 @@
+{
+  "nome": "Ementa",
+  "fotos": [
+    "ementa-1",
+    "ementa-2",
+    "ementa-3",
+    "ementa-4"
+  ],
+  "resumo": "A ementa da festa, com o nome de cada convidado se quiserem.",
+  "descricao": "Cada lugar à mesa ganha um toque único, com os mesmos tons e desenhos da restante papelaria.",
+  "preco": null,
+  "inclui": [],
+  "medidas": [],
+  "composicao": "",
+  "opcoes": [],
+  "personalizacao": {
+    "nome": true,
+    "data": true,
+    "frase": true,
+    "rotuloNome": "Nome(s)",
+    "rotuloData": "Data da celebração",
+    "rotuloFrase": "Tema, cores ou frase"
+  },
+  "quantidadeMinima": 1,
+  "video": "",
+  "categoria": "mesa",
+  "destaque": false,
+  "novidade": false,
+  "publicado": true,
+  "ordem": 3
+}

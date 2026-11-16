@@ -1,0 +1,32 @@
+{
+  "nome": "Livro de honra",
+  "fotos": [
+    "livro-de-honra-1",
+    "livro-de-honra-2",
+    "livro-de-honra-3",
+    "livro-de-honra-4",
+    "livro-de-honra-5"
+  ],
+  "resumo": "Para os convidados deixarem mensagens e fotografias, com o nome e a data na capa.",
+  "descricao": "Em capa de cartão ilustrada ou em acrílico branco, com uma moldura de instruções a combinar, para que todos participem.",
+  "preco": null,
+  "inclui": [],
+  "medidas": [],
+  "composicao": "",
+  "opcoes": [],
+  "personalizacao": {
+    "nome": true,
+    "data": true,
+    "frase": true,
+    "rotuloNome": "Nome(s)",
+    "rotuloData": "Data da celebração",
+    "rotuloFrase": "Tema, cores ou frase"
+  },
+  "quantidadeMinima": 1,
+  "video": "",
+  "categoria": "mesa",
+  "destaque": false,
+  "novidade": false,
+  "publicado": true,
+  "ordem": 5
+}

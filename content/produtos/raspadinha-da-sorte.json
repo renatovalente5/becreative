@@ -1,0 +1,28 @@
+{
+  "nome": "Raspadinha da sorte",
+  "fotos": [
+    "raspadinha-da-sorte-1",
+    "raspadinha-da-sorte-2"
+  ],
+  "resumo": "Um cartão para raspar, com o pedido escondido debaixo do coração dourado.",
+  "descricao": "Uma sugestão divertida para um pedido especial.",
+  "preco": null,
+  "inclui": [],
+  "medidas": [],
+  "composicao": "",
+  "opcoes": [],
+  "personalizacao": {
+    "nome": true,
+    "data": false,
+    "frase": true,
+    "rotuloNome": "Para quem é (ex.: tia Sara)",
+    "rotuloFrase": "O pedido ou a mensagem"
+  },
+  "quantidadeMinima": 1,
+  "video": "",
+  "categoria": "padrinhos",
+  "destaque": false,
+  "novidade": false,
+  "publicado": true,
+  "ordem": 6
+}

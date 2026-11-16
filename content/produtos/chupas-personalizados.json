@@ -1,0 +1,28 @@
+{
+  "nome": "Chupas personalizados",
+  "fotos": [
+    "chupas-personalizados-1"
+  ],
+  "resumo": "Chupa-chupas com cartão personalizado: uma lembrança pequena, mas especial.",
+  "descricao": "Com o desenho e a mensagem que quiserem, para festas, escolas ou o Dia da Criança.",
+  "preco": null,
+  "inclui": [],
+  "medidas": [],
+  "composicao": "",
+  "opcoes": [],
+  "personalizacao": {
+    "nome": true,
+    "data": true,
+    "frase": true,
+    "rotuloNome": "Nome(s)",
+    "rotuloData": "Data da celebração",
+    "rotuloFrase": "Tema, cores ou frase"
+  },
+  "quantidadeMinima": 1,
+  "video": "",
+  "categoria": "lembrancas",
+  "destaque": false,
+  "novidade": false,
+  "publicado": true,
+  "ordem": 12
+}

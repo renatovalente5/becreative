@@ -1,0 +1,741 @@
+{
+  "conjunto-de-batismo-1": {
+    "alt": "Caixa de batismo em veludo azul com o nome do bebé e «O meu batizado» gravados, com uns sapatinhos em cima",
+    "foco": "50% 55%"
+  },
+  "conjunto-de-batismo-2": {
+    "alt": "Caixa de batismo em veludo rosa com «O meu batismo» gravado e laço branco",
+    "foco": "50% 50%"
+  },
+  "conjunto-de-batismo-3": {
+    "alt": "Conjunto de batismo aberto: a toalha bordada e a concha com fita azul nos seus lugares",
+    "foco": "50% 50%"
+  },
+  "conjunto-de-batismo-4": {
+    "alt": "Concha natural com laço de chiffon azul e placa espelhada com o nome",
+    "foco": "50% 50%"
+  },
+  "conjunto-de-batismo-5": {
+    "alt": "Toalha de linho bordada a verde e concha com laço de cetim e o nome em madeira",
+    "foco": "50% 50%"
+  },
+  "conjunto-de-batismo-6": {
+    "alt": "Toalha de batismo bordada a azul com o nome e a data",
+    "foco": "50% 50%"
+  },
+  "toalha-de-batismo-1": {
+    "alt": "Toalha de batismo em linho com bordado azul e pombinha",
+    "foco": "50% 50%"
+  },
+  "concha-de-batismo-1": {
+    "alt": "Concha de batismo com laço de chiffon azul e medalha espelhada com o nome",
+    "foco": "50% 45%"
+  },
+  "cabide-de-batizado-1": {
+    "alt": "Cabide branco com o nome do bebé e a data do batismo, com laço verde",
+    "foco": "50% 50%"
+  },
+  "convite-de-batizado-1": {
+    "alt": "Convite de batizado com laços em aguarela, moldura azul ondulada e envelope rosa",
+    "foco": "50% 50%"
+  },
+  "convite-de-batizado-2": {
+    "alt": "Convite de batizado com ilustração de um bebé, preso com fita de veludo azul, sobre envelope rosa",
+    "foco": "50% 50%"
+  },
+  "convite-de-batizado-3": {
+    "alt": "Convite de batizado em forma de bilhete de embarque, com um panda num balão de ar quente",
+    "foco": "50% 50%"
+  },
+  "convite-de-batizado-4": {
+    "alt": "Convite de batizado com portas cor-de-rosa recortadas a laser e flores em aguarela",
+    "foco": "50% 50%"
+  },
+  "convite-de-batizado-5": {
+    "alt": "Convites de batizado em tons de azul com balões de ar quente",
+    "foco": "50% 50%"
+  },
+  "convite-de-batizado-6": {
+    "alt": "Convites de batizado em tons verdes, com uma igreja ilustrada e ramos",
+    "foco": "50% 50%"
+  },
+  "convite-de-batizado-7": {
+    "alt": "Convite de batizado impresso com flores lilás e moldura dourada",
+    "foco": "50% 50%"
+  },
+  "convite-de-casamento-1": {
+    "alt": "Convite de casamento com flores em tons de terra e lacre dourado",
+    "foco": "50% 50%"
+  },
+  "convite-de-casamento-2": {
+    "alt": "Envelopes de convite de casamento fechados com lacre dourado",
+    "foco": "50% 50%"
+  },
+  "convite-de-casamento-3": {
+    "alt": "Convite de casamento em papel vegetal com folhagem verde e borla dourada",
+    "foco": "50% 50%"
+  },
+  "convite-de-casamento-4": {
+    "alt": "Convites de casamento com calendário, flores rosa e laço de juta",
+    "foco": "50% 50%"
+  },
+  "convite-de-casamento-5": {
+    "alt": "Convite de casamento em forma de bilhete de avião, com aviões de papel",
+    "foco": "50% 50%"
+  },
+  "convite-de-casamento-6": {
+    "alt": "Convite de casamento com coroa de folhas verdes e laço de cetim",
+    "foco": "50% 50%"
+  },
+  "convite-de-comunhao-1": {
+    "alt": "Convite de primeira comunhão com flores e laço cor-de-rosa",
+    "foco": "50% 50%"
+  },
+  "convite-de-comunhao-2": {
+    "alt": "Convites de primeira comunhão em papel com relevo e laços de cetim cor-de-rosa",
+    "foco": "50% 50%"
+  },
+  "convite-de-aniversario-1": {
+    "alt": "Convite de primeiro aniversário em forma de borboleta cor-de-rosa com pergaminho",
+    "foco": "50% 50%"
+  },
+  "convite-de-aniversario-2": {
+    "alt": "Convite de aniversário com borboletas e flores em aguarela",
+    "foco": "50% 50%"
+  },
+  "convite-de-aniversario-3": {
+    "alt": "Convite de primeiro aniversário com ursinho e corações cor-de-rosa",
+    "foco": "50% 50%"
+  },
+  "convite-de-cha-revelacao-1": {
+    "alt": "Convites de chá revelação «Goals or Bows», em rosa e azul, com bola de futebol e laço",
+    "foco": "50% 50%"
+  },
+  "lembranca-anjo-em-gesso-1": {
+    "alt": "Anjo em gesso perfumado com laço de veludo cor-de-rosa, preso a um cartão",
+    "foco": "50% 50%"
+  },
+  "lembranca-anjo-em-gesso-2": {
+    "alt": "Cartão de primeira comunhão com monograma, a guardar o anjo em gesso",
+    "foco": "50% 50%"
+  },
+  "lembranca-anjo-em-gesso-3": {
+    "alt": "Anjo em gesso numa caixa branca com laço verde-água",
+    "foco": "50% 50%"
+  },
+  "lembranca-carrossel-em-gesso-1": {
+    "alt": "Carrossel em gesso perfumado com laço de cetim cor-de-rosa",
+    "foco": "50% 50%"
+  },
+  "lembranca-andorinhas-em-gesso-1": {
+    "alt": "Andorinha em gesso com laço cor-de-rosa e saquinhos de linho com nomes",
+    "foco": "50% 50%"
+  },
+  "lembranca-andorinhas-em-gesso-2": {
+    "alt": "Saquinhos de linho com nomes e andorinhas em gesso",
+    "foco": "50% 50%"
+  },
+  "lembranca-andorinhas-em-gesso-3": {
+    "alt": "Saquinhos de linho personalizados com etiqueta recortada",
+    "foco": "50% 50%"
+  },
+  "lembranca-cavalinho-em-gesso-1": {
+    "alt": "Cavalinho de baloiço em gesso perfumado com fita cor-de-rosa e etiqueta de madeira gravada",
+    "foco": "50% 50%"
+  },
+  "coracao-em-gesso-1": {
+    "alt": "Coração de rosas em gesso perfumado num saquinho de organza com cartão do Dia da Mãe",
+    "foco": "50% 50%"
+  },
+  "coracao-em-gesso-2": {
+    "alt": "Saquinho de organza cor-de-rosa com coração em gesso e etiqueta",
+    "foco": "50% 50%"
+  },
+  "imans-personalizados-1": {
+    "alt": "Íman redondo com flores e o nome do bebé, num cartão de agradecimento de batizado",
+    "foco": "50% 50%"
+  },
+  "imans-personalizados-2": {
+    "alt": "Ímans de batizado com coroa de flores, em cartões de agradecimento",
+    "foco": "50% 50%"
+  },
+  "dezena-personalizada-1": {
+    "alt": "Dezenas de contas cor-de-rosa e brancas com cruz, em cartões de batizado",
+    "foco": "50% 50%"
+  },
+  "dezena-personalizada-2": {
+    "alt": "Dezenas de contas lilás em saquinhos de organza com etiqueta redonda",
+    "foco": "50% 50%"
+  },
+  "dezena-personalizada-3": {
+    "alt": "Dezena de contas cor-de-rosa e brancas com um anjinho, junto a um saquinho de veludo",
+    "foco": "50% 50%"
+  },
+  "vela-ursinho-1": {
+    "alt": "Vela em forma de ursinho, cor de marfim, junto a caixas transparentes com laço",
+    "foco": "50% 50%"
+  },
+  "vela-ursinho-2": {
+    "alt": "Caixas transparentes com velas ursinho, laços e etiquetas redondas",
+    "foco": "50% 50%"
+  },
+  "vela-ursinho-3": {
+    "alt": "Etiquetas redondas com um ursinho ilustrado, presas às caixas das velas",
+    "foco": "50% 50%"
+  },
+  "bolinhas-de-sabao-1": {
+    "alt": "Tubos de bolinhas de sabão com rótulo floral verde e o nome",
+    "foco": "50% 50%"
+  },
+  "bolinhas-de-sabao-2": {
+    "alt": "Tubos de bolinhas de sabão com rótulo azul, em círculo sobre uma manta",
+    "foco": "50% 50%"
+  },
+  "bolinhas-de-sabao-3": {
+    "alt": "Tubos de bolinhas de sabão com rótulo branco e dourado",
+    "foco": "50% 50%"
+  },
+  "bolinhas-de-sabao-4": {
+    "alt": "Tubos de bolinhas de sabão com rótulo cor-de-rosa e ursinho",
+    "foco": "50% 50%"
+  },
+  "livrinho-de-pintar-1": {
+    "alt": "Livrinhos de pintar com caixa de lápis de cera e o tema da festa",
+    "foco": "50% 50%"
+  },
+  "livrinho-de-pintar-2": {
+    "alt": "Livrinho de pintar aberto com um carro para colorir e lápis de cera",
+    "foco": "50% 50%"
+  },
+  "saquinhos-de-pano-1": {
+    "alt": "Saco de pano com uma quinta cor-de-rosa ilustrada e o nome",
+    "foco": "50% 50%"
+  },
+  "saquinhos-de-pano-2": {
+    "alt": "Saco de pano com um celeiro vermelho ilustrado e o nome",
+    "foco": "50% 50%"
+  },
+  "saquinhos-de-pano-3": {
+    "alt": "Saco de pano do Dia da Criança com crianças à volta do mundo",
+    "foco": "50% 50%"
+  },
+  "chupas-personalizados-1": {
+    "alt": "Chupa-chupas com cartões ilustrados com balões de ar quente",
+    "foco": "50% 50%"
+  },
+  "abre-caricas-em-bambu-1": {
+    "alt": "Abre-caricas redondos em bambu com os nomes dos noivos e a data gravados",
+    "foco": "50% 50%"
+  },
+  "abre-caricas-em-bambu-2": {
+    "alt": "Abre-caricas em bambu gravado, visto de perto",
+    "foco": "50% 50%"
+  },
+  "ambientadores-1": {
+    "alt": "Ambientador de carro com cartão ilustrado de agradecimento, numa mão",
+    "foco": "50% 50%"
+  },
+  "ambientadores-2": {
+    "alt": "Ambientadores de casa em caixas ilustradas com fita azul",
+    "foco": "50% 50%"
+  },
+  "ambientadores-3": {
+    "alt": "Cartão de agradecimento do ambientador, com uma taça desenhada",
+    "foco": "50% 50%"
+  },
+  "ambientadores-4": {
+    "alt": "Móvel branco com as lembranças da festa em caixotes",
+    "foco": "50% 50%"
+  },
+  "suculentas-cultive-amor-1": {
+    "alt": "Suculenta num cone de papel branco com «Cultive amor» e os nomes",
+    "foco": "50% 50%"
+  },
+  "suculentas-cultive-amor-2": {
+    "alt": "Suculentas em cones de papel personalizados",
+    "foco": "50% 50%"
+  },
+  "suculentas-cultive-amor-3": {
+    "alt": "Muitas suculentas lado a lado em cones de papel",
+    "foco": "50% 50%"
+  },
+  "chocolates-e-napolitanas-1": {
+    "alt": "Napolitanas embrulhadas a cor-de-rosa com ursinho e o nome",
+    "foco": "50% 50%"
+  },
+  "chocolates-e-napolitanas-2": {
+    "alt": "Napolitanas personalizadas com laço cor-de-rosa",
+    "foco": "50% 50%"
+  },
+  "chocolates-e-napolitanas-3": {
+    "alt": "Tabletes de chocolate com embalagem às riscas e ilustração dos irmãos",
+    "foco": "50% 50%"
+  },
+  "chocolates-e-napolitanas-4": {
+    "alt": "Chocolates da Páscoa com embalagem amarela e coelhinho",
+    "foco": "50% 50%"
+  },
+  "moldura-livro-1": {
+    "alt": "Duas molduras livro em madeira, «prima Maria Inês» e «tio Miguel», com laços creme",
+    "foco": "50% 50%"
+  },
+  "moldura-livro-2": {
+    "alt": "Moldura livro aberta com o pedido «Aceitas ser meu padrinho?» e espaço para a primeira fotografia",
+    "foco": "50% 50%"
+  },
+  "moldura-livro-3": {
+    "alt": "Molduras livro «Tia Catarina» e «Tio Alexandre» com laços rosa e azul",
+    "foco": "50% 50%"
+  },
+  "moldura-livro-4": {
+    "alt": "Molduras livro «padrinho» e «madrinha» com laços azul e rosa",
+    "foco": "50% 50%"
+  },
+  "moldura-livro-5": {
+    "alt": "Moldura livro «padrinho» com laço azul",
+    "foco": "50% 50%"
+  },
+  "moldura-livro-6": {
+    "alt": "Moldura livro aberta com «Aceitas ser minha madrinha?»",
+    "foco": "50% 50%"
+  },
+  "caixinha-para-padrinhos-1": {
+    "alt": "Caixa para os padrinhos com ilustração de um panda num balão e laço azul",
+    "foco": "50% 50%"
+  },
+  "caixinha-para-padrinhos-2": {
+    "alt": "Caixa para os padrinhos aberta, com moldura dourada «Reservado para uma fotografia»",
+    "foco": "50% 50%"
+  },
+  "caixinha-para-padrinhos-3": {
+    "alt": "Caixa para a madrinha com caneca, moldura, chocolate e dezena",
+    "foco": "50% 50%"
+  },
+  "caixinha-para-padrinhos-4": {
+    "alt": "Caneca personalizada «O meu batizado», com chocolate e dezena",
+    "foco": "50% 50%"
+  },
+  "caixinha-para-padrinhos-5": {
+    "alt": "Carta para o padrinho dentro da tampa da caixa",
+    "foco": "50% 50%"
+  },
+  "caixinha-para-padrinhos-6": {
+    "alt": "Moldura dourada «Reservado para uma fotografia do meu batizado com os meus padrinhos»",
+    "foco": "50% 50%"
+  },
+  "caixa-pedido-especial-1": {
+    "alt": "Caixas «Pedido especial» abertas, com chocolates e um frasco personalizado",
+    "foco": "50% 50%"
+  },
+  "caixa-pedido-especial-2": {
+    "alt": "Caixas «Pedido especial» fechadas, em rosa e azul",
+    "foco": "50% 50%"
+  },
+  "caixa-pedido-especial-3": {
+    "alt": "Caixa «Pedido especial» com chocolates «Aceitas ser meu padrinho?»",
+    "foco": "50% 50%"
+  },
+  "convite-balao-1": {
+    "alt": "Cartão «Temos uma surpresa para ti» com balão branco e alfinete dourado",
+    "foco": "50% 50%"
+  },
+  "convite-balao-2": {
+    "alt": "Convite balão com pintas douradas e as instruções",
+    "foco": "50% 50%"
+  },
+  "convite-balao-3": {
+    "alt": "Convite balão azul com nuvens e o pedido ao padrinho",
+    "foco": "50% 50%"
+  },
+  "napolitanas-aceitas-1": {
+    "alt": "Caixa de napolitanas cor-de-rosa «Convite especial», aberta",
+    "foco": "50% 50%"
+  },
+  "napolitanas-aceitas-2": {
+    "alt": "Caixa de napolitanas «Convite especial» com o pedido ao padrinho",
+    "foco": "50% 50%"
+  },
+  "napolitanas-aceitas-3": {
+    "alt": "Caixa de napolitanas com corações, fechada",
+    "foco": "50% 50%"
+  },
+  "raspadinha-da-sorte-1": {
+    "alt": "Raspadinha com o pedido «Aceitas ser meu padrinho?» e laço cor-de-rosa",
+    "foco": "50% 50%"
+  },
+  "raspadinha-da-sorte-2": {
+    "alt": "Raspadinha da sorte com um coração dourado para raspar",
+    "foco": "50% 50%"
+  },
+  "iman-de-madeira-pedido-1": {
+    "alt": "Íman de madeira «Tia Sara, tenho uma pergunta muito importante para te fazer» com saquinho de linho",
+    "foco": "50% 50%"
+  },
+  "iman-de-madeira-pedido-2": {
+    "alt": "Íman de madeira com «Gostava muito que fosses minha madrinha. Aceitas?»",
+    "foco": "50% 50%"
+  },
+  "puzzle-ursinho-1": {
+    "alt": "Puzzle de madeira em forma de ursinho com o pedido ao padrinho gravado",
+    "foco": "50% 50%"
+  },
+  "puzzle-ursinho-2": {
+    "alt": "Caixa de cartão com laço de organza, a guardar o puzzle",
+    "foco": "50% 50%"
+  },
+  "seating-plan-1": {
+    "alt": "Seating plan «Encontra o teu lugar…» com cartões das mesas e rosas",
+    "foco": "50% 50%"
+  },
+  "seating-plan-2": {
+    "alt": "Seating plan num cavalete branco, com o tema de corrida de carros",
+    "foco": "50% 50%",
+    "credito": "Mariana João Fotografia (@marianajoaofotografia)"
+  },
+  "seating-plan-3": {
+    "alt": "Marcadores para o seating plan em forma de balão de ar quente, com os nomes",
+    "foco": "50% 50%"
+  },
+  "seating-plan-4": {
+    "alt": "Cartões das mesas do seating plan com rosas e fio dourado",
+    "foco": "50% 50%"
+  },
+  "marcadores-de-mesa-1": {
+    "alt": "Marcador de mesa com laços em aguarela, numa mesa de festa com velas cor-de-rosa",
+    "foco": "50% 50%",
+    "credito": "Rita Silva Fotografia (@ritasilva_fotografia)"
+  },
+  "marcadores-de-mesa-2": {
+    "alt": "Marcador de mesa número 12 em moldura branca, com flores",
+    "foco": "50% 50%",
+    "credito": "Mariana João Fotografia (@marianajoaofotografia)"
+  },
+  "marcadores-de-mesa-3": {
+    "alt": "Marcador «Mesa 7» com rosas e fio dourado",
+    "foco": "50% 50%"
+  },
+  "marcadores-de-mesa-4": {
+    "alt": "Marcador «Noivos» com rosas e moldura dourada",
+    "foco": "50% 50%"
+  },
+  "marcadores-de-mesa-5": {
+    "alt": "Cartões de mesa com nomes de países sobre um mapa-mundo",
+    "foco": "50% 50%"
+  },
+  "marcadores-de-mesa-6": {
+    "alt": "Marcadores de mesa às riscas azuis com coroa de folhas",
+    "foco": "50% 50%"
+  },
+  "ementa-1": {
+    "alt": "Ementa com laços em aguarela sobre um guardanapo cor-de-rosa",
+    "foco": "50% 50%",
+    "credito": "Rita Silva Fotografia (@ritasilva_fotografia)"
+  },
+  "ementa-2": {
+    "alt": "Ementa com o nome do convidado, num prato de vime",
+    "foco": "50% 50%",
+    "credito": "Rita Silva Fotografia (@ritasilva_fotografia)"
+  },
+  "ementa-3": {
+    "alt": "Ementa no prato, dentro de um guardanapo branco",
+    "foco": "50% 50%",
+    "credito": "Mariana João Fotografia (@marianajoaofotografia)"
+  },
+  "ementa-4": {
+    "alt": "Ementas em tons de terra com mapa, lado a lado",
+    "foco": "50% 50%"
+  },
+  "placar-de-boas-vindas-1": {
+    "alt": "Placar «Bem-vindos ao meu batizado» num cavalete, com flores",
+    "foco": "50% 50%",
+    "credito": "Rita Silva Fotografia (@ritasilva_fotografia)"
+  },
+  "placar-de-boas-vindas-2": {
+    "alt": "Placar de boas-vindas com laços em aguarela e moldura azul",
+    "foco": "50% 50%",
+    "credito": "Rita Silva Fotografia (@ritasilva_fotografia)"
+  },
+  "placar-de-boas-vindas-3": {
+    "alt": "Placar «Bem-vindos ao nosso chá revelação», em rosa e azul",
+    "foco": "50% 50%"
+  },
+  "livro-de-honra-1": {
+    "alt": "Livro de honra de casamento com flores em tons de terra",
+    "foco": "50% 50%"
+  },
+  "livro-de-honra-2": {
+    "alt": "Moldura de instruções do livro de honra: tirar uma fotografia, colar e escrever uma mensagem",
+    "foco": "50% 50%",
+    "credito": "Mariana João Fotografia (@marianajoaofotografia)"
+  },
+  "livro-de-honra-3": {
+    "alt": "Livro de honra de batizado com fadas e cogumelos",
+    "foco": "50% 50%"
+  },
+  "livro-de-honra-4": {
+    "alt": "Livro de honra de batizado com flores em aguarela e laço cor-de-rosa",
+    "foco": "50% 50%"
+  },
+  "livro-de-honra-5": {
+    "alt": "Livro de honra com laço branco e flores",
+    "foco": "50% 50%"
+  },
+  "missal-1": {
+    "alt": "Missais de batizado com laços em aguarela e fita azul",
+    "foco": "50% 50%"
+  },
+  "missal-2": {
+    "alt": "Missal aberto com as orações da cerimónia",
+    "foco": "50% 50%"
+  },
+  "missal-3": {
+    "alt": "Missal de casamento e batizado com flores em tons de terra",
+    "foco": "50% 50%"
+  },
+  "leques-1": {
+    "alt": "Leque de papel com laços em aguarela, o nome e a data",
+    "foco": "50% 50%"
+  },
+  "porta-aliancas-1": {
+    "alt": "Porta-alianças em caixa de vidro dourada com flores secas e corações de madeira com os nomes",
+    "foco": "50% 50%"
+  },
+  "porta-aliancas-2": {
+    "alt": "Corações de madeira gravados com os nomes e a data, junto às alianças",
+    "foco": "50% 50%"
+  },
+  "porta-aliancas-3": {
+    "alt": "Porta-alianças em madeira com um mapa-mundo gravado e um avião",
+    "foco": "50% 50%"
+  },
+  "topo-de-bolo-1": {
+    "alt": "Topo de bolo em madeira com um mapa-mundo e as iniciais dos noivos",
+    "foco": "50% 50%"
+  },
+  "topo-de-bolo-2": {
+    "alt": "Topo de bolo em madeira «Festa da Palavra» com folhas",
+    "foco": "50% 50%"
+  },
+  "topo-de-bolo-3": {
+    "alt": "Toppers de cupcakes em forma de balões de ar quente",
+    "foco": "50% 50%"
+  },
+  "placa-entrada-da-noiva-1": {
+    "alt": "Placa de madeira em forma de coração «Tio Dany, a Mimi está linda!»",
+    "foco": "50% 50%"
+  },
+  "papelaria-de-festa-1": {
+    "alt": "Pratos verdes de festa com dinossauros e o nome",
+    "foco": "50% 50%"
+  },
+  "papelaria-de-festa-2": {
+    "alt": "Palitos de festa com dinossauros",
+    "foco": "50% 50%"
+  },
+  "papelaria-de-festa-3": {
+    "alt": "Copos de festa com dinossauros",
+    "foco": "50% 50%"
+  },
+  "papelaria-de-festa-4": {
+    "alt": "Caixas de pipocas e palitos com a ilustração de dois irmãos",
+    "foco": "50% 50%"
+  },
+  "quadro-de-nascimento-1": {
+    "alt": "Quadro de nascimento com um ursinho e balões azuis, numa moldura de madeira",
+    "foco": "50% 50%"
+  },
+  "quadro-de-nascimento-2": {
+    "alt": "Quadro de nascimento com um ursinho e balões, sobre um comboio de madeira",
+    "foco": "50% 50%"
+  },
+  "quadro-de-nascimento-3": {
+    "alt": "Quadro de nascimento com uma vaquinha numa nuvem cor-de-rosa",
+    "foco": "50% 50%"
+  },
+  "quadro-de-nascimento-4": {
+    "alt": "Quadro de nascimento com um ursinho azul, numa moldura de madeira",
+    "foco": "50% 50%"
+  },
+  "placa-de-nascimento-1": {
+    "alt": "Placa de nascimento em madeira gravada com o nome, a hora, o peso e o tamanho",
+    "foco": "50% 50%"
+  },
+  "placas-mensais-em-nuvem-1": {
+    "alt": "Placas mensais em forma de nuvem, em madeira, com «Olá mundo» e o nome",
+    "foco": "50% 50%"
+  },
+  "placas-mensais-em-nuvem-2": {
+    "alt": "Nuvem de madeira com o nome do bebé e estrelas, sobre um saquinho de linho",
+    "foco": "50% 50%"
+  },
+  "placas-mensais-em-nuvem-3": {
+    "alt": "Placas mensais em nuvem espalhadas, com os números dos meses",
+    "foco": "50% 50%"
+  },
+  "placas-mensais-em-balao-1": {
+    "alt": "Balão de madeira «Olá mundo, cheguei» com o nome do bebé",
+    "foco": "50% 50%"
+  },
+  "placas-mensais-em-balao-2": {
+    "alt": "Placas em forma de balão com «1 semana» e os meses",
+    "foco": "50% 50%"
+  },
+  "placas-mensais-em-balao-3": {
+    "alt": "Placas mensais em balão espalhadas, de 4 a 12 meses",
+    "foco": "50% 50%"
+  },
+  "mealheiro-1": {
+    "alt": "Mealheiro em caixa de madeira com um cão num carro azul ilustrado",
+    "foco": "50% 50%"
+  },
+  "mealheiro-2": {
+    "alt": "Mealheiro com um ouriço ilustrado e os dados do nascimento",
+    "foco": "50% 50%"
+  },
+  "mealheiro-3": {
+    "alt": "Mealheiro com uma raposa num comboio ilustrado e o signo",
+    "foco": "50% 50%"
+  },
+  "escova-e-pente-1": {
+    "alt": "Escova e pente de madeira com o nome gravado, com laço azul",
+    "foco": "50% 50%"
+  },
+  "escova-e-pente-2": {
+    "alt": "Escova e pente de madeira com o nome gravado em letra de mão",
+    "foco": "50% 50%"
+  },
+  "escova-e-pente-3": {
+    "alt": "Pente de madeira com o nome gravado e laço cor-de-rosa",
+    "foco": "50% 50%"
+  },
+  "escova-e-pente-4": {
+    "alt": "Escova e pente em saquinho de linho, com etiqueta de madeira",
+    "foco": "50% 50%"
+  },
+  "caixinha-de-recordacoes-1": {
+    "alt": "Caixa de recordações com animais da selva ilustrados e o nome",
+    "foco": "50% 50%"
+  },
+  "caixinha-de-recordacoes-2": {
+    "alt": "Compartimentos da caixa: o primeiro cabelo, a pulseira, os dentes e o cordão umbilical",
+    "foco": "50% 50%"
+  },
+  "caixinha-de-recordacoes-3": {
+    "alt": "Caixa de recordações com uma girafa e flores ilustradas",
+    "foco": "50% 50%"
+  },
+  "caixinha-de-recordacoes-4": {
+    "alt": "Caixa de recordações aberta, com compartimentos cor-de-rosa",
+    "foco": "50% 50%"
+  },
+  "quadro-a-nossa-historia-1": {
+    "alt": "Quadro «A nossa história de amor» com mãos entrelaçadas ilustradas e datas",
+    "foco": "50% 50%"
+  },
+  "quadro-a-nossa-historia-2": {
+    "alt": "Quadro ilustrado de uma história de amor, numa moldura de madeira",
+    "foco": "50% 50%"
+  },
+  "caixa-de-madeira-gravada-1": {
+    "alt": "Caixa de madeira gravada «60 anos», aberta, com mensagem e chocolates",
+    "foco": "50% 50%"
+  },
+  "caixa-de-madeira-gravada-2": {
+    "alt": "Tampa da caixa de madeira com o selo «60 anos» gravado",
+    "foco": "50% 50%"
+  },
+  "caixa-presente-1": {
+    "alt": "Caixa-presente às riscas laranja com cartão de moldura ondulada",
+    "foco": "50% 50%"
+  },
+  "caixa-presente-2": {
+    "alt": "Cartão de moldura ondulada vermelha dentro da tampa da caixa",
+    "foco": "50% 50%"
+  },
+  "chocolates-com-mensagem-1": {
+    "alt": "Caixa de 12 chocolates com mensagens, às riscas pretas e corações",
+    "foco": "50% 50%"
+  },
+  "chocolates-com-mensagem-2": {
+    "alt": "Caixa «12 razões pelas quais gosto de ti», fechada",
+    "foco": "50% 50%"
+  },
+  "chocolates-com-mensagem-3": {
+    "alt": "Lata de sardinhas aberta com chocolates, para o Dia do Pai",
+    "foco": "50% 50%"
+  },
+  "chocolates-com-mensagem-4": {
+    "alt": "Frasco de vidro com chocolates e laço azul, para o Dia do Pai",
+    "foco": "50% 50%"
+  },
+  "chocolates-com-mensagem-5": {
+    "alt": "Lata vermelha «Abre e vê» com chocolates para os namorados",
+    "foco": "50% 50%"
+  },
+  "espelho-de-bolso-1": {
+    "alt": "Espelho de bolso em madeira com «Mãe, és linda!» e flores gravadas",
+    "foco": "50% 50%"
+  },
+  "espelho-de-bolso-2": {
+    "alt": "Espelho de bolso aberto, com saquinho de organza cor-de-rosa",
+    "foco": "50% 50%"
+  },
+  "escova-gravada-1": {
+    "alt": "Escova de cabelo em madeira com «Mãe, és linda!» gravado",
+    "foco": "50% 50%"
+  },
+  "escova-gravada-2": {
+    "alt": "Escova de cabelo em madeira gravada com flores, vista de perto",
+    "foco": "50% 50%"
+  },
+  "amendoas-da-pascoa-1": {
+    "alt": "Saquinho de amêndoas coloridas com laço amarelo e etiqueta da Páscoa",
+    "foco": "50% 50%"
+  },
+  "amendoas-da-pascoa-2": {
+    "alt": "Saquinho de amêndoas de chocolate com etiqueta para a professora",
+    "foco": "50% 50%"
+  },
+  "amendoas-da-pascoa-3": {
+    "alt": "Saquinho de amêndoas cor-de-rosa com etiqueta personalizada",
+    "foco": "50% 50%"
+  },
+  "lacos-em-aguarela-1": {
+    "alt": "Mesa comprida de batizado com velas cor-de-rosa, marcador de mesa e ementas",
+    "foco": "50% 50%",
+    "credito": "Rita Silva Fotografia (@ritasilva_fotografia)"
+  },
+  "flores-em-tons-de-terra-1": {
+    "alt": "Cartões do seating plan com flores em tons de terra e os nomes dos convidados",
+    "foco": "50% 50%"
+  },
+  "azul-e-veludo-1": {
+    "alt": "Convite de batizado e primeiro aniversário com um carro de corrida e balões azuis ilustrados",
+    "foco": "50% 50%"
+  },
+  "azul-e-veludo-2": {
+    "alt": "Marcador de mesa número 1 numa moldura branca, com flores brancas e azuis",
+    "foco": "50% 50%",
+    "credito": "Mariana João Fotografia (@marianajoaofotografia)"
+  },
+  "rosas-e-folhagem-1": {
+    "alt": "Cartões das mesas com os nomes dos convidados, rosas e fita verde",
+    "foco": "50% 50%"
+  },
+  "jardim-encantado-1": {
+    "alt": "Convite de batizado com portas cor-de-rosa recortadas a laser, fechado com laço",
+    "foco": "50% 50%"
+  },
+  "jardim-encantado-2": {
+    "alt": "Marcadores de mesa e cartões do seating plan com flores e uma fada",
+    "foco": "50% 50%"
+  },
+  "bilhete-de-embarque-1": {
+    "alt": "Convites em forma de bilhete de embarque, com calendário e check-in",
+    "foco": "50% 50%"
+  },
+  "atelier": {
+    "alt": "O atelier da BE!Creative em Coimbra: parede de ripas de madeira com luz, mesa de vidro e o logótipo",
+    "foco": "50% 50%"
+  }
+}

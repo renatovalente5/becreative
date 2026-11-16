@@ -1,0 +1,28 @@
+{
+  "nome": "Puzzle ursinho em madeira",
+  "fotos": [
+    "puzzle-ursinho-1",
+    "puzzle-ursinho-2"
+  ],
+  "resumo": "Um puzzle de madeira em forma de ursinho, com o pedido gravado, numa caixa.",
+  "descricao": "Monta-se a peça e descobre-se o pedido.",
+  "preco": null,
+  "inclui": [],
+  "medidas": [],
+  "composicao": "",
+  "opcoes": [],
+  "personalizacao": {
+    "nome": true,
+    "data": false,
+    "frase": true,
+    "rotuloNome": "Para quem é (ex.: tia Sara)",
+    "rotuloFrase": "O pedido ou a mensagem"
+  },
+  "quantidadeMinima": 1,
+  "video": "",
+  "categoria": "padrinhos",
+  "destaque": false,
+  "novidade": false,
+  "publicado": true,
+  "ordem": 8
+}

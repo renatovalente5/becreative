@@ -1,0 +1,30 @@
+{
+  "nome": "Anjo em gesso perfumado",
+  "fotos": [
+    "lembranca-anjo-em-gesso-1",
+    "lembranca-anjo-em-gesso-2",
+    "lembranca-anjo-em-gesso-3"
+  ],
+  "resumo": "Um anjo em gesso perfumado, com fita e cartão personalizado.",
+  "descricao": "Uma lembrança delicada para batizados e comunhões, num cartão com o nome, a data e uma mensagem de agradecimento.",
+  "preco": null,
+  "inclui": [],
+  "medidas": [],
+  "composicao": "",
+  "opcoes": [],
+  "personalizacao": {
+    "nome": true,
+    "data": true,
+    "frase": true,
+    "rotuloNome": "Nome(s)",
+    "rotuloData": "Data da celebração",
+    "rotuloFrase": "Tema, cores ou frase"
+  },
+  "quantidadeMinima": 1,
+  "video": "",
+  "categoria": "lembrancas",
+  "destaque": false,
+  "novidade": false,
+  "publicado": true,
+  "ordem": 1
+}

@@ -1,0 +1,30 @@
+{
+  "nome": "O meu primeiro mealheiro",
+  "fotos": [
+    "mealheiro-1",
+    "mealheiro-2",
+    "mealheiro-3"
+  ],
+  "resumo": "Um mealheiro em caixa de madeira, com os dados do nascimento ilustrados.",
+  "descricao": "Com o nome, a data, o peso, o tamanho e a hora, e o signo se quiserem.",
+  "preco": null,
+  "inclui": [],
+  "medidas": [],
+  "composicao": "",
+  "opcoes": [],
+  "personalizacao": {
+    "nome": true,
+    "data": true,
+    "frase": true,
+    "rotuloNome": "Nome do bebé",
+    "rotuloData": "Data de nascimento",
+    "rotuloFrase": "Hora, peso, tamanho e outros dados"
+  },
+  "quantidadeMinima": 1,
+  "video": "",
+  "categoria": "bebe",
+  "destaque": false,
+  "novidade": false,
+  "publicado": true,
+  "ordem": 5
+}

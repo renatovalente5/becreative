@@ -1,0 +1,23 @@
+{
+  "titulo": "Bilhete de embarque",
+  "ocasiao": "Batizado",
+  "quando": "agosto de 2024",
+  "resumo": "Um panda num balão de ar quente, do convite aos marcadores do seating plan.",
+  "texto": "Para o batizado, um convite em forma de bilhete de embarque, com check-in, escala e destino. Os balões de ar quente passaram para os marcadores do seating plan e para a caixinha dos padrinhos.",
+  "fotos": [
+    "convite-de-batizado-3",
+    "bilhete-de-embarque-1",
+    "seating-plan-3",
+    "caixinha-para-padrinhos-1",
+    "caixinha-para-padrinhos-2"
+  ],
+  "produtos": [
+    "convite-de-batizado",
+    "seating-plan",
+    "caixinha-para-padrinhos"
+  ],
+  "credito": "",
+  "destaque": false,
+  "publicado": true,
+  "ordem": 6
+}

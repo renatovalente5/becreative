@@ -1,0 +1,54 @@
+{
+  "nome": "Concha de batismo",
+  "fotos": [
+    "conjunto-de-batismo-4",
+    "concha-de-batismo-1"
+  ],
+  "resumo": "Concha natural, de marfinite ou de madrepérola, com fita e o nome.",
+  "descricao": "A concha leva uma fita em chiffon, cetim ou linho e uma pequena placa com o nome, em acrílico espelhado ou em madeira gravada.",
+  "preco": null,
+  "inclui": [],
+  "medidas": [],
+  "composicao": "",
+  "opcoes": [
+    {
+      "nome": "Concha",
+      "valores": [
+        {
+          "nome": "Natural"
+        },
+        {
+          "nome": "Marfinite"
+        },
+        {
+          "nome": "Madrepérola"
+        }
+      ]
+    },
+    {
+      "nome": "Placa com o nome",
+      "valores": [
+        {
+          "nome": "Acrílico espelhado"
+        },
+        {
+          "nome": "Madeira gravada"
+        }
+      ]
+    }
+  ],
+  "personalizacao": {
+    "nome": true,
+    "data": false,
+    "frase": true,
+    "rotuloNome": "Nome do bebé",
+    "rotuloFrase": "Cor da fita ou outros pormenores"
+  },
+  "quantidadeMinima": 1,
+  "video": "",
+  "categoria": "batismo",
+  "destaque": false,
+  "novidade": false,
+  "publicado": true,
+  "ordem": 3
+}

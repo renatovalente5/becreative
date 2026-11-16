@@ -1,0 +1,12 @@
+# Material do cliente (Instagram, conversa, logótipo original): nunca vai para o repositório.
+_cliente/
+
+# Gerado
+_site/
+_capturas/
+.cache/
+# O estado local do wrangler: nunca para o repositório, que é público.
+.wrangler/
+node_modules/
+.DS_Store
+*.log

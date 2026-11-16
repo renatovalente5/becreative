@@ -1,0 +1,29 @@
+{
+  "nome": "Convite de primeira comunhão",
+  "fotos": [
+    "convite-de-comunhao-1",
+    "convite-de-comunhao-2"
+  ],
+  "resumo": "Para a primeira comunhão, com o nome, a data e a igreja.",
+  "descricao": "Em papel com relevo, com laços de cetim e flores, ou com o tema que a criança escolher.",
+  "preco": null,
+  "inclui": [],
+  "medidas": [],
+  "composicao": "",
+  "opcoes": [],
+  "personalizacao": {
+    "nome": true,
+    "data": true,
+    "frase": true,
+    "rotuloNome": "Nome da criança",
+    "rotuloData": "Data da comunhão",
+    "rotuloFrase": "Igreja, festa, tema e cores"
+  },
+  "quantidadeMinima": 1,
+  "video": "",
+  "categoria": "convites",
+  "destaque": false,
+  "novidade": false,
+  "publicado": true,
+  "ordem": 3
+}

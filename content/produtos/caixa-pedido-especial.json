@@ -1,0 +1,29 @@
+{
+  "nome": "Caixa «Pedido especial»",
+  "fotos": [
+    "caixa-pedido-especial-1",
+    "caixa-pedido-especial-2",
+    "caixa-pedido-especial-3"
+  ],
+  "resumo": "Uma caixa com o pedido escrito, chocolates e um miminho, para quem vai ser padrinho.",
+  "descricao": "Cada chocolate leva uma parte do pedido. O desenho da caixa segue o tema que escolherem.",
+  "preco": null,
+  "inclui": [],
+  "medidas": [],
+  "composicao": "",
+  "opcoes": [],
+  "personalizacao": {
+    "nome": true,
+    "data": false,
+    "frase": true,
+    "rotuloNome": "Para quem é (ex.: tia Sara)",
+    "rotuloFrase": "O pedido ou a mensagem"
+  },
+  "quantidadeMinima": 1,
+  "video": "",
+  "categoria": "padrinhos",
+  "destaque": false,
+  "novidade": false,
+  "publicado": true,
+  "ordem": 3
+}

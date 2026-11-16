@@ -1,0 +1,39 @@
+{
+  "marca": "BE!Creative",
+  "descricao": "Atelier de design em Coimbra: conjuntos de batismo, convites, lembranças e papelaria personalizados para batizados, casamentos e outras celebrações.",
+  "assinatura": "Cada escolha dá forma a uma peça única.",
+  "contactos": {
+    "email": "creativebe.design20@gmail.com",
+    "whatsapp": "",
+    "telefone": "",
+    "instagram": "be.creative.design",
+    "facebook": "bedesigncreative",
+    "horario": ""
+  },
+  "local": {
+    "localidade": "Coimbra",
+    "distrito": "Coimbra"
+  },
+  "empresa": {
+    "nome": "",
+    "tipo": "",
+    "nif": "",
+    "morada": "",
+    "codigoPostal": "",
+    "localidade": "Coimbra",
+    "concelho": "Coimbra",
+    "iva": ""
+  },
+  "aviso": {
+    "texto": "",
+    "ate": "",
+    "ligacao": ""
+  },
+  "pedido": {
+    "prazo": "Os prazos de produção dependem da complexidade de cada pedido: na nossa conversa dizemos-te o prazo previsto.",
+    "pagamento": "MB WAY ou transferência bancária. Como cada peça é feita de propósito, só começamos depois de o pagamento estar confirmado.",
+    "levantamento": "No nosso atelier, em Coimbra, combinado previamente.",
+    "envio": "Por transportadora: depois da expedição, a entrega costuma demorar 1 a 2 dias úteis. Os atrasos da transportadora são alheios à BE!Creative.",
+    "portes": ""
+  }
+}

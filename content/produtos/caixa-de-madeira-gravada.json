@@ -1,0 +1,28 @@
+{
+  "nome": "Caixa de madeira gravada",
+  "fotos": [
+    "caixa-de-madeira-gravada-1",
+    "caixa-de-madeira-gravada-2"
+  ],
+  "resumo": "Uma caixa de madeira gravada, com mensagem e chocolates lá dentro.",
+  "descricao": "Para um aniversário ou uma data especial: a tampa gravada e uma mensagem personalizada no interior.",
+  "preco": null,
+  "inclui": [],
+  "medidas": [],
+  "composicao": "",
+  "opcoes": [],
+  "personalizacao": {
+    "nome": true,
+    "data": false,
+    "frase": true,
+    "rotuloNome": "Para quem é",
+    "rotuloFrase": "A mensagem"
+  },
+  "quantidadeMinima": 1,
+  "video": "",
+  "categoria": "presentes",
+  "destaque": false,
+  "novidade": false,
+  "publicado": true,
+  "ordem": 2
+}

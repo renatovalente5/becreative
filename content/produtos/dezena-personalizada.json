@@ -1,0 +1,30 @@
+{
+  "nome": "Dezena personalizada",
+  "fotos": [
+    "dezena-personalizada-1",
+    "dezena-personalizada-2",
+    "dezena-personalizada-3"
+  ],
+  "resumo": "Dezena de contas com cruz, num saquinho e com cartão personalizado.",
+  "descricao": "O presente ideal para batizados, comunhões e momentos de devoção, totalmente personalizável nas cores e no cartão.",
+  "preco": null,
+  "inclui": [],
+  "medidas": [],
+  "composicao": "",
+  "opcoes": [],
+  "personalizacao": {
+    "nome": true,
+    "data": true,
+    "frase": true,
+    "rotuloNome": "Nome(s)",
+    "rotuloData": "Data da celebração",
+    "rotuloFrase": "Tema, cores ou frase"
+  },
+  "quantidadeMinima": 1,
+  "video": "",
+  "categoria": "lembrancas",
+  "destaque": false,
+  "novidade": false,
+  "publicado": true,
+  "ordem": 7
+}

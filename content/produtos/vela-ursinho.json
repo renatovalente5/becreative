@@ -1,0 +1,30 @@
+{
+  "nome": "Vela ursinho",
+  "fotos": [
+    "vela-ursinho-1",
+    "vela-ursinho-2",
+    "vela-ursinho-3"
+  ],
+  "resumo": "Uma vela em forma de ursinho, numa caixa transparente com laço e etiqueta.",
+  "descricao": "A lembrança perfeita para batizados, chás revelação e aniversários, com o nome e a data na etiqueta.",
+  "preco": null,
+  "inclui": [],
+  "medidas": [],
+  "composicao": "",
+  "opcoes": [],
+  "personalizacao": {
+    "nome": true,
+    "data": true,
+    "frase": true,
+    "rotuloNome": "Nome(s)",
+    "rotuloData": "Data da celebração",
+    "rotuloFrase": "Tema, cores ou frase"
+  },
+  "quantidadeMinima": 1,
+  "video": "",
+  "categoria": "lembrancas",
+  "destaque": true,
+  "novidade": false,
+  "publicado": true,
+  "ordem": 8
+}

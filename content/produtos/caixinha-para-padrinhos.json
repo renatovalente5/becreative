@@ -1,0 +1,33 @@
+{
+  "nome": "Caixinha para os padrinhos",
+  "fotos": [
+    "caixinha-para-padrinhos-1",
+    "caixinha-para-padrinhos-2",
+    "caixinha-para-padrinhos-3",
+    "caixinha-para-padrinhos-4",
+    "caixinha-para-padrinhos-5",
+    "caixinha-para-padrinhos-6"
+  ],
+  "resumo": "Uma caixa com carta, moldura «reservado para uma fotografia» e miminhos, no tema do batizado.",
+  "descricao": "Criada de forma totalmente personalizada para surpreender ou agradecer aos padrinhos. Se já tiverem um tema definido, adaptamos tudo ao vosso gosto.",
+  "preco": null,
+  "inclui": [],
+  "medidas": [],
+  "composicao": "",
+  "opcoes": [],
+  "personalizacao": {
+    "nome": true,
+    "data": true,
+    "frase": true,
+    "rotuloNome": "Nome do bebé",
+    "rotuloData": "Data do batizado",
+    "rotuloFrase": "Cores, tema ou outros pormenores"
+  },
+  "quantidadeMinima": 1,
+  "video": "caixinha-para-padrinhos",
+  "categoria": "padrinhos",
+  "destaque": true,
+  "novidade": false,
+  "publicado": true,
+  "ordem": 2
+}

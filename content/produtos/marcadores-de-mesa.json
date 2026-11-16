@@ -1,0 +1,33 @@
+{
+  "nome": "Marcadores de mesa",
+  "fotos": [
+    "marcadores-de-mesa-1",
+    "marcadores-de-mesa-2",
+    "marcadores-de-mesa-3",
+    "marcadores-de-mesa-4",
+    "marcadores-de-mesa-5",
+    "marcadores-de-mesa-6"
+  ],
+  "resumo": "Os números e os nomes das mesas, a combinar com o convite e o seating plan.",
+  "descricao": "Dão harmonia ao espaço e ajudam cada convidado a encontrar o seu lugar.",
+  "preco": null,
+  "inclui": [],
+  "medidas": [],
+  "composicao": "",
+  "opcoes": [],
+  "personalizacao": {
+    "nome": true,
+    "data": true,
+    "frase": true,
+    "rotuloNome": "Nome(s)",
+    "rotuloData": "Data da celebração",
+    "rotuloFrase": "Tema, cores ou frase"
+  },
+  "quantidadeMinima": 1,
+  "video": "",
+  "categoria": "mesa",
+  "destaque": false,
+  "novidade": false,
+  "publicado": true,
+  "ordem": 2
+}

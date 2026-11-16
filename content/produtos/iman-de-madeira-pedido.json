@@ -1,0 +1,28 @@
+{
+  "nome": "Íman «Tenho uma pergunta»",
+  "fotos": [
+    "iman-de-madeira-pedido-1",
+    "iman-de-madeira-pedido-2"
+  ],
+  "resumo": "Um íman de madeira gravado, num saquinho de linho: de um lado a pergunta, do outro o pedido.",
+  "descricao": "Um pedido simples e bonito, que fica depois no frigorífico.",
+  "preco": null,
+  "inclui": [],
+  "medidas": [],
+  "composicao": "",
+  "opcoes": [],
+  "personalizacao": {
+    "nome": true,
+    "data": false,
+    "frase": true,
+    "rotuloNome": "Para quem é (ex.: tia Sara)",
+    "rotuloFrase": "O pedido ou a mensagem"
+  },
+  "quantidadeMinima": 1,
+  "video": "",
+  "categoria": "padrinhos",
+  "destaque": false,
+  "novidade": false,
+  "publicado": true,
+  "ordem": 7
+}

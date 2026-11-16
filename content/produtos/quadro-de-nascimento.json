@@ -1,0 +1,31 @@
+{
+  "nome": "Quadro de nascimento",
+  "fotos": [
+    "quadro-de-nascimento-1",
+    "quadro-de-nascimento-2",
+    "quadro-de-nascimento-3",
+    "quadro-de-nascimento-4"
+  ],
+  "resumo": "O nome, a data, a hora, o peso e o tamanho do bebé, num quadro ilustrado.",
+  "descricao": "A melhor forma de registar o nascimento de um bebé, totalmente personalizável: a ilustração, as cores e a moldura.",
+  "preco": null,
+  "inclui": [],
+  "medidas": [],
+  "composicao": "",
+  "opcoes": [],
+  "personalizacao": {
+    "nome": true,
+    "data": true,
+    "frase": true,
+    "rotuloNome": "Nome do bebé",
+    "rotuloData": "Data de nascimento",
+    "rotuloFrase": "Hora, peso, tamanho e outros dados"
+  },
+  "quantidadeMinima": 1,
+  "video": "",
+  "categoria": "bebe",
+  "destaque": false,
+  "novidade": false,
+  "publicado": true,
+  "ordem": 1
+}
